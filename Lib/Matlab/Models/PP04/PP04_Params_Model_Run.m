@@ -3,6 +3,8 @@
 %This is the main parameter file
 %Change params here, this creates PP04_Param_Insol_Run.txt file
 
+%See holdover form brknight on line 55
+
 %Run Number
 run_num = 1;
 
@@ -50,7 +52,7 @@ ModelFigFlag = 1;
 
 % ================================ %
 
-filePath = '~/campgrp/brknight/PP04_Data/Model_Runs/';
+ filePath = '~/campgrp/brknight/PP04_Data/Model_Runs/';
 
 if insolNoneFlag == 1
     descr = 'insolNone';
