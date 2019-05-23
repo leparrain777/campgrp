@@ -1,0 +1,49 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: overview_models.aux
+The style file: plainnat.bst
+Database file #1: IceAgePacing.bib
+Warning--I didn't find a database entry for "Mitsui:2015he"
+Warning--empty publisher in Saltzman:2002tl
+You've used 22 entries,
+            2773 wiz_defined-function locations,
+            801 strings with 10577 characters,
+and the built_in function-call counts, 10627 in all, are:
+= -- 1048
+> -- 506
+< -- 16
++ -- 172
+- -- 150
+* -- 941
+:= -- 1650
+add.period$ -- 104
+call.type$ -- 22
+change.case$ -- 115
+chr.to.int$ -- 22
+cite$ -- 45
+duplicate$ -- 445
+empty$ -- 865
+format.name$ -- 194
+if$ -- 2202
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 23
+newline$ -- 156
+num.names$ -- 88
+pop$ -- 161
+preamble$ -- 1
+purify$ -- 94
+quote$ -- 0
+skip$ -- 325
+stack$ -- 0
+substring$ -- 535
+swap$ -- 34
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 237
+warning$ -- 1
+while$ -- 106
+width$ -- 0
+write$ -- 367
+(There were 2 warnings)

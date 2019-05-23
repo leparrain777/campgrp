@@ -1,0 +1,92 @@
+% loadParamTS
+%       loads control parameters for time-series run
+%
+runNumber=102;
+plotfigs = true;        % set to true to plot figures
+savedata = true;        % set to true to save output data
+%
+p.model=3;
+[p, mname] = loadModel(p);
+% model options are
+%   1=Palliard Parrenin 2004
+%   2=Saltzmann Maasch 1991
+%   3=van der Pol as in de Saedleleer et al 2013
+%   4=van der Pol - Duffing
+%   5=Tziperman-Gildor2003 %% added by AH
+%   6=phase oscillator - Mitsui et al 2015
+%
+p.forcing=1;
+normflg = 1; % normalization choice for DCW forcing
+% forcing options are
+%   1=periodic (sum of 2 sinusoids)
+%   2=Integrated Summer Insolation
+%   3=de Saedeleer et al forcing with sum of obliquity and precession
+%       normflg choses normalization option:
+%           1 - absolute maximum = 1
+%           2 - standard deviation = 1
+%
+% detuning
+p.tau=1.0;
+% integration transient time, maximum time, reporting timestep (kyr)
+ttrans=61;  % time (kyr) for transient
+tmax=1048;  % for integrated summer forcing, need tmax < 5000
+dt = 1;     % time step (kyr) for returned solution
+%
+% Initial Conditions
+yinit=zeros(2*p.N+1,1);
+yinit(1)=0.5;
+yinit(p.N+1)=1.0;
+%
+% forcing dependent parameters
+switch p.forcing
+    case 1
+        fname = 'QP';
+        % periodic: 2-frequency
+        % obliquity frequency
+        p.omega1=2*pi/41.0;
+        % precession frequency
+        p.omega2=2*pi/23.0;
+        % select forcing parameter values from scan
+        p.kt1 = 0.2;     % amplitude - 41 kyr     
+        p.kt2 = 0.2;     % amplitude - 23 kyr
+    case 2
+        % summer integrated insolation
+        fname = 'IS';
+        % latitude for integrated insolation
+        insol_lat = 65;
+        % select forcing parameter values from scan
+        p.kt1 = 0.2727;     % amplitude - 41 kyr     
+        p.kt2 = 275;        % threshold
+        % get  % get interpolant coeff
+        p.insolcf = get_integrated_insol(insol_lat, p.kt2, ttrans);
+    case 3
+        % de Saedeleer forcing: load coeffs
+        fname0 = 'DCW';
+        %
+        % select forcing parameter values from scan
+        p.kt1 = 0.2727;     % amplitude - 41 kyr     
+        p.kt2 = 275;        % threshold
+        % get obliquity & precession coefficients and setup normalization 
+        load('./Data/dcwcoeffs.txt','dcwc')
+        p.dcwcoeffs=dcwcoeffs;
+        % normalization constants for obliquity and precession components
+        n_obl=15;	% number of obliquity modes
+        c_obl = sqrt(dcwcoeffs(1:n_obl,2).^2+dcwcoeffs(1:n_obl,3).^2);
+        c_prc = sqrt(dcwcoeffs(n_obl+1:end,2).^2+dcwcoeffs(n_obl+1:end,3).^2);
+        switch normflg
+            case 1  % max.abs.value=1
+                p.f1norm=norm(c_obl,1);
+                p.f2norm=norm(c_prc,1);
+                fname = sprintf('%sn1',fname0);
+            case 2 % std.dev = 1;
+                p.f1norm=norm(c_obl,2)/sqrt(2);
+                p.f2norm=norm(c_prc,2)/sqrt(2);
+                fname = sprintf('%sn2',fname0); 
+            otherwise
+                sprintf('DCW normalization option not known')
+                keyboard
+        end % switxh normflg
+    otherwise
+        sprintf('Forcing option not known')
+        keyboard
+end % switch p.forcing

@@ -1,0 +1,53 @@
+1# smooth version of PP04 MPT model
+#
+# Initial Values
+init V=0.5, A=0.5, C=0.5
+#
+# Parameters
+# 	Relaxation Timescales
+param tv=15, ta=12, tc=5
+# 	Interaction Parameters
+param x=1.3, z=0.8, beta=0.5, gamma=0.5, delta=0.4
+param a1=1.3, b=0.5, d=0.15
+# 	Forcing Amplitudes (PP04: alpha=0.15, y=0.5, c1=0.01)
+param alpha=0.0, y=0.0, c1=0.8
+# 	Idealized Forcing Parameters
+param w1=0.0476, w2=0.0244, w3=0.01
+# 	step function parameters
+param k1=200, k2=1
+#
+#  1D & 2D step functions
+step(r) = (1+tanh(k1*r))/2
+step2(r,s) = (3+tanh(k2*r)+tanh(k2*s)-tanh(k2*r)*tanh(k2*s))/4
+#
+# Forcing functions
+In=sin(2*pi*w3*t)*sin(2*pi*w1*t)+sin(2*pi*w2*t)
+Is=sin(2*pi*w3*t)*sin(2*pi*w1*t+7*pi/12)+sin(2*pi*w2*t)
+#
+# RHS terms
+F=a1*V-b*A-c1*Is+d
+VR=-x*C-y*In+z
+CR=alpha*In-beta*V+gamma*step(-1*F)+delta
+#
+# Equations
+#dV/dt=(VR-V)/tv*step2(V,VR)
+dV/dt=(VR-V)/tv
+dA/dt=(V-A)/ta
+dC/dt=(CR-C)/tc
+#
+# Auxiliary Functions
+aux F1=F
+aux I65=In
+aux I60=Is
+#
+# integration settings
+@ total=1000, xplot=t,yplot=V,axes=2d
+@ xmin=0,xmax=100,ymin=-1,ymax=1
+@ bound=1000
+@ runnow=1
+done
+#
+#	Extra comments
+# @ xlo=-1.5,ylo=-2,xhi=1.5,yhi=2
+# @ maxstor=20000
+# @ phi=60

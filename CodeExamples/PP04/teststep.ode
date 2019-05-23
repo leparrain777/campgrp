@@ -1,0 +1,11 @@
+# smooth version of PP04 MPT model
+step(xx) = (1+tanh(xx))/2
+dX/dt=Y
+dY/dt=(YR-Y)/ty
+YR=gamma*step(-1*k1*X)+delta
+init X=5, Y=0
+par delta=-10, gamma=30, ty=10, k1=1
+@ dt=.025, total=40, xplot=t,yplot=x,axes=2d
+@ xmin=0,xmax=40,ymin=-25,ymax=10,zmin=0
+@ runnow=1
+done

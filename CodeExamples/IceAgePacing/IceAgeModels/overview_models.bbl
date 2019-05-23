@@ -1,0 +1,201 @@
+\begin{thebibliography}{22}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ashwin and Ditlevsen(2015)]{Ashwin2015}
+Peter Ashwin and Peter Ditlevsen.
+\newblock {The middle Pleistocene transition as a generic bifurcation on a slow
+  manifold}.
+\newblock \emph{Climate Dynamics}, 45\penalty0 (9-10):\penalty0 2683--2695,
+  2015.
+\newblock \doi{10.1007/s00382-015-2501-9}.
+\newblock URL \url{http://dx.doi.org/10.1007/s00382-015-2501-9}.
+
+\bibitem[Crucifix(2012)]{Crucifix2012a}
+Michel Crucifix.
+\newblock {Oscillators and relaxation phenomena in Pleistocene climate theory}.
+\newblock \emph{Philosophical Transactions of the Royal Society A:
+  Mathematical, Physical and Engineering Sciences}, 370\penalty0
+  (1962):\penalty0 1140--1165, 2012.
+\newblock \doi{10.1098/rsta.2011.0315}.
+\newblock URL
+  \url{http://rsta.royalsocietypublishing.org/content/370/1962/1140.abstract}.
+
+\bibitem[De~Saedeleer et~al.(2013)De~Saedeleer, Crucifix, and
+  Wieczorek]{DeSaedeleer:2013dk}
+Bernard De~Saedeleer, Michel Crucifix, and Sebastian Wieczorek.
+\newblock {Is the astronomical forcing a reliable and unique pacemaker for
+  climate? A conceptual model study}.
+\newblock \emph{Climate Dynamics}, 40\penalty0 (1-2):\penalty0 273--294, 2013.
+\newblock \doi{10.1007/s00382-012-1316-1}.
+\newblock URL
+  \url{https://link.springer.com/article/10.1007/s00382-012-1316-1}.
+
+\bibitem[Gildor and Tziperman(2000)]{Gildor2000}
+Hezi Gildor and Eli Tziperman.
+\newblock {Sea ice as the glacial cycles' climate switch: Role of seasonal and
+  orbital forcing}.
+\newblock \emph{Paleoceanography}, 15\penalty0 (6):\penalty0 605--615, 2000.
+\newblock \doi{10.1029/1999PA000461}.
+\newblock URL \url{http://doi.wiley.com/10.1029/1999PA000461}.
+
+\bibitem[Gildor and Tziperman(2001)]{Gildor2001a}
+Hezi Gildor and Eli Tziperman.
+\newblock {A sea ice climate switch mechanism for the 100-kyr glacial cycles}.
+\newblock \emph{Journal of Geophysical Research: Oceans}, 106\penalty0
+  (C5):\penalty0 9117--9133, May 2001.
+\newblock \doi{10.1029/1999JC000120}.
+\newblock URL \url{http://doi.wiley.com/10.1029/1999JC000120}.
+
+\bibitem[Gildor et~al.(2002)Gildor, Tziperman, and Toggweiler]{Gildor2002}
+Hezi Gildor, Eli Tziperman, and J~R Toggweiler.
+\newblock {Sea ice switch mechanism and glacial-interglacial CO2 variations}.
+\newblock \emph{Global Biogeochemical Cycles}, 16\penalty0 (3):\penalty0
+  6--1--6--14, September 2002.
+\newblock \doi{10.1029/2001GB001446}.
+\newblock URL
+  \url{http://onlinelibrary.wiley.com/doi/10.1029/2001GB001446/full}.
+
+\bibitem[Maasch and Saltzman(1990)]{Maasch:1990ul}
+K~A Maasch and B~Saltzman.
+\newblock {A low-order dynamical model of global climatic variability over the
+  full Pleistocene}.
+\newblock \emph{Journal of Geophysical Research}, 95\penalty0 (D2):\penalty0
+  1955--1963, February 1990.
+
+\bibitem[Omta et~al.(2013)Omta, Van~Voorn, Rickaby, and Follows]{Omta:2013dl}
+Anne~Willem Omta, George A~K Van~Voorn, Rosalind E~M Rickaby, and Michael~J
+  Follows.
+\newblock {On the potential role of marine calcifiers in glacial-interglacial
+  dynamics}.
+\newblock \emph{Global Biogeochemical Cycles}, 27\penalty0 (3):\penalty0
+  692--704, August 2013.
+\newblock \doi{10.1002/gbc.20060}.
+\newblock URL \url{http://doi.wiley.com/10.1002/gbc.20060}.
+
+\bibitem[Omta et~al.(2016)Omta, Kooi, Van~Voorn, Rickaby, and
+  Follows]{Omta:2015cc}
+Anne~Willem Omta, Bob~W Kooi, George A~K Van~Voorn, Rosalind E~M Rickaby, and
+  Michael~J Follows.
+\newblock {Inherent characteristics of sawtooth cycles can explain different
+  glacial periodicities}.
+\newblock \emph{Climate Dynamics}, 46\penalty0 (1-2):\penalty0 557--569, 2016.
+\newblock \doi{10.1007/s00382-015-2598-x}.
+\newblock URL \url{http://link.springer.com/10.1007/s00382-015-2598-x}.
+
+\bibitem[Paillard(1998)]{Paillard:1998bn}
+D~Paillard.
+\newblock {The timing of Pleistocene glaciations from a simple multiple-state
+  climate model}.
+\newblock \emph{Nature}, 391\penalty0 (6665):\penalty0 378--381, 1998.
+\newblock \doi{10.1038/34891}.
+\newblock URL \url{http://www.nature.com/doifinder/10.1038/34891}.
+
+\bibitem[Paillard and Parrenin(2004)]{Paillard:2004dn}
+Didier Paillard and Fr{\'e}d{\'e}ric Parrenin.
+\newblock {The Antarctic ice sheet and the triggering of deglaciations}.
+\newblock \emph{Earth and Planetary Science Letters}, 227\penalty0
+  (3-4):\penalty0 263--271, November 2004.
+\newblock \doi{10.1016/j.epsl.2004.08.023}.
+\newblock URL
+  \url{http://linkinghub.elsevier.com/retrieve/pii/S0012821X04005564}.
+
+\bibitem[Saltzman(2002)]{Saltzman:2002tl}
+B~Saltzman.
+\newblock \emph{{Dynamical Paleoclimatology}}.
+\newblock 2002.
+\newblock URL
+  \url{https://books.google.com/books/about/Dynamical_Paleoclimatology.html?id=kJkE52UtpXcC}.
+
+\bibitem[Saltzman and Maasch(1988)]{Saltzman:1988tv}
+B~Saltzman and K~A Maasch.
+\newblock {Carbon cycle instability as a cause of the late Pleistocene ice age
+  oscillations: Modeling the asymmetric response}.
+\newblock \emph{Global Biogeochem. Cycles}, 2\penalty0 (2):\penalty0 177--185,
+  June 1988.
+
+\bibitem[Saltzman and Maasch(1990)]{Saltzman:1990uy}
+B~Saltzman and K~A Maasch.
+\newblock {A 1st-Order Global-Model of Late Cenozoic Climatic-Change}.
+\newblock \emph{Transactions of the Royal Society of Edinburgh-Earth Sciences},
+  81:\penalty0 315--325, 1990.
+\newblock URL
+  \url{http://gateway.webofknowledge.com/gateway/Gateway.cgi?GWVersion=2&SrcAuth=mekentosj&SrcApp=Papers&DestLinkType=FullRecord&DestApp=WOS&KeyUT=A1990FC13000006}.
+
+\bibitem[Saltzman and Maasch(1991)]{Saltzman:1991jl}
+B~Saltzman and K~A Maasch.
+\newblock {A first-order global model of late Cenozoic climatic change II.
+  Further analysis based on a simplification of CO2 dynamics}.
+\newblock \emph{Climate Dynamics}, 5\penalty0 (4):\penalty0 201--210, June
+  1991.
+\newblock \doi{10.1007/BF00210005}.
+\newblock URL \url{http://link.springer.com/10.1007/BF00210005}.
+
+\bibitem[Saltzman and Verbitsky(1993)]{Saltzman:1993iq}
+B~Saltzman and Mikhail~Ya Verbitsky.
+\newblock {Multiple instabilities and modes of glacial rhythmicity in the
+  plio-Pleistocene: a general theory of late Cenozoic climatic change}.
+\newblock \emph{Climate Dynamics}, 9\penalty0 (1):\penalty0 1--15, October
+  1993.
+\newblock \doi{10.1007/BF00208010}.
+\newblock URL \url{https://link.springer.com/article/10.1007/BF00208010}.
+
+\bibitem[Tziperman and Gildor(2003)]{Tziperman2003}
+Eli Tziperman and Hezi Gildor.
+\newblock {On the mid-Pleistocene transition to 100-kyr glacial cycles and the
+  asymmetry between glaciation and deglaciation times}.
+\newblock \emph{Paleoceanography}, {18}\penalty0 ({1}):\penalty0 1001, January
+  2003.
+\newblock \doi{{10.1029/2001PA000627}}.
+\newblock URL \url{http://dx.doi.org/10.1029/2001PA000627%7D}.
+
+\bibitem[Tziperman et~al.(2006)Tziperman, Raymo, Huybers, and
+  Wunsch]{Tziperman:2006he}
+Eli Tziperman, Maureen~E Raymo, Peter Huybers, and Carl Wunsch.
+\newblock {Consequences of pacing the Pleistocene 100 kyr ice ages by nonlinear
+  phase locking to Milankovitch forcing}.
+\newblock \emph{Paleoceanography}, 21\penalty0 (4), 2006.
+\newblock \doi{10.1029/2005PA001241}.
+\newblock URL \url{http://doi.wiley.com/10.1029/2005PA001241}.
+
+\bibitem[von~der Heydt and Ashwin(2017)]{vonderHeydt:2017dw}
+Anna~S von~der Heydt and Peter Ashwin.
+\newblock {State dependence of climate sensitivity: attractor constraints and
+  palaeoclimate regimes}.
+\newblock \emph{Dynamics and Statistics of the Climate System}, 1\penalty0
+  (1):\penalty0 1--21, February 2017.
+\newblock \doi{10.1093/climsys/dzx001}.
+\newblock URL
+  \url{https://academic.oup.com/climatesystem/article/3068110/State}.
+
+\bibitem[Wallmann(2014)]{Wallmann:2014dc}
+Klaus Wallmann.
+\newblock {Is late Quaternary climate change governed by self-sustained
+  oscillations in atmospheric CO$_{2}$?}
+\newblock \emph{Geochimica et Cosmochimica Acta}, 132:\penalty0 413--439, May
+  2014.
+\newblock \doi{10.1016/j.gca.2013.10.046}.
+\newblock URL
+  \url{http://linkinghub.elsevier.com/retrieve/pii/S0016703713006182}.
+
+\bibitem[Zeebe(2012)]{Zeebe:2012gi}
+Richard~E Zeebe.
+\newblock {LOSCAR: Long-term Ocean-atmosphere-Sediment CArbon cycle Reservoir
+  Model v2.0.4}.
+\newblock \emph{Geoscientific Model Development}, 5\penalty0 (1):\penalty0
+  149--166, 2012.
+\newblock \doi{10.5194/gmd-5-149-2012}.
+\newblock URL \url{http://www.geosci-model-dev.net/5/149/2012/}.
+
+\bibitem[Zeebe et~al.(2017)Zeebe, Westerhold, Littler, and
+  Zachos]{Zeebe:2017kk}
+Richard~E Zeebe, Thomas Westerhold, Kate Littler, and James~C Zachos.
+\newblock {Orbital forcing of the Paleocene and Eocene carbon cycle}.
+\newblock \emph{Paleoceanography}, 12\penalty0 (3):\penalty0 1151, May 2017.
+\newblock \doi{10.1002/2016PA003054}.
+\newblock URL \url{http://doi.wiley.com/10.1002/2016PA003054}.
+
+\end{thebibliography}

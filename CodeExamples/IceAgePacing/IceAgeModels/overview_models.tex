@@ -1,0 +1,471 @@
+
+\documentclass[12pt]{article}
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\bse{\begin{subequation}}
+\def\ese{\end{subequation}}
+\def\ba{\begin{eqnarray}}
+\def\ea{\end{eqnarray}}
+
+\usepackage{color,graphicx}
+\usepackage{epstopdf,fullpage}
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage{gensymb}
+\usepackage{hyperref}
+
+%\usepackage[color, notref, notcite]{showkeys} 
+
+%
+\usepackage{natbib}
+% 
+%\setkeys{Gin}{draft=false}
+
+\newcommand{\KWmm}{K~(W~m$^{-2}$)$^{-1}$}
+\newcommand{\coo}{CO$_2$}
+\newcommand{\pafg}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\padd}[2]{\frac{\partial^2 {#1}}{\partial {#2}^2}}
+\newcommand{\pddd}[3]{\frac{\partial^2 {#1}}{\partial {#2} \partial {#3}}}
+\newcommand{\ave}[1]{\langle #1 \rangle }
+\newcommand{\eps}{\epsilon}
+\def\deg{ ^{\circ}}
+%\newcommand{\mesh}[2]{ m= #1 {\rm x}  #2}
+\newcommand{\mesh}[2]{ m= #1 \times  #2}
+%\newcommand{\res}[2]{  {#1}^{\circ} \times  {#2}^{\circ}}
+\newcommand{\res}[2]{  #1\deg \times  #2\deg}
+\newcommand{\domain}[4]{{\cal V}= [#1,#2] \times  [#3,#4]}
+\newcommand{\Frac}[2] {\frac{\textstyle #1} {\textstyle #2}}
+\newcommand{\R}{\mathbb{R}}
+
+
+\begin{document}
+
+\title{Classes of models to investigate intermittent synchronisation and the pacing of ice ages by Milankovich forcing}
+
+
+\author{AvdH to PA}
+
+
+\maketitle
+
+\section{Models of the glacial-interglacial cycles}
+This is a summary of different (conceptual, simple, low-dimensional) models that could reflect the glacial-interglacial cycles. By studying how different types of models synchronise or pace their glacial cycles to periodic and quasi-periodic forcing (Milankovich forcing) we may be able to classify different types of "pacing" - from "tight pacing" to "intermittent pacing" to "no pacing".
+
+One way of pacing, non-linear phase locking, has been described by \cite{Tziperman:2006he}. 
+
+\section{Minimal models - oscillators}
+
+\subsection{Van der Pol oscillator}
+The first model to consider is the SCW \cite{DeSaedeleer:2013dk} model
+\begin{align}
+\tau \frac{d}{dt} x & = \gamma F(t)-\beta-y\\
+\tau \frac{d}{dt} y & = \alpha(y-y^3/3+x)
+\label{e:SCW}
+\end{align}
+or the version with noise
+\begin{align}
+\tau dx & = (\gamma F(t)-\beta-y)dt+\xi_x dW_x\\
+\tau dy & = \alpha(y-y^3/3+x) dt + \xi_y dW_y
+\label{e:SCWnoise}
+\end{align}
+where the forcing term $F(t)$ represents the astronomical forcing and can be either periodic (e.g. only obliquity component) or quasiperiodic. The parameters \cite{DeSaedeleer:2013dk} give are
+\begin{equation}
+\alpha=36,~~\beta=0.75,~~\gamma=0.4,~~\tau=36.
+\end{equation}
+
+This model is based on a modified version of the {\em van der Pol} oscillator. The nonlinearity is only in the damping of the free oscillation. In \cite{Crucifix2012a} it is presented as a minimal model for the glacial cycles. In terms of its behaviour under (quasi)periodic forcing it may be rather special though \cite{DeSaedeleer:2013dk}. 
+
+\subsection{Van der Pol-Duffing oscillator}
+A similar oscillator extended by an additional nonlinear term (not only in the damping) is the {\em van der Pol-Duffing} oscillator:
+\be
+\tau^2 \frac{d^2}{dt^2}x +\tau \varepsilon (x^2-1) \frac{d}{dt}x +\omega x + f x^3 = \beta + \gamma F(t),
+\label{e:vdPD}
+\ee 
+where the right hand side is representing the constant plus time dependent forcing. 
+
+\subsection{Forced Phase oscillators}
+
+Add \cite{Mitsui:2015he} here. 
+
+
+\section{Conceptual models of the glacial cycles}
+\subsection{Saltzman et al. models}
+The models constructed by Saltzman et al \cite{Saltzman:2002tl,Saltzman:1993iq,Saltzman:1991jl,Maasch:1990ul,Saltzman:1990uy,Saltzman:1988tv} have established the idea that the (late Pleistocene) glacial cycles appear as a limit cycle in the unforced system then synchronised in some way to the orbital forcing. The dynamics (and consequently the specific form of the limit cycle and the bifurcation leading to the limit cycle) varies across the different models. In most of them, however, it is assumed that the background climate slowly varies throughout the Pliocene-Pleistocene (`tectonically driven' decline in atmospheric CO$_2$-concentration) and the model is formulated as an anomaly model to a (slowly evolving) background climate.  \cite{Crucifix2012a} analysed the bifurcation structure of two of these models (\cite{Saltzman:1991jl,Saltzman:1990uy}) for the full (non-anomaly) equation with respect to one parameter, the slowly drifting `tectonic' CO$_2$ decline $F_\mu(t)$. Much of the interesting dynamics depends on the specific form of the CO$_2$ equation, which at the same time is the most problematic to physically interpret.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SM88
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Saltzman and Maasch 1988}
+This model \cite{Saltzman:1988tv} (SM88) has three (slow) variables, the ice volume $I$, the North Atlantic deep water formation rate $N$ and the atmospheric CO$_2$ concentration $\mu$. All variables are assumed to be the departure from a true equilibrium state, which is not further specified. Moreover, two fast response variables are involved, the global mean sea surface temperature $\tau$ and the global extent of permanent sea ice $\eta$, which are expressed in terms of the slow response variables $I$, $\mu$ and $N$, and do not appear explicitly in the equations. 
+Dynamical system:
+\ba
+\dot I &=& -a_0 I - a_1 \mu + F_I(t)\\
+\dot \mu &=& b_0 I + b_1 \mu -(r_3 - b_3 N) N - b_4 N^2 \mu + F_\mu(t)\\
+\dot N &=& -c_0 I -c_2 N + F_N(t)
+\label{e:SM88full}
+\ea
+The $F_X$ terms denote forcing terms, which are combinations of external (e.g. orbital) forcings $\mathcal{F}_I$, $\mathcal{F}_\mu$, $\mathcal{F}_N$, $\mathcal{F}_\tau$ and $\mathcal{F}_\eta$  on the dynamical variables (e.g. $F_I = \mathcal{F}_I-s_1\mathcal{F}_\tau+s_3\mathcal{F}_\eta$). A (standard) set of parameters used in \cite{Saltzman:1988tv} is given in Table.~\ref{t:SM88}. 
+
+Rescaling the equations by $t = [a_0^{-1}]t^*$, $I=[c_2c_0^{-1}(a_0/b_4)^{1/2}]X$, $\mu = [c_2(a_1c_0)^{-1}(a_0^3/b_4)^{1/2}]Y$ and $N = [(a_0/b_4)^{1/2}]Z$, and setting $b_0 =0$ the non-dimensional system becomes:
+\ba
+\dot X &=& -X -Y\\
+\dot Y &=& -pZ + rY +sZ^2 -Z^2 Y\\
+\dot Z &=& -q(X+Z),
+\label{e:SM88nondim}
+\ea
+with four parameters $p$, $q$, $r$, and $s$ (asymmetry parameter). With the chosen set of parameters \cite{Saltzman:1988tv} were able to obtain strongly asymmetric glacial cycles. All forcing terms are set to zero. However, they also note that with the given set of parameters there exists only one true equilibrium at $(X,Y,Z) = (0,0,0)$, such that the system does not show a bifurcation at the Mid-Pleistocene transition. 
+
+\begin{table}[h!]
+\begin{tabular}{ll}
+\hline
+Parameter & physical meaning \\
+\hline
+$a_0 = 10^{-4}$ yr$^{-1}$ & Linear response time ice.\\
+$a_1 = 4.37\times10^{13}$ kg (yr ppm)$^{-1}$ & Effect of CO$_2$ on ice dynamics.\\
+$b_0 = 0$ & \\
+$b_1 = 8\times10^{-5}$ yr$^{-1}$ & Linear response time CO$_2$.\\
+$b_2 = 2.84\times10^{-20}$ ppm (yr m$^3$)$^{-1}$ & \\
+$b_3 = 2.11\times10^{-37}$ ppm (yr m$^6$)$^{-1}$ & \\
+$b_4 = 6.97\times10^{-39}$ (yr m$^6$)$^{-1}$ & \\
+$c_0 = 8.7\times10^{-7}$ m$^3$ (yr kg)$^{-1}$ & Effect of ice on thermohaline circulation dynamics. \\
+$c_2 = 1.2\times10^{-4}$ yr$^{-1}$ & Linear response time thermohaline circulation.\\
+\hline
+$p = 0.9$ & $p = a_1c_0b_2/a_0^2c_2$\\
+$q = 1.2$ & $q=c_2/a_0$\\
+$r = 0.8$ & $r=b_1/a_0$\\
+$s = 0.8$ & $s=a_1b_3c_0(b_4/a_0)^{1/2}/a_0b_4c_2$\\
+\hline
+\end{tabular}
+\label{t:SM88}
+\caption{Parameters and their meaning of the model by \cite{Saltzman:1988tv}. }
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SM90
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Saltzman and Maasch 1990}
+This model \cite{Saltzman:1990uy} (SM90) has three (slow) variables, the ice volume $I$, the atmospheric CO$_2$ concentration $\mu$ and the deep ocean temperature (or North Atlantic deep water formation rate) $\theta$. Equations are similar to the Saltzman 1988 model, but not a priori defined as an anomaly to an equilibrium state. A fast variable is again included, the zonal mean surface air temperature at high latitudes in summer $\tilde \tau$, which is expressed in terms of the three main slow variables (through a series of assumptions). 
+Dynamical system:
+\ba
+\dot I &=& \alpha_1 - \alpha_2 \tanh(c\mu) - \alpha_3 I - k_{\theta}\alpha_2\theta - k_R\alpha_2 F_I(t)+\mathcal{W}_I(t),\\
+\dot \mu &=& [\beta_1 -(\beta_2 - \beta_3 \theta + \beta_4 \theta^2)\mu - (\beta_5 -\beta_6\theta)\theta] + F_\mu(t) +\mathcal{W}_{\mu}(t),\\
+\dot \theta &=& \gamma_1 -\gamma_2 I - \gamma_3 \theta + F_{\theta}(t) + \mathcal{W}_{\theta}(t).
+\label{e:SM90full}
+\ea
+Parameters are given in Table~\ref{t:SM90}. 
+
+\begin{table}[b!]
+\begin{tabular}{lllll}
+\hline
+& SM90 & C12 (full model) & units & physical meaning \\
+\hline
+$\alpha_1$ & $1.7\times 10^{16}$ & $1.8.075\times10^{16}$ & kg yr$^{-1}$  & Constant ice growth rate. \\
+$\alpha_2$ & $1.3\times 10^{16}$ & $1.275\times10^{16}$ & kg yr$^{-1}$ & Effect of CO$_2$ and $\theta$ on ice dynamics.\\
+$\alpha_3$ & $1.0\times 10^{-4}$  & $10^{-4}$ & yr$^{-1}$ & Linear response time ice.\\
+$\beta_1$  & $1.2$ & $1.355608$ & ppm yr$^{-1}$& CO$_2$ coefficients.\\
+$\beta_2$ & $4.7\times 10^{-3}$ & $ 5.4688\times 10^{-3}$ & yr$^{-1}$ & CO$_2$ coefficients.\\
+$\beta_3$ & $5.4\times 10^{-2}$ & $2.213\times 10^{-3}$ & ppm $(\degree$C$^2$ yr$)^{-1}$ & CO$_2$ coefficients.\\
+$\beta_4$ & $2.2\times 10^{-4}$ & $2.2\times 10^{-4}$ & $(\degree$C$^2$ yr$)^{-1}$   & CO$_2$ coefficients.\\
+$\beta_5$ & $0.5$ & $0.541055$ & ppm $(\degree$C$^2$ yr$)^{-1}$ & CO$_2$ coefficients.\\
+$\beta_6$ & $2.1\times 10^{-3}$ & $5.3\times 10^{-2}$ & ppm $(\degree$C$^2$ yr$)^{-1}$ & CO$_2$ coefficients.\\
+$\gamma_1$ & $1.9\times 10^{-3}$ & $1.836\times 10^{-3}$ & $\degree$C yr$^{-1}$ & Constant $\theta$ growth.\\
+$\gamma_2$ & $1.2\times 10^{-23}$ & $1.2\times 10^{18}$ & $\degree$C(kg yr)$^{-1}$ & Effect of ice on $\theta$.\\
+$\gamma_3$ & $2.5\times 10^{-4}$ & $2.4\times 10^{-4}$ & yr$^{-1}$ & Linear response time $\theta$.\\
+$c$ & $4\times 10^{-3}$ &$4\times 10^{-3}$ & ppm${-1}$ & \\
+$\kappa_\theta$ & & $3.333\times 10^{-2}$ & ($\degree$C)$^{-1}$ &\\
+\hline
+\end{tabular}
+\label{t:SM90}
+\caption{Parameters and their meaning of the model by \cite{Saltzman:1990uy} (SM90). Also given are the parameter values used by \cite{Crucifix2012a} in the analysis of the full model (C12). {\color{red} Still need to check for typos in non-dimensional equations and parameters, SM90.} }
+\end{table}
+
+Again, the $F_X$ terms denote forcing terms and the $\mathcal{W}_X$ terms represent potential stochastic forcing. When applying the set of equations to the conditions during the Pleistocene, where atmospheric CO$_2$ is assumed to vary between 150--350 ppm, it is considered safe to approximate $\tanh(c\mu)\simeq c\mu$ \cite{Saltzman:1990uy}. In \cite{Crucifix2012a} (C12) the full model is analysed with respect to variations in the parameter $F_{\mu}$, while the other forcings $F_{I}$ and $F_{\theta}$ are set to zero. 
+
+Next, the model is divided into a steady state part in equilibrium with the deterministic tectonic average forcing (where in this version of the model $F_I = F_{\theta} = 0$) $I_0, \mu_0, \theta_0$ and the departure from that equilibrium $I', \mu',\theta'$. After scaling the departure variables by $t = a_2^{-1}t^*$, $I'=(c_2/c_1)(a_2/b_5)^{1/2}X$, $\mu' = (c_2/(a_1c_1))(a_2^3/b_5)^{1/2}Y$ and $\theta' = (a_2/b_5)^{1/2}Z$, we end up with the non-dimensional departure system:
+\ba
+\dot X &=& -X -Y-vZ-uR(t^*)+\mathcal{W}_X(t^*)\\
+\dot Y &=& -pZ + rY +sZ^2 -wYZ-Z^2 Y+\mathcal{W}_Y(t^*)\\
+\dot Z &=& -q(X+Z)+\mathcal{W}_Z(t^*),
+\label{e:SM90anom}
+\ea
+with seven parameters:
+\ba
+p &=& \frac{a_1b_2c_1}{a_2^2c_2}=\frac{c\alpha_2(\beta_5-\beta_3\mu_0-2\beta_6\theta_0+2\beta_4\theta_0\mu_0)\gamma_2}{\alpha_3^2\gamma_3}
+\nonumber\\
+q &=&\frac{c_2}{a_2}=\frac{\gamma_3}{\alpha_3}
+\nonumber\\
+r &=&\frac{b_1}{a_2}=\frac{-\beta_2+\beta_3\theta_0-\beta_4\theta_0^2}{\alpha_3}
+\nonumber\\
+s &=&\frac{a_1b_3c_1}{(a_2^3 b_5)^{1/2}c_2} = \frac{c\alpha_2(\beta_6-\beta_4\mu_0)\gamma_2}{(\alpha_3^3\beta_4)^{1/2}\gamma_3}
+\nonumber\\
+u &=& \left(\frac{\kappa_\mathcal{R}|\mathcal{R}|}{c}\right)\left(\frac{a_1c_1}{c_2}\right)\left(\frac{b_5}{a_2^3}\right)^{1/2} = \kappa_\mathcal{R}|\mathcal{R}|\left(\frac{\alpha_2\gamma_2}{\gamma_3}\right)\left(\frac{\beta_4}{\alpha_3^3}\right)^{1/2}
+\nonumber\\
+v &=& \left(\frac{\kappa_\theta}{c}\right)\left(\frac{a_1c_1}{a_2 c_2}\right) = \kappa_\theta\left(\frac{\alpha_2\gamma_2}{\alpha_3\gamma_3}\right)
+\nonumber\\
+w &=& \frac{b_4}{(a_2 b_5)^{1/2}} = \frac{-\beta_3+2\beta_4\theta_0}{(\alpha_3\beta_4)^{1/2}}\nonumber
+\ea
+The special solution discussed in \cite{Saltzman:1990uy} was found with parameter values $p=1.0$, $q=2.5$, $r=0.9$, $s=1.0$, $u=0.6$, $v=0.2$, $w=0.5$. $u$ represents the strength of the orbital forcing, $q$ is a ratio of the linear response times of ice to ocean, $r$ and $s$ depend on the (drifting) equilibrium solution ($I_0,\mu_0,\theta_0$).  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SM91
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Saltzman and Maasch 1991}
+In \cite{Saltzman:1991jl} (SM91) the model described in the previous section is modified, mostly in the representation of the carbon cycle dynamics. The complete system nevertheless exhibits different dynamics \cite{Crucifix2012a}.
+Dynamical system:
+\ba
+\dot I &=& \alpha_1 - \alpha_2 \tanh(c\mu) - \alpha_3 I - k_{\theta}\alpha_2\theta - k_R\alpha_2 F_I(t)+\mathcal{W}_I(t),\\
+\dot \mu &=& \beta_1 -\beta_2\mu + \beta_3\mu^2 -\beta_4 \mu^3\mu - \beta_5\theta + F_\mu(t) +\mathcal{W}_{\mu}(t),\\
+\dot \theta &=& \gamma_1 -\gamma_2 I - \gamma_3 \theta + F_{\theta}(t) + \mathcal{W}_{\theta}(t).
+\label{e:SM91full}
+\ea
+
+\begin{table}[b!]
+\begin{tabular}{lllll}
+\hline
+& SM91 & C12 (full model) & units & physical meaning \\
+\hline
+$\alpha_1$ & $1.4\times 10^{16}$ & $1.673915\times10^{16}$ & kg yr$^{-1}$  & Constant ice growth rate. \\
+$\alpha_2$ & $9.4\times 10^{15}$ & $9.52381\times10^{15}$ & kg yr$^{-1}$ & Effect of CO$_2$ and $\theta$ on ice dynamics.\\
+$\alpha_3$ & $1.0\times 10^{-4}$  & $10^{-4}$ & yr$^{-1}$ & Inverse linear response time ice.\\
+$\beta_1$  & $0.5-\bar{F}_{\mu_0}$ & $0.5118377$ & ppm yr$^{-1}$& CO$_2$ coefficients.\\
+$\beta_2$ & $6.3\times 10^{-3}$ & $ 6.258680\times 10^{-3}$ & yr$^{-1}$ & CO$_2$ coefficients.\\
+$\beta_3$ & $2.6\times 10^{-5}$ & $2.639456\times 10^{-5}$ & (ppm yr)$^{-1}$ & CO$_2$ coefficients.\\
+$\beta_4$ & $3.6\times 10^{-8}$ & $3.628118\times 10^{-8}$ & (ppm$^2$ yr)$^{-1}$   & CO$_2$ coefficients.\\
+$\beta_5$ & $5.6\times 10^{-3}$ & $5.833333\times 10^{-3}$ & ppm $(\degree$C yr$)^{-1}$ & CO$_2$ coefficients.\\
+$\gamma_1$ & $1.9\times 10^{-3}$ & $1.85125\times 10^{-3}$ & $\degree$C yr$^{-1}$ & Constant $\theta$ growth.\\
+$\gamma_2$ & $1.2\times 10^{-23}$ & $1.125\times 10^{-23}$ & $\degree$C(kg yr)$^{-1}$ & Effect of ice on $\theta$.\\
+$\gamma_3$ & $2.5\times 10^{-4}$ & $2.5\times 10^{-4}$ & yr$^{-1}$ & Inverse linear response time $\theta$.\\
+$c$ & $4\times 10^{-3}$ &$4\times 10^{-3}$ & ppm${-1}$ & \\
+$\kappa_\theta$ & & $4.4444444\times 10^{-2}$ & ($\degree$C)$^{-1}$ &\\
+\hline
+\end{tabular}
+\label{t:SM91}
+\caption{Parameters and their meaning of the model by \cite{Saltzman:1991jl} (SM91). Also given are the parameter values used by \cite{Crucifix2012a} in the analysis of the full model (C12). {\color{red} Still need to check for typos in non-dimensional equations and parameters, SM91.} }
+\end{table}
+
+In \cite{Crucifix2012a} (C12) the full model is analysed with respect to variations in the parameter $F_{\mu}$, while the other forcings $F_{I}$ and $F_{\theta}$ are set to zero. 
+
+The model is again transformed into an anomaly model, by dividing into a steady state part in equilibrium with the deterministic tectonic average forcing (including $F_\mu$). $I_0, \mu_0, \theta_0$ and the departure from that equilibrium $I', \mu',\theta'$. After scaling the departure variables by $t = a_2^{-1}t^*$, $I'=(a_1/(a_2b_3)^{1/2})X$, $\mu' = (a_2/b_3)^{1/2}Y$ and $\theta' = (a_1c_1/(c_2(a_2b_3)^{1/2}))Z$, we end up with the non-dimensional departure system:
+\ba
+\dot X &=& -X -Y-vZ-uR(t^*)+\mathcal{W}_X(t^*)\\
+\dot Y &=& -pZ + rY -sY^2 -Y^3+\mathcal{W}_Y(t^*)\\
+\dot Z &=& -q(X+Z)+\mathcal{W}_Z(t^*),
+\label{e:SM91anom}
+\ea
+and six non-dimensional parameters:
+\ba
+p &=& \frac{a_1b_4c_1}{a_2^2c_2}=\frac{c\alpha_2\beta_5\gamma_2}{\alpha_3^2\gamma_3}
+\nonumber\\
+q &=& \frac{c_2}{a_2}=\frac{\gamma_3}{\alpha_3}
+\nonumber\\
+r &=&\frac{b_1}{a_2}=\frac{-\beta_2+2\beta_3\mu_0-3\beta_4\mu_0^2}{\alpha_3}
+\nonumber\\
+s &=&\frac{b_2}{(a_2 b_3)^{1/2}} = \frac{3\beta_4\mu_0-\beta_3}{(\alpha_3\beta_4)^{1/2}}
+\nonumber\\
+u &=& \left(\frac{\kappa_\mathcal{R}|\mathcal{R}|}{c}\right)\left(\frac{b_3}{a_2}\right)^{1/2} = \kappa_\mathcal{R}|\mathcal{R}|c\left(\frac{\beta_4}{\alpha_3}\right)^{1/2}
+\nonumber\\
+v &=& \left(\frac{\kappa_\theta}{c}\right)\left(\frac{a_1c_1}{a_2 c_2}\right) = \kappa_\theta\left(\frac{\alpha_2\gamma_2}{\alpha_3\gamma_3}\right)
+\nonumber
+\ea
+The special solution discussed in \cite{Saltzman:1991jl} was found with parameter values $p=1.0$, $q=2.5$, $r=1.3$, $s=0.6$, $u=0.5$, $v=0.2$. $u$ represents the strength of the orbital forcing, $q$ is a ratio of the linear response times of ice to ocean, $r$ and $s$ depend on the (drifting) equilibrium solution ($I_0,\mu_0,\theta_0$).  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% SV93
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsubsection{Saltzman and Verbitsky 1993}
+%{\color{red} For later.}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Relaxation oscillators
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\subsection{Relaxation oscillators}
+There exist a number of models, where -- as in the Saltzman models -- the late Pleistocene glacial cycles appear as an internal, unforced oscillation, but where the fast variable is explicitly resolved. These are so-called relaxation oscillators, the simplest version thereof was developed by \cite{Paillard:1998bn}. 
+In this model, the climate is assumed to have three distinct regimes, an interglacial $i$, a weak glacial $g$ and strong glacial $G$. Certain transitions between the regimes ($i\rightarrow G$, $g\rightarrow G$, $G\rightarrow i$, are triggered by thresholds in insolation and ice volume. Note that the original version of the Paillard model is strictly speaking not an oscillator, because the transition from $g\rightarrow G$ is induced by a threshold in the orbital forcing. The extension used in \cite{Ashwin2015} includes an explicit form of the slow manifold and is a real oscillator in this sense. 
+\marginpar{AH: Is this true?}
+
+As discussed in \cite{Omta:2013dl}, the fact that the glacial cycles show a saw-tooth-like, asymmetric shape seems to require a special type of oscillator - where the relaxation oscillator of slow-fast systems is a good candidate. Asymmetric oscillations in nonlinear models can be generated by (i) switches or (ii) dynamically when there is an additional variable that exhibits sharp spikes at the 'rapid' transitions (similar to a switch). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PP04
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The Paillard-Parenin model}
+In the model by \cite{Paillard:2004dn}, an explicit (though qualitative) physical explanation for switches between glacial and interglacial regimes is sought. The main assumption here is that deglaciations are induced by atmospheric CO$_2$. In this case, the (slow) transition from interglacial to glacial can be explained by Milankovitch theory, where the summer insolation in northern high latitudes play a major role. The glacial to interglacial transition (how the escape from a deep glacial) is more difficult to explain and requires a mechanism to release CO$_2$ from the deep ocean into the atmosphere. 
+In this model, this is achieved by an oceanic switch, characterised by a {\it salty bottom water formation efficiency} parameter $F$. During cold periods, the southern ocean bottom water formation is strong, the deep ocean is strongly stratified (cold and salty Antarctic bottom water, AABW) and can store a lot of carbon. However, a few thousand years after a glacial maximum, the Antarctic ice sheet reaches its maximum extent making salty AABW formation through brine rejection on the continental shelf more difficult, and Southern Ocean stratification weakens/ atmospheric CO$_2$ starts to rise. 
+
+The model involves three variables, the global ice volume $V$ forced by CO$_2$ and NH summer insolation, the Antarctic ice sheet extent $A$ driven by sea level changes (via $V$) and the atmospheric CO$_2$ $C$ connected to the deep water state (glacial or interglacial):
+\ba
+\frac{dV}{dt} &=& \left(-xC-yI_{65N}+z-V\right)/\tau_{V},\\
+\frac{dA}{dt} &=& \left(V-A\right)/\tau_{A},\\
+\frac{dC}{dt} &=& \left(\alpha I_{65N}-\beta V + \gamma \mathcal{H}(-F)+\delta-C\right)/\tau_C.
+\label{e:PP04}
+\ea
+The oceanic switch parameter $F$ is given by:
+\be
+F = a V - b A - c I_{60S} + d,
+\ee
+and parameter values are summarised in Table \ref{t:PP04}.
+\begin{table}[h!]
+\small{
+\begin{tabular}{lllll}
+\hline
+Parameter & Value PP04 & Value C12 & units & Explanation\\
+\hline
+$\tau_V$ & $15$ & 15 & kyr &  Time scale global ice volume\\
+$\tau_C$ & $5$ & 5 & kyr & Time scale carbon cycle\\
+$\tau_A$ & $12$ & 12 & kyr & Time scale Antarctic ice sheet\\
+$x$ & $1.3$ & 1.3 & & driving $V$ with $C$ \\
+$y$ & $0.5$& 0.5 & & driving $V$ by insolation\\
+$z$ & $0.8$ & 0.8 & & \\
+$\alpha$ & 0.15& 0.15 & & driving $C$ with insolation \\
+$\beta$ & 0.5 & 0.5 & & driving $C$ with $V$ \\
+$\gamma$ & 0.5 & 0.5 & & strength of ocean switch\\
+$\delta$ & 0.4 & 0.4 & & \\
+$a$ & 0.3 & 0.3 & & salty bottom water efficiency parameters \\
+$b$ & 0.7 & 0.7 & & \\
+$c$ & 0.01 & 0 (no forcing) & & \\
+$d$ & 0.27 & 0.27 & & \\
+\hline
+\end{tabular}}
+\label{t:PP04}
+\caption{Parameters, constants and their meaning of the model by \cite{Paillard:2004dn}. }
+\end{table}
+
+The unforced system exhibits internal oscillations at a 132~kyr period with the parameters used by \cite{Paillard:2004dn}. 
+
+To simulate the change in glacial periodicities over the last 5~Myr, a drift in the $F$ parameter is introduced, $F=aV-BA-cI_{60S}+d+kt$ (with $t$ time and $k=8.5\times 10^{-5}$~kyr$^{-1}$). In this case the model starts in a permanent interglacial state with (linear) oscillations on the 23~kyr time scale, larger (internal) oscillations on 41~kyr time scale after 3~Myr ago finally switches to the 100~kyr oscillations around 1~Myr. The change in dominant oscillation frequency at within the region of internal oscillations is probably related to limiting the global ice volume $V$ to positive values. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Gildor & Tziperman
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{The sea-ice switch model}
+\cite{Gildor2001a} developed a box model of the Earth system, where glacial cycles appeared as relaxation oscillations without external forcing. The atmosphere is represented by 4 meridional boxes while the ocean component consists of two layers of 4 meridional boxes each. The model includes land ice and sea ice representations in the polar boxes. 
+The fast sea ice-albedo feedback is responsible for the abrupt glacial-interglacial variations --- the so-called sea ice switch mechanism as suggested by \citet{Gildor2001a}.  This mechanism generates the glacial cycles in the model as self sustained relaxation oscillations because the ice volume threshold for switching sea ice cover from `on' to `off' differs from the one for switching from ``off'' to ``on'' \citep{Crucifix2012a}. When the land ice volume slowly grows (accumulation exceeds ablation), the atmospheric and surface ocean temperature decrease due to increasing albedo of the planet.
+Once the polar surface ocean temperature has reached a critical value cold enough to form sea ice, the polar box is rapidly covered with sea ice, which further reduces the atmospheric temperature through the ice-albedo feedback and prevents evaporation from the polar ocean box. In addition, atmospheric moisture content is reduced due to lower temperatures, which leads to decreasing land ice volume (accumulation is smaller than ablation). Temperature starts rising again both due to smaller albedo and because the ocean warms below the insulating sea-ice cover until it is warm enough to melt the polar sea ice. At this point there is a change in regime: the global temperature quickly rises, moisture content in the atmosphere increases and the land ice starts growing again (accumulation becomes larger than ablation). 
+
+In later versions of the model, both orbital and seasonal forcing  \cite{Gildor2000} as well as ocean biogeochemistry to dynamically simulate atmospheric CO$_2$ \cite{Gildor2002} have been added to the model. The full model equations are described in the appendix of \cite{vonderHeydt:2017dw}. 
+Orbital forcing is included in the model through varying incoming solar radiation averaged over each atmospheric box on seasonal and orbital time scales and modulating the Northern Hemisphere land ice ablation term by the (northern polar box averaged) summer insolation on orbital time scales \citep{Gildor2000}. It modifies the otherwise regular 100~kyr cycles of the unforced system. Although there is some degree of synchronisation of the glaciation and deglaciations to the orbital forcing, the relation between land ice and global mean solar radiation is not trivial \cite{vonderHeydt:2017dw}. 
+The dynamic CO$_2$ again modifies the glacial cycles by slightly increasing their amplitude. Simulated CO$_2$ differences between glacial and interglacial regimes are about 75 ppmv, which here are almost  completely generated by the effect of the solubility pump in the ocean.
+
+To illustrate the behaviour of the sea-ice switch generated glacial cycles throughout the whole Pleistocene, \cite{Tziperman2003} analysed a simplified version of the box model, which includes only two dynamic (global) variables; the Northern Hemisphere land ice volume $V_{land-ice}$ as slow variable and a temperature $T$ representing the atmosphere and upper ocean: 
+\ba
+\frac{d V_{land-ice}}{dt} &=& P(T, a_{sea-ice}) - S_{abl}(T,t),\\
+\frac{C_{ocn}}{a_{ocn}}\frac{d T}{dt} &=& -\varepsilon\sigma T^4 + H_s\left(1-\alpha_s\frac{a_{sea-ice}}{a}-\alpha_L\frac{a_{land-ice}}{a}\right)\left(1-\alpha_C\right).
+\label{e:GT03}
+\ea
+The functions $P(T,a_{sea-ice})$, $S_{abl}(T,t)$, $a_{sea-ice}$ $a_{land-ice}$ and $q(T)$ are given by:
+\ba
+a_{sea-ice} &=& 
+    \begin{cases}
+      I_s^0, & \text{if}\ T<T_f \\
+      0, & \text{if}\ T>T_f,
+    \end{cases}
+\\
+a_{land-ice} &=&  \left(L^{E-W}\right)^{1/3}\left(V_{land-ice}/\left(2\lambda^{1/2}\right)\right)^{2/3},\\
+P(T,a_{sea-ice} )&=&\left[P_0+P_1q(T)\right]\left(1-\frac{a_{sea-ice}}{a_{ocn}}\right),
+\\
+q(T) &=& q_r \epsilon_q A \exp{(-B/T)}/p_s,
+\\
+S_{abl}(T,t) &=& S_0 +S_M M(t) + S_T(T-273.15).
+\ea
+and constants and parameters are given in Table~\ref{t:GT03}.
+
+\begin{table}[h!]
+\small{
+\begin{tabular}{lll}
+\hline
+Symbol & Value, units & physical meaning\\
+\hline
+$q_r,\ \epsilon_q$ & $0.7,\ 0.622$ & Clausius-Clayperon parameters\\
+$A,\ B,\ P_s$ & $2.53\times 10^{11}$~Pa, $5.42\times 10^3$~K, $10^5$~Pa & \\
+$P_0,\ P_1$ & $0.06$~Sv, $40$~Sv/Pa & accumulation parameterisation\\
+$S_0,\ S_M,\ S_T$ & 0.15~Sv, 0.08~Sv, 0.0015~Sv/K & ablation parameterisation\\
+$\varepsilon$ & 0.64 & emissivity\\
+$\sigma$ & $5.67\times 10^{-8}$~Wm$^{-2}$K$^{-4}$ & Stefan Boltzman constant\\
+$H_s$ & 350.0~Wm$^{-2}$ & incoming solar radiation\\
+$\alpha_S, \alpha_L, \alpha_C$ & 0.65, 0.7, 0.27 & albedo of sea ice, land ice and clouds\\
+$C_{ocn}$ & $C_pV_{ocn}\rho_0$, $9.2573\times 10^{22}$~J~K$^{-1}$ & atmosphere and upper ocean's heat capacity\\
+$c_p,\ \rho_0$ & $4.1813$~J~(gK)$^{-1}$, 1025~kg~m$^{-3}$ & specific heat of water, density of sea water\\
+$a_{ocn},\ a_{land}$ & $20\times 10^6$~km$^2$, $20\times 10^6$~km$^2$ & area of land and ocean\\
+$a$ & $a_{ocn}+a_{land}$, $40\times 10^6$~km$^2$ & total area\\
+$V_{ocn}$ & $21.6\times 10^6$~km$^3$ & volume of upper ocean\\
+$I_s^0$ & 0.3 $a_{ocn}$ & max ice during switch-on periods\\
+$\lambda$ & 10~m & glacier model\\
+$L^{E-W}$ & 4000~km & (fixed) width of land and glacier\\
+\hline
+\end{tabular}}
+\label{t:GT03}
+\caption{Parameters, constants and their meaning of the model by \cite{Tziperman2003}. }
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Omta & Gildor-Tziperman
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Calcifier models - alternative to sea ice switch}
+In order to explain the sawtooth-shape oscillations in the atmospheric CO$_2$ record another relaxation mechanism has been suggested \cite{Omta:2013dl}. So far, this has been only applied to explain the CO$_2$ record including the Mid-Pleistocene transition \cite{Omta:2015cc}, while it has not been coupled to ice volume or ocean dynamics. It supports the idea suggested by \cite{Wallmann:2014dc} that the glacial cycles could be {\em driven} by atmospheric CO$_2$, which may show self-sustained oscillations due to (nonlinear) feedbacks in the carbon and phosphorus cycles. In contrast, most of the previously described models rely on oscillations internal to the (nonlinear) land ice or sea ice/ocean dynamics. 
+
+The basic model consists of two variables, the ocean alkalinity $A$ (mol~eq~m$^{-3}$) and a marine calcifier population $C$ (mol~m$^{-3}$):
+\ba
+\frac{d A}{dt} &=& I - kAC\\
+\frac{d C}{dt} &=& kAC - MC,
+\label{e:Om13}
+\ea
+where $I$ is the (constant) input rate for alkalinity from river runoff and weathering, $k$ is the effective growth rate of the calcifiers and $M$ their sedimentation rate. The model equations describe an autocatalytic process, which leads to a slowly growing alkalinity (by input) until a spike in the calcifier population leads to a rapid alkalinity drop. On these time scales, the alkalinity in the ocean is related to the atmospheric CO$_2$ (alkalinity input = ocean uptake of CO$_2$, output = release of oceanic CO$_2$ into the atmopshere). 
+
+The unforced model exhibits asymmetric oscillations of around 100kyr periodicity, however, these oscillations are always slowly damped \cite{Omta:2013dl}. In \cite{Omta:2015cc}, a periodic (and noisy) forcing is added to the model via the growth rate $k$:
+\be
+k = k_0\left(1+\alpha\cos{\left(\frac{2\pi t}{T}\right)}+\epsilon\right),
+\ee
+where $\epsilon$ represents white noise forcing. Parameters are explained in Table~\ref{t:Om15}.
+
+\begin{table}[h!]
+\small{
+\begin{tabular}{lll}
+\hline
+Symbol & Value, units & physical meaning\\
+\hline
+$I$ & $4\times 10^{-6}$~mol~eq~m$^{-3}$~yr$^{-1}$ & Alkalinity input\\
+$k$ & $0.05$~(mol eq)$^{-1}$~m$^3$~yr$^{-1}$ & Reaction rate \\
+$M$ & $0.1$~yr$^{-1}$ & Mortality rate\\
+$\alpha$ & variable & Periodic forcing amplitude\\
+$\epsilon$ & 0.005 & Random forcing amplitude\\
+\hline
+\end{tabular}}
+\label{t:Om15}
+\caption{Parameters and their meaning of the model by \cite{Omta:2015cc}.}
+\end{table}
+
+
+{\color{red} Next step: couple to ice volume, atmospheric CO$_2$, climate $T$, etc. using the Gildor-Tziperman model. \cite{Wallmann:2014dc} use a more complex carbon cycle representation (3 vertical boxes), where the calcifier dynamics could be built in. } 
+
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% No-ice climates
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Models of orbitally forced climate without ice}
+Carbon cycle box models \cite{Zeebe:2012gi}, orbitally forced \cite{Zeebe:2017kk}.
+
+\newpage
+\bibliographystyle{plainnat}
+\setcitestyle{authoryear,open={(},close={)},semicolon}
+\bibliography{IceAgePacing}
+
+\end{document}
+
