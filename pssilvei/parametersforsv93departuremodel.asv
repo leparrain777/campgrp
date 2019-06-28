@@ -1,0 +1,13 @@
+timeofrunstart= -2000000;
+%Start time of run in years. Should always be negative.
+global timefromrunstart;
+timefromrunstart=0; 
+global t;
+syms t; t = timefromrunstart;
+
+bedrockdepression=@() t+1;
+syms D(t) ; D(t) = bedrockdepression; D(t)
+syms mu(t) ; mu(t) = atmosphericcarbondioxideconcentration; mu(t)
+syms I(t) ; I(t)=globalicemass; I(t)
+syms theta(t) ; theta(t)=deepoceantemperature; theta(t)
+
