@@ -1,6 +1,14 @@
 timeofrunstart= -2000000;
 %Start time of run in years. Should always be negative.
 
+sensitivityhighlatsurfacetempone= 3;
+% called b in the paper.
+
+sensitivityhighlatsurfacetemptwo= 5;
+%called c in the paper
+
+syms b; b = sensitivityhighlatsurfacetempone ;
+
 global timefromrunstart;
 timefromrunstart=0;
 %Should always be 0 in this file, but we change it in other scripts.
