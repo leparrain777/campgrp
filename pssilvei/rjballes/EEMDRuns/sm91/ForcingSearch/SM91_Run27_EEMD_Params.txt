@@ -1,0 +1,12 @@
+SM91_Run27_EEMD_Params
+
+Model Run Insolation:
+insolLaskar
+ModelRun: 27
+u = 2, p = 1
+
+White Noise: 0.3
+Iterations: 900
+
+
+Notes:

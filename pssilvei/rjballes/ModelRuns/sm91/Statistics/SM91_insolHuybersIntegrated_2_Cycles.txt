@@ -1,0 +1,27 @@
+SM91_insolHuybersIntegrated_2_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, u = 0.5, Forcing = insolHuybersIntegrated)
+Total # of Cycles: 48, Total # of Partial Melts: ?
+
+Full Cycle Statistics:
+	Mean Cycle Length = 104.083
+	Max Cycle Length = 162
+	Min Cycle Length = 26
+
+
+Cooling Statistics:
+	Mean Cooling Time = 67.1
+	Max Cooling Time = 67.1
+	Min Cooling Time = 67.1
+
+
+Warming Statistics:
+	Mean Warming Time = 50.5625
+	Max Warming Time = 94
+	Min Warming Time = 7
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 1.32707
+	Average of the Asymmetries = 1.11782
+______________________________________

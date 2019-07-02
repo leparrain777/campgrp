@@ -1,0 +1,59 @@
+SM90_insolHuybersIntegrated_17_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, u = 0.9, Forcing = insolHuybersIntegrated)
+Total # of Cycles: 50, Total # of Partial Melts: 68
+
+Full Cycle Statistics:
+	Mean Cycle Length = 98.76
+	Max Cycle Length = 126
+	Min Cycle Length = 26
+
+
+Cooling Statistics:
+	Mean Cooling Time = 68.54
+	Max Cooling Time = 102
+	Min Cooling Time = 21
+
+
+Warming Statistics:
+	Mean Warming Time = 30.22
+	Max Warming Time = 59
+	Min Warming Time = -19
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 2.26803
+	Average of the Asymmetries = 2.20424
+
+Correlation Statistics:
+	Maximum Ice Volume to Minimum Ice Volume: corr =  -0.621049, p = 1.4932e-06
+
+	Maximum Ice Volume to Size of Next Melt: corr =  0.577277, p = 1.40958e-05
+
+	Maximum Ice Volume to Relative Size of Next Melt: corr =  -0.188115, p = 0.195526
+
+	Maximum Ice Volume to Length of Next Cycle: corr =  0.00321629, p = 0.982502
+
+	Minimum Ice Volume to Size of Preceding Melt: corr =  -0.729863, p = 2.68139e-09
+
+	Minimum Ice Volume to Relative Size of Preceeding Melt: corr =  0.0596078, p = 0.684122
+
+	Number of Partial Melts to the Length of the Cycle: corr =  0.466528, p = 0.000637862
+
+	Elapsed Time of Warming Phases to Change in Ice Volume in Warming Phases: corr =  -0.0309063, p = 0.831277
+
+	Cooling Times of Cycle k to Size of Next Melt: corr =  0.0354896, p = 0.808711
+
+	Minimum Ice Volume to Next Maximum Ice Volume: corr =  0.238436, p = 0.0954148
+
+	Maximum Ice Volume to Next Maximum Ice Volume: corr =  0.108999, p = 0.455956
+
+	Minimum Ice Volume to Size of Growth: corr =  -0.742314, p = 6.83692e-10
+
+	Minimum Ice Volume to Relative Size of Growth: corr =  -0.0910045, p = 0.529657
+
+	Size of Melt to Partial Melts per Cycle: corr =  -0.000527017, p = 0.997102
+
+	Partial Melts per Cycle to Size of Next Melt: corr =  0.200265, p = 0.167683
+
+______________________________________

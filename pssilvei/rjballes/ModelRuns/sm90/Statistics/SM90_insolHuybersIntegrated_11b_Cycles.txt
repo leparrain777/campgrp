@@ -1,0 +1,43 @@
+SM90_insolHuybersIntegrated_11_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, u = 0.6, Forcing = insolHuybersIntegrated)
+Total # of Cycles: 49, Total # of Partial Melts: 45
+
+Full Cycle Statistics:
+	Mean Cycle Length = 100.755
+	Max Cycle Length = 124
+	Min Cycle Length = 84
+
+
+Cooling Statistics:
+	Mean Cooling Time = 70.3265
+	Max Cooling Time = 89
+	Min Cooling Time = 61
+
+
+Warming Statistics:
+	Mean Warming Time = 30.4286
+	Max Warming Time = 60
+	Min Warming Time = 22
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 2.3112
+	Average of the Asymmetries = 2.10181
+
+Correlation Statistics:
+	Maximum Ice Mass to Minimum Ice Mass: corr =  0.498978, p = 0.00012277
+
+	Maximum Ice Volume to Length of Cycle: corr =  -0.646139, p = 5.32316e-07
+
+	Minimum Ice Volume to Length of Next Cycle: corr =  -0.220032, p = 0.132909
+
+	Minimum Ice Volume to Size of Next Melt: corr =  -0.587489, p = 9.08949e-06
+
+	Maximum Ice Volume to Size of Next Melt: corr =  -0.0892869, p = 0.541799
+
+	Length of Next Cycle to Size of Last Melt: corr =  0.00639017, p = 0.965617
+
+	Number of Partial Melts to Length of Cycle: corr =  0.327804, p = 0.0214862
+
+______________________________________

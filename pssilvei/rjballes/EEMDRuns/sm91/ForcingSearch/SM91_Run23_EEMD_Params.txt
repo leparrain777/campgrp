@@ -1,0 +1,12 @@
+SM91_Run21_EEMD_Params
+
+Model Run Insolation:
+insolLaskar
+ModelRun: 23
+u = 0.2, p = 1
+
+White Noise: 0.3
+Iterations: 900
+
+
+Notes:

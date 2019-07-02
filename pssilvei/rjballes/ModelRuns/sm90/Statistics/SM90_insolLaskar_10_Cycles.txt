@@ -1,0 +1,63 @@
+SM90_insolLaskar_10_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, p = 0.6, u = 0.6, Forcing = insolLaskar)
+Total # of Cycles: 47, Total # of Partial Melts: 71
+
+Full Cycle Statistics:
+	Mean Cycle Length = 105.183
+	Max Cycle Length = 156.528
+	Min Cycle Length = 42.71
+
+
+Cooling Statistics:
+	Mean Cooling Time = 74.1453
+	Max Cooling Time = 100.573
+	Min Cooling Time = 25.141
+
+
+Warming Statistics:
+	Mean Warming Time = 31.038
+	Max Warming Time = 66.715
+	Min Warming Time = 16.335
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 2.38886
+	Average of the Asymmetries = 2.80418
+
+Correlation Statistics:
+	Maximum Ice Volume to Minimum Ice Volume: corr =  -0.717269, p = 1.4082e-08
+
+	Maximum Ice Volume to Size of Next Melt: corr =  0.907432, p = 1.47456e-18
+
+	Maximum Ice Volume to Relative Size of Next Melt: corr =  -0.756497, p = 7.73348e-10
+
+	Maximum Ice Volume to Length of Next Cycle: corr =  -0.0891039, p = 0.55144
+
+	Minimum Ice Volume to Size of Preceding Melt: corr =  -0.943666, p = 3.04264e-23
+
+	Minimum Ice Volume to Relative Size of Preceeding Melt: corr =  0.266939, p = 0.0697037
+
+	Number of Partial Melts to the Length of the Cycle: corr =  0.488445, p = 0.00049533
+
+	Elapsed Time of Warming Phases to Change in Ice Volume in Warming Phases: corr =  -0.373034, p = 0.00980914
+
+	Cooling Times of Cycle k to Size of Next Melt: corr =  0.437788, p = 0.00234467
+
+	Minimum Ice Volume to Next Maximum Ice Volume: corr =  -0.402672, p = 0.00553
+
+	Maximum Ice Volume to Next Maximum Ice Volume: corr =  0.572252, p = 3.25178e-05
+
+	Minimum Ice Volume to Size of Growth: corr =  -0.728129, p = 6.62966e-09
+
+	Minimum Ice Volume to Relative Size of Growth: corr =  0.0829538, p = 0.579342
+
+	Size of Melt to Partial Melts per Cycle: corr =  -0.0593842, p = 0.691732
+
+	Partial Melts per Cycle to Size of Next Melt: corr =  0.341484, p = 0.0201997
+
+	Ice Mass at Warming to Ice Mass at Cooling: corr =  -0.636242, p = 1.17307e-06
+
+	Ice Mass at Cooling to Ice Mass at Next Warming: corr =  -0.486327, p = 0.000528434
+
+______________________________________

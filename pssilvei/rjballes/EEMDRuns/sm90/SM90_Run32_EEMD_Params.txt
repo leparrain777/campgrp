@@ -1,0 +1,12 @@
+SM90_Run32_EEMD_Params
+
+Model Run Insolation:
+insolHuybersIntegrated
+ModelRun: 32
+u = 1.4, p = 1.2
+
+White Noise: 0.5
+Iterations: 2500
+
+
+Notes:

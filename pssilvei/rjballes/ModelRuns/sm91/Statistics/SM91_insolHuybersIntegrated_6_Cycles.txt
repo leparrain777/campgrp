@@ -1,0 +1,59 @@
+SM91_insolHuybersIntegrated_6_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, u = 1.36, Forcing = insolHuybersIntegrated)
+Total # of Cycles: 56, Total # of Partial Melts: 34
+
+Full Cycle Statistics:
+	Mean Cycle Length = 87.3036
+	Max Cycle Length = 116
+	Min Cycle Length = 32
+
+
+Cooling Statistics:
+	Mean Cooling Time = 44.0714
+	Max Cooling Time = 65
+	Min Cooling Time = 19
+
+
+Warming Statistics:
+	Mean Warming Time = 43.2321
+	Max Warming Time = 64
+	Min Warming Time = 13
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 1.01941
+	Average of the Asymmetries = 1.14255
+
+Correlation Statistics:
+	Maximum Ice Mass to Minimum Ice Mass: corr =  -0.376508, p = 0.00423581
+
+	Maximum Ice Mass to Size of Next Melt: corr =  0.939166, p = 2.92131e-26
+
+	Maximum Ice Mass to Relative Size of Next Melt: corr =  0.183946, p = 0.178835
+
+	Maximum Ice Mass to Length of Next Cycle: corr =  0.0611229, p = 0.657547
+
+	Minimum Ice Mass to Size of Preceding Melt: corr =  -0.160869, p = 0.240679
+
+	Minimum Ice Mass to Relative Size of Preceeding Melt: corr =  0.190727, p = 0.163069
+
+	Number of Partial Melts to the Length of the Cycle: corr =  0.530283, p = 2.62804e-05
+
+	Elapsed Time of Warming Phases to Change in Ice Mass in Warming Phases: corr =  0.247116, p = 0.0663381
+
+	Cooling Times of Cycle k to Size of Next Melt: corr =  -0.00722702, p = 0.958237
+
+	Minimum Ice Mass to Next Maximum Ice Mass: corr =  0.0311905, p = 0.819491
+
+	Maximum Ice Mass to Next Maximum Ice Mass: corr =  0.0834194, p = 0.544845
+
+	Minimum Ice Mass to Size of Growth: corr =  -0.303752, p = 0.022854
+
+	Minimum Ice Mass to Relative Size of Growth: corr =  -0.322237, p = 0.0154351
+
+	Size of Melt to Partial Melts per Cycle: corr =  -0.218078, p = 0.106389
+
+	Partial Melts per Cycle to Size of Next Melt: corr =  -0.0438973, p = 0.750313
+
+______________________________________

@@ -1,0 +1,43 @@
+SM90_solsticeLaskar_5_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, u = 0.6, Forcing = solsticeLaskar)
+Total # of Cycles: 48, Total # of Partial Melts: 98
+
+Full Cycle Statistics:
+	Mean Cycle Length = 102.727
+	Max Cycle Length = 130.58
+	Min Cycle Length = 82.267
+
+
+Cooling Statistics:
+	Mean Cooling Time = 71.3677
+	Max Cooling Time = 96.66
+	Min Cooling Time = 58.29
+
+
+Warming Statistics:
+	Mean Warming Time = 31.3591
+	Max Warming Time = 53.867
+	Min Warming Time = 20.29
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 2.27582
+	Average of the Asymmetries = 2.09548
+
+Correlation Statistics:
+	Maximum Ice Mass to Minimum Ice Mass: corr =  -0.48371, p = 0.000572052
+
+	Maximum Ice Volume to Length of Next Cycle: corr =  -0.507891, p = 0.000268137
+
+	Minimum Ice Volume to Length of Next Cycle: corr =  -0.2887, p = 0.0490607
+
+	Minimum Ice Volume to Size of Next Melt: corr =  -0.580337, p = 1.53511e-05
+
+	Maximum Ice Volume to Size of Next Melt: corr =  0.501578, p = 0.00032858
+
+	Length of Next Cycle to Size of Last Melt: corr =  0.591736, p = 1.18384e-05
+
+	Number of Partial Melts to Length of Cycle: corr =  0.546269, p = 5.90887e-05
+
+______________________________________

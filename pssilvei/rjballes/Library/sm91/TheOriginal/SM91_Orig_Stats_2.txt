@@ -1,0 +1,20 @@
+Saltzman and Maasch (Original) Model Statistical Results
+
+Obliquity Early Window: [1500,2000] Ka
+Obliquity Correlation Early:                    0.674973
+With Significance:   1 at Lag 6
+Obliquity Late Window: [0,1500] Ka
+Obliquity Correlation Late:                     0.767722
+With Significance:   1 at Lag 8
+Percent Change in Obliquity Correlation:        0.137411
+Eccentricity Window: [0,500] Ka
+Modified Eccentricity Correlation:              0.507418
+With Significance:   0.667 at Lag -27
+Early Var Window: [1500,2000] Ka
+Late Var Window: [0,500] Ka
+Early Obl Var/Late Ecc Var:                     0.0130151
+Late Obl Var/Late Ecc Var:                      0.0402088
+Correlation with DO18 Data:                     0.368759
+Correlation with DO18 IMF 4:                    0.465288
+Correlation with DO18 IMFs 5 and 6:             0.297803
+Rayleigh's R Corresponding to Obliquity Cycle: 0.668258

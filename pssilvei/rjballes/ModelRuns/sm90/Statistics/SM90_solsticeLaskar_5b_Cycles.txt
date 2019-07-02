@@ -1,0 +1,27 @@
+SM90_insolLaskar_5_Cycles.txt
+
+
+Late Cycle Statistics (5000 kyr run, u = 0.6, Forcing = insolLaskar)
+Total # of Cycles: 48, Total # of Partial Melts: 144
+
+Full Cycle Statistics:
+	Mean Cycle Length = 102.727
+	Max Cycle Length = 130.58
+	Min Cycle Length = 82.267
+
+
+Cooling Statistics:
+	Mean Cooling Time = 71.3677
+	Max Cooling Time = 96.66
+	Min Cooling Time = 58.29
+
+
+Warming Statistics:
+	Mean Warming Time = 31.3591
+	Max Warming Time = 53.867
+	Min Warming Time = 20.29
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 2.27582
+	Average of the Asymmetries = 2.09548
+______________________________________

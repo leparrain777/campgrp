@@ -1,0 +1,11 @@
+PP04_Run1_EEMD_Params
+
+Model Run Insolation:
+insolHuybersIntegrated
+ModelRun: 1
+
+White Noise: 0.3
+Iterations: 900
+
+
+Notes:

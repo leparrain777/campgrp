@@ -1,0 +1,12 @@
+SM90_Run62_EEMD_Params
+
+Model Run Insolation:
+insolLaskar
+ModelRun: 62
+u = 0.75, p = 1
+
+White Noise: 0.4
+Iterations: 1600
+
+
+Notes:
