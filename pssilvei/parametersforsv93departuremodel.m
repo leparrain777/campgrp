@@ -28,7 +28,7 @@ rateoficedestruction= 20; %20 or 0 aka alphafour
 %setting alpha rate constants
 
 bone= 1.3  * 10^(-4); %1.3 * 10^(-4) or 0 
-btwo= 1.1; % 1.1 * 1 or 0 
+btwo= 1.1e-6; % 1.1 * 1 or 0 * 10^(-6)
 bthree= 3.6 * 10^(-8); % 0 or 3.6 * 10^(-8)
 bfour= 5.6 * 10^(-3); %0 or 5.6 * 10^(-3)
 %setting b constants
@@ -219,4 +219,4 @@ system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equatio
 
 x = [psi;bedrockdepression;muprime;thetaprime]
 
-[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 9e-7 : 200],[.001 .001 .001 .001])
+[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 200],[.001 .001 .001 .001])
