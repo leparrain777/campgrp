@@ -192,7 +192,7 @@ syms C; C = -alphafour * psi / (H * n); %C = matlabFunction(piecewise(D < Z | D 
 %computes the value of C from other items that should be given in the
 %differential equation
 
-syms Cflag; Cflag = su((D > Z) & (D > Dnot))
+syms Cflag; Cflag = su((D > Z) & (D > Dnot));
 
 Rprime = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
 
@@ -217,6 +217,6 @@ system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equatio
 
 %system(1)
 
-x = [psi;bedrockdepression;muprime;thetaprime]
+x = [bedrockdepression;muprime;psi;thetaprime];
 
-[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 200],[.001 .001 .001 .001])
+[t,xprime] = ode15s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 200],[.001 .001 .001 .001])

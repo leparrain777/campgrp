@@ -28,7 +28,7 @@ rateoficedestruction= 20; %20 or 0 aka alphafour
 %setting alpha rate constants
 
 bone= 1.3  * 10^(-4); %1.3 * 10^(-4) or 0 
-btwo= 1.1; % 1.1 * 1 or 0 
+btwo= 1.1e-6; % 1.1 * 1 or 0 * 10^(-6)
 bthree= 3.6 * 10^(-8); % 0 or 3.6 * 10^(-8)
 bfour= 5.6 * 10^(-3); %0 or 5.6 * 10^(-3)
 %setting b constants
@@ -202,21 +202,21 @@ syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta
 syms equation12; equation12 = eone * psi^(1/5) - epsilontwo * D;
 %matlabFunction(su(equation12))
 
-syms equation13; equation13 = muprime * (bone - btwo * muprime - bthree * muprime^2) -bfour * thetaprime + omegamu;
+syms equation13; equation13 = muprime * (bone - btwo * muprime - bthree * muprime^2) - bfour * thetaprime + omegamu;
 %matlabFunction(su(equation13))
 
 syms equation14; equation14 = gammanot - gammatwo * psi - gammathree * thetaprime + omegatheta;
-matlabFunction(su(equation14))
+%matlabFunction(su(equation14))
 
 %system = matlabFunction(su(equation11),matlabFunction(su(equation12)),matlabFunction(su(equation13)),matlabFunction(su(equation14)))
 
 %system = [0;0;0;0];
 
 
-system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equation14)])
+system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equation14)]);
 
 %system(1)
 
 x = [psi;bedrockdepression;muprime;thetaprime]
 
-[t,x] = ode15s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[1000 : .1 : 200],[.001 .001 .001 .001])
+[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 1e-6 : 200],[-1.0 .001 .001 .001])
