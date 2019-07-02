@@ -82,6 +82,8 @@ stochasticforcingofdeepoceantemperature = 0; %0 in the paper
 stochasticforcingofglobalicemass = 0; %0 in paper when not explicityly stated otherwise
 %set the forcing term for I/phi
 
+format long e
+
 syms munot equilibriumatmosphericcarbondioxideconcentration;
 munot = equilibriumatmosphericcarbondioxideconcentration;
 equilibriumatmosphericcarbondioxideconcentration = 1;
@@ -113,14 +115,14 @@ syms b; b = sensitivityhighlatsurfacetempone ;
 syms c; c = sensitivityhighlatsurfacetemptwo ;
 %make c a short name for snsitivivityhighlatsurfacetemptwo
 
-syms D bedrockdepression(t); D = bedrockdepression(t); 
-%make D a short name for bedrockdepression(t) as of model time
+syms D bedrockdepression; D = bedrockdepression; 
+%make D a short name for bedrockdepression as of model time
 
 syms mu atmosphericcarbondioxideconcentration; mu = atmosphericcarbondioxideconcentration;
 %make mu a short name for atmosphericcarbondioxideconcentration as of model
 %time
 
-syms muprime(t);atmosphericcarbondioxideconcentration = munot + muprime(t);
+syms muprime;atmosphericcarbondioxideconcentration = munot + muprime;
 %make mu equal to the baseline value plus the drifting value
 
 syms I globalicemass; I=globalicemass;
@@ -129,7 +131,7 @@ syms I globalicemass; I=globalicemass;
 syms theta deepoceantemperature; theta=deepoceantemperature;
 %make theta a short name for deepoceantemperature as of model time
 
-syms thetaprime(t); deepoceantemperature = thetanot + thetaprime(t);
+syms thetaprime; deepoceantemperature = thetanot + thetaprime;
 %make theta equal to the baseline value plus the drifting value
 
 syms R highlatradiation; R = highlatradiation;
@@ -150,7 +152,7 @@ syms Istar; Istar = presentvalueglobalicemass;
 syms psi deviationinicemassfrompresent; psi = deviationinicemassfrompresent;
 %make psi a short name for the deviation in ice mass from the present
 
-syms psiprime(t); deviationinicemassfrompresent = psinot + psiprime(t);
+syms psiprime; deviationinicemassfrompresent = psinot + psiprime;
 %make psi equal to the baseline value plus the drifting value
 
 %JI =@() 2.67*10^(-18);
@@ -184,30 +186,37 @@ syms Dnot; Dnot = epsilonone / epsilontwo * H; %basically 1/3 H by paper
 syms Rprime; Rprime = R - Rnot;
 
 syms gammanot; gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
-%??? = gammatwo * phinot = gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime(t) = thetaprime(t) = 0;
+%??? = gammatwo * phinot = gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
 
 syms C; C = -alphafour * psi / (H * n); %C = matlabFunction(piecewise(D < Z | D < Dnot, 0, D > Z & D > Dnot, -alphafour * psi / (H * n)));
 %computes the value of C from other items that should be given in the
 %differential equation
 
-syms Cflag(t); Cflag(t) = su(D > Z & D > Dnot)
+syms Cflag; Cflag = su((D > Z) & (D > Dnot))
 
 Rprime = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
 
-syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime(t) + kappatheta * thetaprime(t) + kappaR * Rprime) - alphathree * psi + n * C*Cflag(t) + omegaI);
-matlabFunction(su(equation11))
+syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta * thetaprime + kappaR * Rprime) - alphathree * psi + n * C*Cflag + omegaI);
+%matlabFunction(su(equation11))
 
 syms equation12; equation12 = eone * psi^(1/5) - epsilontwo * D;
-matlabFunction(su(equation12))
+%matlabFunction(su(equation12))
 
-syms equation13; equation13 = muprime(t) * (bone - btwo * muprime(t) - bthree * muprime(t)^2) -bfour * thetaprime(t) + omegamu;
-matlabFunction(su(equation13))
+syms equation13; equation13 = muprime * (bone - btwo * muprime - bthree * muprime^2) - bfour * thetaprime + omegamu;
+%matlabFunction(su(equation13))
 
-syms equation14; equation14 = gammanot - gammatwo * psi - gammathree * thetaprime(t) + omegatheta;
-matlabFunction(su(equation14))
+syms equation14; equation14 = gammanot - gammatwo * psi - gammathree * thetaprime + omegatheta;
+%matlabFunction(su(equation14))
 
-system = {matlabFunction(su(equation11),matlabFunction(su(equation12)),matlabFunction(su(equation13)),matlabFunction(su(equation14)))}
+%system = matlabFunction(su(equation11),matlabFunction(su(equation12)),matlabFunction(su(equation13)),matlabFunction(su(equation14)))
 
-x = [psiprime(t);bedrockdepression(t);muprime(t);thetaprime(t)]
+%system = [0;0;0;0];
 
-[t,x] = ode45(@(t,x) system ,[0 : .1 : 1000],[1 1 1 1])
+
+system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equation14)])
+
+%system(1)
+
+x = [psi;bedrockdepression;muprime;thetaprime]
+
+[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 9e-7 : 200],[.001 .001 .001 .001])
