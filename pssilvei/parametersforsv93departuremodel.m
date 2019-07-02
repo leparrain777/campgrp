@@ -219,4 +219,4 @@ system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equatio
 
 x = [bedrockdepression;muprime;psi;thetaprime];
 
-[t,xprime] = ode15s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 200],[.001 .001 .001 .001])
+[t,xprime] = ode15s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[1 : 1e-5 : 200],[.001 .001 .001 .001])
