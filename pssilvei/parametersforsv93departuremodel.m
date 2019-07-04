@@ -42,8 +42,8 @@ kappaR= 1.1 * 10^(-2); %.7 or 1.1 or 1.7 * 10^(-2)
 kappatheta= 4.4 * 10^(-2); %3.3 or 4.4 * 10^(-2)
 %setting kappa constants
 
-Kmu= 2 * 10^(-18); %2 * 10^(-18) or possibly 0?
-Ktheta= 4.8 * 10^(-20); %4.8 * 10^(-20) or possibly 0?
+Kmu= 0;%2 * 10^(-18); %2 * 10^(-18) or possibly 0?
+Ktheta= 0;%4.8 * 10^(-20); %4.8 * 10^(-20) or possibly 0?
 %setting K constants for pollard paper emulation
 
 munotstar= 253; %253 or 250 or 215
@@ -219,4 +219,8 @@ system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equatio
 
 x = [bedrockdepression;muprime;psi;thetaprime];
 
-[t,xprime] = ode15s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[1 : 1e-5 : 200],[.001 .001 .001 .001])
+options = odeset('RelTol',1.038e1)
+
+[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .001 : 2000],[.001 .01 -10 1],options);
+
+plot(t,xprime)
