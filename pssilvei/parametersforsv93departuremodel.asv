@@ -83,6 +83,8 @@ stochasticforcingofglobalicemass = 0; %0 in paper when not explicityly stated ot
 %set the forcing term for I/phi
 
 format long e
+%set our outputs to have some more decimals and a seperate magnitude
+%multiplier
 
 syms munot equilibriumatmosphericcarbondioxideconcentration;
 munot = equilibriumatmosphericcarbondioxideconcentration;
@@ -192,21 +194,30 @@ syms C; C = -alphafour * psi / (H * n); %C = matlabFunction(piecewise(D < Z | D 
 %computes the value of C from other items that should be given in the
 %differential equation
 
-syms Cflag; Cflag = su((D > Z) & (D > Dnot));
+syms Cflag; Cflag = su((D > Z) & (D > Dnot)); %this is our alternative to a piecewise function
+%and is a result of the function being zero if certain conditions are or are not met.
 
 Rprime = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
 
 syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta * thetaprime + kappaR * Rprime) - alphathree * psi + n * C*Cflag + omegaI);
 %matlabFunction(su(equation11))
+%creating a version of equation 11 using pieces of equations that we have
+%already written.
 
 syms equation12; equation12 = eone * psi^(1/5) - epsilontwo * D;
 %matlabFunction(su(equation12))
+%creating a version of equation 12 using pieces of equations that we have
+%already written.
 
 syms equation13; equation13 = muprime * (bone - btwo * muprime - bthree * muprime^2) - bfour * thetaprime + omegamu;
 %matlabFunction(su(equation13))
+%creating a version of equation 13 using pieces of equations that we have
+%already written.
 
 syms equation14; equation14 = gammanot - gammatwo * psi - gammathree * thetaprime + omegatheta;
 %matlabFunction(su(equation14))
+%creating a version of equation 14 using pieces of equations that we have
+%already written.
 
 %system = matlabFunction(su(equation11),matlabFunction(su(equation12)),matlabFunction(su(equation13)),matlabFunction(su(equation14)))
 
@@ -214,13 +225,30 @@ syms equation14; equation14 = gammanot - gammatwo * psi - gammathree * thetaprim
 
 
 system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equation14)])
+%Set up a system of numerical equations from the four equations we have
+%defined. Note that the quations get reordered by matlabFunction, I think
+%in alphabetical order.
 
 %system(1)
 
 x = [bedrockdepression;muprime;psi;thetaprime];
+%Create the reference variables that our system corresponds to. Note that
+%the ordering is different from the ordering that went into creating the
+%system. I think it uses alphabetical order.
 
-options = odeset('RelTol',1.5e1)
 
-[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 2000],[.001 .01 -10 1],options);
+options = odeset('RelTol',5.0e-5)
+%Set tolerance levels, currently for testing.
 
-plot(t,xprime)
+[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-8 : 10],[5.2e-6 3.7e-6 2.81e-6 1.0e-6],options);
+%Numerically solve the ode system
+
+figure(1)
+plot(t,xprime(:,1))
+figure(2)
+plot(t,xprime(:,2))
+figure(3)
+plot(t,xprime(:,3))
+figure(4)
+plot(t,xprime(:,4))
+%Creating 
