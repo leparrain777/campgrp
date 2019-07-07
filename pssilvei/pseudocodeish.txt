@@ -1,0 +1,10 @@
+Pseudocode-ish:
+
+Step one: Create a selection of constants and derived constants with descriptive names names.
+Step two: Create aliases for each of the constants and derived constants to write out things in terms of variable names given in the paper.
+Step three: Create all of the sub-formulas stated in the paper using our aliases, and aliasing those as needed.
+Step four: Create the main formulas stated in the paper using our collection of aliases
+Step five: Substitute all of our aliases in the main formulas out for the values they represent
+Step five and a half: Create a copy of the environment for archiving.
+Step six: Set up an ode solver for our main formulas and run said ode solver
+Step six and a half: Save the results of said ode to the same location of the copy of the environment for archiving.
