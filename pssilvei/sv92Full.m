@@ -8,7 +8,7 @@
 % Date: 17 July 2014
 % Author: Andrew Gallatin
 
-function xprime = sm91(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol);
+function xprime = sm92(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol);
 
 p = param(1);
 q = param(2);
@@ -42,7 +42,7 @@ W = x(4);
 Xprime = -X - Y - v*Z - u*f + Wx;
 Yprime = -p*Z + r*Y - s*Y^2 - Y^3 + Wy;
 Zprime = -q*(X + Z) + Wz;
-Wprime = 1;
+Wprime = 0;
 
 xprime = [
    Xprime ;
