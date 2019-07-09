@@ -237,20 +237,20 @@ x = [bedrockdepression;muprime;psi;thetaprime];
 %system. I think it uses alphabetical order.
 
 
-options = odeset('RelTol',3.3e-7)
+options = odeset('RelTol',3.3e-4)
 %Set tolerance levels, currently for testing.
 
-[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-5 : 1e1],[5.2e-10 3.7e-10 2.81e-10 1.0e-10],options);
+[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-6 : 1e1],[5.2e10 3.7e0 2.81e0 1.0e0],options);
 %Numerically solve the ode system over a time period with a set of initial
 %conditions.
 
 figure(1)
-plot(t,xprime(:,1))
+semilogy(t,xprime(:,1))
 figure(2)
-plot(t,xprime(:,2))
+semilogy(t,xprime(:,2))
 figure(3)
-plot(t,xprime(:,3))
+semilogy(t,xprime(:,3))
 figure(4)
-plot(t,xprime(:,4))
+semilogy(t,xprime(:,4))
 %Creating four seperate figure so graphs don't get dwarfed by things
 %blowing up.

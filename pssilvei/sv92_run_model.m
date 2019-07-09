@@ -9,7 +9,7 @@
 addpath(genpath('/nfsbigdata1/campgrp/Lib/Matlab'));
 %addpath(genpath('/nfsbigdata1/campgrp/brknight/Lib/Matlab'));
 
-sm91_params
+sv92_params
 
 tic
 
@@ -83,6 +83,10 @@ plot(t,xprime(:,3),'-')
 %set(gca,'xdir','reverse')
 ylabel('ocean temp')
 subplot(4,1,4)
+plot(t,xprime(:,4),'-')
+%set(gca,'xdir','reverse')
+ylabel('bedrock depression')
+subplot(4,1,5)
 plot(t,param(3).*insol,'-')
 %set(gca,'xdir','reverse')
 ylabel('forcing')
