@@ -58,7 +58,7 @@ Z= 4; %4 or 0 or 6.4
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
-epsilontwo= 1/30; %1/3 or 1/30 
+epsilontwo= 1/(30e3); %1/(3e3) or 1/(30e3)
 %setting epsilon 2. It is often stated by its inverse in the paper.
 
 epsilonone = epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
@@ -237,10 +237,10 @@ x = [bedrockdepression;muprime;psi;thetaprime];
 %system. I think it uses alphabetical order.
 
 
-options = odeset('RelTol',5.0e-5)
+options = odeset('RelTol',3.3e-7)
 %Set tolerance levels, currently for testing.
 
-[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-8 : 10],[5.2e-6 3.7e-6 2.81e-6 1.0e-6],options);
+[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-5 : 1e1],[5.2e-10 3.7e-10 2.81e-10 1.0e-10],options);
 %Numerically solve the ode system over a time period with a set of initial
 %conditions.
 
