@@ -8,6 +8,8 @@
 % Date: 17 July 2014
 % Author: Andrew Gallatin
 
+%need co2events and tectonic
+
 function xprime = sm92(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol);
 
 p = param(1);

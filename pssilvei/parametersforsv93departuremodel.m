@@ -27,19 +27,19 @@ rateoficedestruction= 20; %20 or 0 aka alphafour
 %setting the rate of ice destruction
 %setting alpha rate constants
 
-bone= 1.3  * 10^(-4); %1.3 * 10^(-4) or 0 
+bone= 1.3e-4; %1.3 * 10^(-4) or 0 
 btwo= 1.1e-6; % 1.1 * 1 or 0 * 10^(-6)
-bthree= 3.6 * 10^(-8); % 0 or 3.6 * 10^(-8)
-bfour= 5.6 * 10^(-3); %0 or 5.6 * 10^(-3)
+bthree= 3.6e-8; % 0 or 3.6 * 10^(-8)
+bfour= 5.6e-3; %0 or 5.6 * 10^(-3)
 %setting b constants
 
-gammaone= 1.9 * 10^(-3); %1.9 * 10^(-3) or 0
-gammatwo= 1.2 * 10^(-23); %0 or 1.2 * 10^(-23)
-gammathree= 2.5 * 10^(-4); %0 or 2.5 * 10^(-4)
+gammaone= 1.9e-3; %1.9 * 10^(-3) or 0
+gammatwo= 1.2e-23; %0 or 1.2 * 10^(-23)
+gammathree= 2.5e-4; %0 or 2.5 * 10^(-4)
 %setting gamma rate constants
 
-kappaR= 1.1 * 10^(-2); %.7 or 1.1 or 1.7 * 10^(-2)
-kappatheta= 4.4 * 10^(-2); %3.3 or 4.4 * 10^(-2)
+kappaR= 1.1e-2; %.7 or 1.1 or 1.7 * 10^(-2)
+kappatheta= 4.4e-2; %3.3 or 4.4 * 10^(-2)
 %setting kappa constants
 
 Kmu= 0;%2 * 10^(-18); %2 * 10^(-18) or possibly 0?
@@ -88,14 +88,14 @@ format long e
 
 syms munot equilibriumatmosphericcarbondioxideconcentration;
 munot = equilibriumatmosphericcarbondioxideconcentration;
-equilibriumatmosphericcarbondioxideconcentration = 1;
+equilibriumatmosphericcarbondioxideconcentration = munotstar;
 %look up
 syms thetanot equilibriumdeepoceantemperature;
 thetanot = equilibriumdeepoceantemperature;
-equilibriumdeepoceantemperature = 1;
+equilibriumdeepoceantemperature = thetanotstar;
 %look up
 syms psinot equilibriumicemass;
-psinot = equilibriumicemass; equilibriumicemass = 1;
+psinot = equilibriumicemass; equilibriumicemass = presentvalueglobalicemass;
 %look up
 syms Rnot equilibriumhighlatradiation; 
 Rnot = equilibriumhighlatradiation; equilibriumhighlatradiation = 1;
@@ -204,7 +204,7 @@ syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta
 %creating a version of equation 11 using pieces of equations that we have
 %already written.
 
-syms equation12; equation12 = eone * psi^(1/5) - epsilontwo * D;
+syms equation12; equation12 = eone * abs(psi)^(1/5) - epsilontwo * D;
 %matlabFunction(su(equation12))
 %creating a version of equation 12 using pieces of equations that we have
 %already written.
