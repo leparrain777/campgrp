@@ -20,9 +20,9 @@ highlatradiationpresentvalue= 7;
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
 
-alphaone= 13.7 * 10^15; %13.7 or 15.4 * 10^15
-alphatwo= 7.0 * 10^15; %7.0 or 9.4 * 10^15
-alphathree= 1.0 * 10^(-4); %1.0 * 10^(-4)
+alphaone= 13.7e15; %13.7 or 15.4 * 10^15
+alphatwo= 7.0e15; %7.0 or 9.4 * 10^15
+alphathree= 1.0e-4; %1.0 * 10^(-4)
 rateoficedestruction= 20; %20 or 0 aka alphafour
 %setting the rate of ice destruction
 %setting alpha rate constants
@@ -50,7 +50,7 @@ munotstar= 253; %253 or 250 or 215
 thetanotstar= 5.2; %5.2 or 4.8
 %setting current atmosphere averages
 
-presentvalueglobalicemass= 3 * 10^19; %3 or 3.3 * 10^19
+presentvalueglobalicemass= 3e19; %3e19 or 3.3e19
 %setting the present value of global ice mass
 
 
@@ -240,17 +240,19 @@ x = [bedrockdepression;muprime;psi;thetaprime];
 options = odeset('RelTol',3.3e-4)
 %Set tolerance levels, currently for testing.
 
-[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-6 : 1e1],[5.2e10 3.7e0 2.81e0 1.0e0],options);
+initialconditions = double(su([5.2e10 munotstar Istar thetanotstar]))
+
+[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-6 : 1e1],initialconditions,options);
 %Numerically solve the ode system over a time period with a set of initial
 %conditions.
 
 figure(1)
-semilogy(t,xprime(:,1))
+semilogy(t,abs(xprime(:,1)))
 figure(2)
 semilogy(t,abs(xprime(:,2)))
 figure(3)
-semilogy(t,xprime(:,3))
+semilogy(t,abs(xprime(:,3)))
 figure(4)
-semilogy(t,xprime(:,4))
+semilogy(t,abs(xprime(:,4)))
 %Creating four seperate figure so graphs don't get dwarfed by things
 %blowing up.
