@@ -142,11 +142,11 @@ syms R highlatradiation; R = highlatradiation;
 syms Rstar; Rstar = highlatradiationpresentvalue;
 %make Rstar a short name for high latitude radiation present value
 
-highlatradiation = insol*90;
+%highlatradiation = insol*90;
 
 syms Rprime; 
 %Rprime = interp1([0 : 1000 : 5e6],highlatradiation(t) - 452,t,'pchip');
-Rprime = spline([0 : 1000 : 5e6],highlatradiation - 452);
+%Rprime = highlatradiation - 452;
 %make Rprime equal to the baseline value minus the drifting value
 
 syms alphafour; alphafour = rateoficedestruction;
@@ -204,7 +204,7 @@ syms Cflag; Cflag = su((D > Z) & (D > Dnot)); %this is our alternative to a piec
 %R = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
 syms time
 
-syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta * thetaprime + kappaR * ppval(Rprime,time)) - alphathree * psi + n * C*Cflag + omegaI);
+syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta * thetaprime + kappaR * Rprime) - alphathree * psi + n * C*Cflag + omegaI);
 %matlabFunction(su(equation11))
 %creating a version of equation 11 using pieces of equations that we have
 %already written.
