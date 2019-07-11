@@ -98,7 +98,7 @@ syms psinot equilibriumicemass;
 psinot = equilibriumicemass; equilibriumicemass = presentvalueglobalicemass;
 %look up
 syms Rnot equilibriumhighlatradiation; 
-Rnot = equilibriumhighlatradiation; equilibriumhighlatradiation = 1;
+Rnot = equilibriumhighlatradiation; equilibriumhighlatradiation = 452;
 %look up
 %setting some placeholder values for testing to be replaced later
 
@@ -140,10 +140,13 @@ syms R highlatradiation; R = highlatradiation;
 %make R a short name for high latitude radiation as of model time
 
 syms Rstar; Rstar = highlatradiationpresentvalue;
-%make R a short name for high latitude radiation present value
+%make Rstar a short name for high latitude radiation present value
 
-syms Rprime; highlatradiation = Rnot + Rprime;
-%make R equal to the baseline value plus the drifting value
+highlatradiation = insol*90;
+
+syms Rprime; 
+Rprime = interp1([0 : 1000 : 5e6],highlatradiation(t) - 452,t,'pchip');
+%make Rprime equal to the baseline value minus the drifting value
 
 syms alphafour; alphafour = rateoficedestruction;
 %make alphafour a short nam for the rate of ice destruction
@@ -185,7 +188,7 @@ syms omegaI; omegaI = stochasticforcingofglobalicemass; %0 in paper when not exp
 syms Dnot; Dnot = epsilonone / epsilontwo * H; %basically 1/3 H by paper
 % setting the threshold level of bedrock depression for ice calving
 
-syms Rprime; Rprime = R - Rnot;
+%Rprime = R - Rnot;
 
 syms gammanot; gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
 %??? = gammatwo * phinot = gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
@@ -197,7 +200,7 @@ syms C; C = -alphafour * psi / (H * n); %C = matlabFunction(piecewise(D < Z | D 
 syms Cflag; Cflag = su((D > Z) & (D > Dnot)); %this is our alternative to a piecewise function
 %and is a result of the function being zero if certain conditions are or are not met.
 
-Rprime = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
+%R = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
 
 syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta * thetaprime + kappaR * Rprime) - alphathree * psi + n * C*Cflag + omegaI);
 %matlabFunction(su(equation11))
@@ -240,9 +243,9 @@ x = [bedrockdepression;muprime;psi;thetaprime];
 options = odeset('RelTol',1e-3)
 %Set tolerance levels, currently for testing.
 
-initialconditions = [.1 .1 .1 .1]%double(su([5.2e10 munotstar Istar thetanotstar]))
+initialconditions = double(su([526 munotstar Istar thetanotstar]))
 
-[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 1e1],initialconditions,options);
+[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 1e3 : 5e6],initialconditions,options);
 %Numerically solve the ode system over a time period with a set of initial
 %conditions.
 

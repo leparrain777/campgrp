@@ -14,7 +14,7 @@ tunedFlag = 1;
 
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
-tspan = [0:1e0:500e4];
+tspan = [0:1e3:5e6];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %x0 = [-1.0 0.1 1.0];
@@ -46,7 +46,7 @@ if Laskarflag
    [insolT,~,~,~,insol] = readLaskarAstronomical(0,5000);
 
    %insolT = insolT./10;
-   insolT = [0:0.1:500];
+   insolT = [0:1000:5e6];
 
    insol = (insol - mean(insol))/(std(insol));
    insol = insol(end:-1:1);

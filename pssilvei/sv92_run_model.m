@@ -20,10 +20,10 @@ options = odeset('Events',@sm91_co2_events);
 [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol),tspan,x0,options);
 
 % Re-dimensionalizing the results
-xprime(:,1) = xprime(:,1).*2.0;
-xprime(:,2) = xprime(:,2).*52.5;
-xprime(:,3) = xprime(:,3).*0.9;
-xprime(:,4) = xprime(:,4).*1.0;
+%xprime(:,1) = xprime(:,1).*2.0;
+%xprime(:,2) = xprime(:,2).*52.5;
+%xprime(:,3) = xprime(:,3).*0.9;
+%xprime(:,4) = xprime(:,4).*1.0;
 
 %ye(:,1) = ye(:,1).*2.0;
 %ye(:,2) = ye(:,2).*52.5;
@@ -69,24 +69,24 @@ toc
 figure(1)
 clf
 t = 10.*flipud(t);
-subplot(4,1,1)
+subplot(5,1,1)
 plot(t,-xprime(:,1),'-')
 %set(gca,'xdir','reverse')
 title(strcat('SM91',descr,' (u=',num2str(param(3)),', p=',num2str(param(1)),')'));
 ylabel('ice mass')
-subplot(4,1,2)
+subplot(5,1,2)
 plot(t,xprime(:,2),'-')
 %set(gca,'xdir','reverse')
 ylabel('CO2')
-subplot(4,1,3)
+subplot(5,1,3)
 plot(t,xprime(:,3),'-')
 %set(gca,'xdir','reverse')
 ylabel('ocean temp')
-subplot(4,1,4)
+subplot(5,1,4)
 plot(t,xprime(:,4),'-')
 %set(gca,'xdir','reverse')
 ylabel('bedrock depression')
-subplot(4,1,5)
+subplot(5,1,5)
 plot(t,param(3).*insol,'-')
 %set(gca,'xdir','reverse')
 ylabel('forcing')
