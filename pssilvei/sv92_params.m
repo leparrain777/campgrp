@@ -14,11 +14,11 @@ tunedFlag = 1;
 
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
-tspan = [0:0.1:500];
+tspan = [0:1e0:500e4];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %x0 = [-1.0 0.1 1.0];
-x0 = [0.001 0.001 0.001];
+x0 = [0.001 0.001 0.001 .001];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:

@@ -204,7 +204,7 @@ syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta
 %creating a version of equation 11 using pieces of equations that we have
 %already written.
 
-syms equation12; equation12 = eone * abs(psi)^(1/5) - epsilontwo * D;
+syms equation12; equation12 = eone * psi^(1/5) - epsilontwo * D;
 %matlabFunction(su(equation12))
 %creating a version of equation 12 using pieces of equations that we have
 %already written.
@@ -237,22 +237,22 @@ x = [bedrockdepression;muprime;psi;thetaprime];
 %system. I think it uses alphabetical order.
 
 
-options = odeset('RelTol',3.3e-4)
+options = odeset('RelTol',1e-3)
 %Set tolerance levels, currently for testing.
 
-initialconditions = double(su([5.2e10 munotstar Istar thetanotstar]))
+initialconditions = [.1 .1 .1 .1]%double(su([5.2e10 munotstar Istar thetanotstar]))
 
-[t,xprime] = ode23s(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 5e-6 : 1e1],initialconditions,options);
+[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : .1 : 1e1],initialconditions,options);
 %Numerically solve the ode system over a time period with a set of initial
 %conditions.
 
 figure(1)
-semilogy(t,abs(xprime(:,1)))
+plot(t,xprime(:,1))
 figure(2)
-semilogy(t,abs(xprime(:,2)))
+plot(t,xprime(:,2))
 figure(3)
-semilogy(t,abs(xprime(:,3)))
+plot(t,xprime(:,3))
 figure(4)
-semilogy(t,abs(xprime(:,4)))
+plot(t,xprime(:,4))
 %Creating four seperate figure so graphs don't get dwarfed by things
 %blowing up.

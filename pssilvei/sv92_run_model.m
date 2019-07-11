@@ -25,10 +25,10 @@ xprime(:,2) = xprime(:,2).*52.5;
 xprime(:,3) = xprime(:,3).*0.9;
 xprime(:,4) = xprime(:,4).*1.0;
 
-ye(:,1) = ye(:,1).*2.0;
-ye(:,2) = ye(:,2).*52.5;
-ye(:,3) = ye(:,3).*0.9;
-ye(:,4) = ye(:,4).*1.0;
+%ye(:,1) = ye(:,1).*2.0;
+%ye(:,2) = ye(:,2).*52.5;
+%ye(:,3) = ye(:,3).*0.9;
+%ye(:,4) = ye(:,4).*1.0;
 
 
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
@@ -41,12 +41,12 @@ for i = 1:size(t)
    x(1,i) = xprime(i,1);
    x(2,i) = xprime(i,2);
    x(3,i) = xprime(i,3);
-   x(4,i) = xprime(i,3);
+   x(4,i) = xprime(i,4);
    
    xfull(1,i) = xprime(i,1) + tectsol(1);
    xfull(2,i) = xprime(i,2) + tectsol(2);
    xfull(3,i) = xprime(i,3) + tectsol(3);
-   xfull(4,i) = xprime(i,4) + tectsol(4);
+   %xfull(4,i) = xprime(i,4) + tectsol(4);
 end
 
 % Separate out solutions.
