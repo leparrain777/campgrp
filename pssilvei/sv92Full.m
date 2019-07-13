@@ -23,7 +23,7 @@ r = 1.3;
 s = 0.6;
 
 % Insolation:
-f = interp1(insolT,insol,t,'pchip');
+f = interp1(insolT,insol,t,'linear');
 
 % Stochastic Terms:
 %Wx = interp1(Rt,Rx,t,'pchip');

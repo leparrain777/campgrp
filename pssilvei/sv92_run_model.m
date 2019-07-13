@@ -7,13 +7,19 @@
 % Author: Raymart Ballesteros
 
 addpath(genpath('/nfsbigdata1/campgrp/Lib/Matlab'));
+addpath(genpath('/nfsbigdata1/campgrp/Data'));
+addpath(genpath('C:\Users\Perrin\Documents\Gitprojects\campgrp\Data'));
+addpath(genpath('C:\Users\perri\Documents\Gitprojects\campgrp\Data'));
+
+
 %addpath(genpath('/nfsbigdata1/campgrp/brknight/Lib/Matlab'));
 
 sv92_params
 
 tic
 
-options = odeset('Events',@sm91_co2_events);
+%options = odeset('Events',@sm91_co2_events);
+options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',5e-2);
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
