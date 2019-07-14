@@ -19,7 +19,7 @@ sv92_params
 tic
 
 %options = odeset('Events',@sm91_co2_events);
-options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',5e-2);
+options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-3);
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
@@ -71,6 +71,7 @@ Data = [te ye;t I Mu Theta D];
 
 toc
 
+cutoff = 5e4;
 
 figure(1)
 clf
@@ -92,11 +93,10 @@ subplot(5,1,4)
 plot(t,xprime(:,4),'-')
 %set(gca,'xdir','reverse')
 ylabel('bedrock depression')
-subplot(5,1,5)
-plot(t,param(3).*insol,'-')
+%subplot(5,1,5)
+%plot(t,param(3).*insol,'-')
 %set(gca,'xdir','reverse')
-ylabel('forcing')
-xlabel('time (kya)')
+%ylabel('forcing')
    
 % Save temporal plots
 %print(gcf,'-djpeg',strcat('SM91_',num2str(runID),'_',descr, '_forcing','_u=',num2str(param(3))))

@@ -12,13 +12,15 @@ unforcedFlag = 0;
 paperFlag = 0;
 tunedFlag = 1;
 
+timescale = 100;
+
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
-tspan = [0:.01:500];
+tspan = [0:1000/timescale:5e6/timescale];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %x0 = [-1.0 0.1 1.0];
-x0 = [0 0 0 0];
+x0 = [0.001 0.001 0.001 0.001];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:
@@ -46,7 +48,7 @@ if Laskarflag
    [insolT,~,~,~,insol] = readLaskarAstronomical(0,5000);
 
    %insolT = insolT./10;
-   insolT = [0:.1:500];
+   insolT = [0:1000/timescale:5e6/timescale];
 
    insol = (insol - mean(insol))/(std(insol));
    insol = insol(end:-1:1);
@@ -89,13 +91,13 @@ end %if
 
 % Set up the changing parameters:
 % Note: These changing parameters depend on the fact that the model runs for 5 million years.
-parT = [0:0.1:500]';
+parT = [0:1:5000]';
 U = -35*(parT/100) + 425;
 R = (2*2.6*10^(-5).*U - 3*3.6*10^(-8)*(U.^2) - 6.3*10^(-3)) / (1*10^(-4)) + 2;
 S = (3*3.6*10^(-8).*U - 2.6*10^(-5)) / (sqrt(1*10^(-4)*3.6*10^(-8))); 
 
 % Set up the stochastic terms:
-Rt = [0:1e3:5e6]';
+Rt = [0:.1:500]';
 Rx = -0.025 + 0.05.*rand(5001,1);
 Ry = -0.025 + 0.05.*rand(5001,1);
 Rz = -0.025 + 0.05.*rand(5001,1);

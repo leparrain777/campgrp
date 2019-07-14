@@ -3,6 +3,8 @@
 timeofrunstart= -2000000;
 %Start time of run in years. Should always be negative.
 
+timescale=100
+
 sensitivityhighlatsurfacetempone= 18; %18 only
 %setting the sensitivity to high latitude surface temp constant one aka b
 
@@ -20,22 +22,22 @@ highlatradiationpresentvalue= 7;
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
 
-alphaone= 13.7e19; %13.7 or 15.4 * 10^15
-alphatwo= 7.0e19; %7.0 or 9.4 * 10^15
-alphathree= 1.0e0; %1.0 * 10^(-4)
-rateoficedestruction= 20e4; %20 or 0 aka alphafour
+alphaone= timescale*13.7e15; %13.7 or 15.4 * 10^15
+alphatwo= timescale*7.0e15; %7.0 or 9.4 * 10^15
+alphathree= timescale*1.0e-4; %1.0 * 10^(-4)
+rateoficedestruction= timescale*20; %20 or 0 aka alphafour
 %setting the rate of ice destruction
 %setting alpha rate constants
 
-bone= 1.3e-0; %1.3 * 10^(-4) or 0 
-btwo= 1.1e-2; % 1.1 * 1 or 0 * 10^(-6)
-bthree= 3.6e-4; % 0 or 3.6 * 10^(-8)
-bfour= 5.6e1; %0 or 5.6 * 10^(-3)
+bone= timescale*1.3e-4; %1.3 * 10^(-4) or 0 
+btwo= timescale*1.1e-6; % 1.1 * 1 or 0 * 10^(-6)
+bthree= timescale*3.6e-8; % 0 or 3.6 * 10^(-8)
+bfour= timescale*5.6e-3; %0 or 5.6 * 10^(-3)
 %setting b constants
 
-gammaone= 1.9e1; %1.9 * 10^(-3) or 0
-gammatwo= 1.2e-19; %0 or 1.2 * 10^(-23)
-gammathree= 2.5e0; %0 or 2.5 * 10^(-4)
+gammaone= timescale*1.9e-3; %1.9 * 10^(-3) or 0
+gammatwo= timescale*1.2e-23; %0 or 1.2 * 10^(-23)
+gammathree= timescale*2.5e-4; %0 or 2.5 * 10^(-4)
 %setting gamma rate constants
 
 kappaR= 1.1e-2; %.7 or 1.1 or 1.7 * 10^(-2)
@@ -58,7 +60,7 @@ Z= 4; %4 or 0 or 6.4
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
-epsilontwo= 1/(30e1); %1/(3e3) or 1/(30e3)
+epsilontwo= timescale*1/(30e3); %1/(3e3) or 1/(30e3)
 %setting epsilon 2. It is often stated by its inverse in the paper.
 
 epsilonone = epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
