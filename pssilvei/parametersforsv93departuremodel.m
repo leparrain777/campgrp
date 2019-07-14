@@ -22,8 +22,8 @@ highlatradiationpresentvalue= 7;
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
 
-alphaone= timescale*13.7e15; %13.7 or 15.4 * 10^15
-alphatwo= timescale*7.0e15; %7.0 or 9.4 * 10^15
+alphaone= timescale*15.4e15; %13.7 or 15.4 * 10^15
+alphatwo= timescale*9.4e15; %7.0 or 9.4 * 10^15
 alphathree= timescale*1.0e-4; %1.0 * 10^(-4)
 rateoficedestruction= timescale*20; %20 or 0 aka alphafour
 %setting the rate of ice destruction
@@ -56,7 +56,7 @@ presentvalueglobalicemass= 3e19; %3e19 or 3.3e19
 %setting the present value of global ice mass
 
 
-Z= 4; %4 or 0 or 6.4
+Z= 4e2; %4e2 or 0 or 6.4e2
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
