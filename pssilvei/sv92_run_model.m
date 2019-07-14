@@ -23,7 +23,7 @@ options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',5e-2);
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol),tspan,x0,options);
+[t,xprime,te,ye,ie] = ode15s(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol),tspan,x0,options);
 
 % Re-dimensionalizing the results
 %xprime(:,1) = xprime(:,1).*2.0;
