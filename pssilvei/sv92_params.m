@@ -18,7 +18,7 @@ tspan = [0:1e3:5e6];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %x0 = [-1.0 0.1 1.0];
-x0 = [3e19 0 0 600];
+x0 = [0 0 0 0];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:
