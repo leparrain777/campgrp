@@ -1,9 +1,17 @@
 
+
+timescale=100;
+
 sensitivityhighlatsurfacetempone= 18; %18 only
 %setting the sensitivity to high latitude surface temp constant one aka b
+b = sensitivityhighlatsurfacetempone ;
+%make b a short name for snsitivivityhighlatsurfacetempone
 
 sensitivityhighlatsurfacetemptwo= 4 * 10^(-3); %4 * 10^(-3) only
 %setting the sensitivity to high latitude surface temp constant two aka c
+c = sensitivityhighlatsurfacetemptwo ;
+%make c a short name for snsitivivityhighlatsurfacetemptwo
+
 
 highlatradiationpresentvalue= 7;
 %the current value of high latitude radiation
@@ -82,45 +90,35 @@ format long e
 %set our outputs to have some more decimals and a seperate magnitude
 %multiplier
 
-syms munot equilibriumatmosphericcarbondioxideconcentration;
-munot = equilibriumatmosphericcarbondioxideconcentration;
 equilibriumatmosphericcarbondioxideconcentration = munotstar;
+munot = equilibriumatmosphericcarbondioxideconcentration;
+
 %look up
-syms thetanot equilibriumdeepoceantemperature;
-thetanot = equilibriumdeepoceantemperature;
 equilibriumdeepoceantemperature = thetanotstar;
+thetanot = equilibriumdeepoceantemperature;
+
 %look up
-syms psinot equilibriumicemass;
-psinot = equilibriumicemass; equilibriumicemass = presentvalueglobalicemass;
+equilibriumicemass = presentvalueglobalicemass;
+psinot = equilibriumicemass; 
 %look up
-syms Rnot equilibriumhighlatradiation; 
-Rnot = equilibriumhighlatradiation; equilibriumhighlatradiation = 452;
+equilibriumhighlatradiation = 452;
+Rnot = equilibriumhighlatradiation;
 %look up
 %setting some placeholder values for testing to be replaced later
 
-global timefromrunstart;
-timefromrunstart=0;
-%Should always be 0 here, and we change it in other scripts.
-
 su=@(x) subs(subs(subs(subs(subs(subs(subs(subs(subs(subs(x))))))))));
 
-syms t; %t = timefromrunstart;
-%Make t a short name for timefromrunstart.
 
-syms b; b = sensitivityhighlatsurfacetempone ;
-%make b a short name for snsitivivityhighlatsurfacetempone
 
-syms c; c = sensitivityhighlatsurfacetemptwo ;
-%make c a short name for snsitivivityhighlatsurfacetemptwo
 
-syms D bedrockdepression; D = bedrockdepression; 
-%make D a short name for bedrockdepression as of model time
+syms W
+
 
 syms mu atmosphericcarbondioxideconcentration; mu = atmosphericcarbondioxideconcentration;
 %make mu a short name for atmosphericcarbondioxideconcentration as of model
 %time
 
-syms muprime;atmosphericcarbondioxideconcentration = munot + muprime;
+syms Y;atmosphericcarbondioxideconcentration = munot + Y;
 %make mu equal to the baseline value plus the drifting value
 
 syms I globalicemass; I=globalicemass;
@@ -129,13 +127,13 @@ syms I globalicemass; I=globalicemass;
 syms theta deepoceantemperature; theta=deepoceantemperature;
 %make theta a short name for deepoceantemperature as of model time
 
-syms thetaprime; deepoceantemperature = thetanot + thetaprime;
+syms Z; deepoceantemperature = thetanot + Z;
 %make theta equal to the baseline value plus the drifting value
 
 syms R highlatradiation; R = highlatradiation;
 %make R a short name for high latitude radiation as of model time
 
-syms Rstar; Rstar = highlatradiationpresentvalue;
+Rstar = highlatradiationpresentvalue;
 %make Rstar a short name for high latitude radiation present value
 
 %highlatradiation = insol*90;
@@ -148,74 +146,71 @@ syms Rprime;
 syms alphafour; alphafour = rateoficedestruction;
 %make alphafour a short nam for the rate of ice destruction
 
-syms Istar; Istar = presentvalueglobalicemass;
+Istar = presentvalueglobalicemass;
 %make Istar a short name for the present value of global ice mass
 
-syms psi deviationinicemassfrompresent; psi = deviationinicemassfrompresent;
-%make psi a short name for the deviation in ice mass from the present
 
-syms psiprime; deviationinicemassfrompresent = psinot + psiprime;
-%make psi equal to the baseline value plus the drifting value
+syms psiprime; X = psinot + psiprime;
+%make X equal to the baseline value plus the drifting value
 
 %JI =@() 2.67*10^(-18);
 %Jtheta=@() 1;
-%syms Z; Z = Znotstar + JI * psi+ Znotstar * Jtheta * (theta - thetastar);
+%syms Z; Z = Znotstar + JI * X+ Znotstar * Jtheta * (theta - thetastar);
 
-syms alphanot; alphanot = alphaone - alphatwo * eval(tanh(c * munot) + kappatheta * thetanot + kappaR * (Rnot - Rstar)) - alphathree * Istar;
+alphanot = alphaone - alphatwo * tanh(c * munot) + kappatheta * thetanot + kappaR * (Rnot - Rstar) - alphathree * Istar;
 %computes the value of alphanot from other items that are given
 
-syms n; n = numberoficesheets;
+n = numberoficesheets;
 %makes n a short name for the number of ice sheets under consideration
 
-syms eone; eone= epsilonone * (zeta^4/(icedensity * n))^(1/5);
+eone= epsilonone * (zeta^4/(icedensity * n))^(1/5);
 %computes the value of eone from other items that are given
 
-syms H; icesheetmeanthickness = (zeta^4 * psi / (n * icedensity))^(1/5); H = icesheetmeanthickness; 
+icesheetmeanthickness = (zeta^4 * X / (n * icedensity))^(1/5);
+H = icesheetmeanthickness; 
 %setting the mean thickness of ice sheets, and creating a short name H
 
-syms omegamu; omegamu = stochasticforcingofatmosphericcarbondioxideconcentration; %0 in the paper
+omegamu = stochasticforcingofatmosphericcarbondioxideconcentration; %0 in the paper
 %set the forcing term for mu
 
-syms omegatheta; omegatheta = stochasticforcingofdeepoceantemperature; %0 in the paper
+omegatheta = stochasticforcingofdeepoceantemperature; %0 in the paper
 %set the forcing term for theta
 
-syms omegaI; omegaI = stochasticforcingofglobalicemass; %0 in paper when not explicityly stated otherwise
+omegaI = stochasticforcingofglobalicemass; %0 in paper when not explicityly stated otherwise
 %set the forcing term for I/phi
 
-syms Dnot; Dnot = epsilonone / epsilontwo * H; %basically 1/3 H by paper
+Wnot = epsilonone / epsilontwo * H; %basically 1/3 H by paper
 % setting the threshold level of bedrock depression for ice calving
 
 %Rprime = R - Rnot;
 
-syms gammanot; gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
-%??? = gammatwo * phinot = gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
+gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
+%??? = gammatwo * phinot = gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if Y = Z = 0;
 
-syms C; C = -alphafour * psi / (H * n); %C = matlabFunction(piecewise(D < Z | D < Dnot, 0, D > Z & D > Dnot, -alphafour * psi / (H * n)));
+C = -alphafour * X / (H * n); %C = matlabFunction(piecewise(W < Z | W < Wnot, 0, W > Z & W > Wnot, -alphafour * X / (H * n)));
 %computes the value of C from other items that should be given in the
 %differential equation
 
-syms Cflag; Cflag = su((D > Z) & (D > Dnot)); %this is our alternative to a piecewise function
+Cflag = su((W > Z) & (W > Wnot)); %this is our alternative to a piecewise function
 %and is a result of the function being zero if certain conditions are or are not met.
 
-%R = 1; %TESTING PURPOSES ONLY, comment this out when you have insolation data
-syms time
 
-syms equation11; equation11 = su(alphanot - alphatwo * (c * muprime + kappatheta * thetaprime + kappaR * Rprime) - alphathree * psi + n * C*Cflag + omegaI);
+syms equation11; equation11 = su(alphanot - alphatwo * (c * Y + kappatheta * Z + kappaR * Rprime) - alphathree * X + n * C*Cflag + omegaI)
 %matlabFunction(su(equation11))
 %creating a version of equation 11 using pieces of equations that we have
 %already written.
 
-syms equation12; equation12 = eone * psi^(1/5) - epsilontwo * D;
+syms equation12; equation12 = eone * X^(1/5) - epsilontwo * W
 %matlabFunction(su(equation12))
 %creating a version of equation 12 using pieces of equations that we have
 %already written.
 
-syms equation13; equation13 = muprime * (bone - btwo * muprime - bthree * muprime^2) - bfour * thetaprime + omegamu;
+syms equation13; equation13 = Y * (bone - btwo * Y - bthree * Y^2) - bfour * Z + omegamu
 %matlabFunction(su(equation13))
 %creating a version of equation 13 using pieces of equations that we have
 %already written.
 
-syms equation14; equation14 = gammanot - gammatwo * psi - gammathree * thetaprime + omegatheta;
+syms equation14; equation14 = gammanot - gammatwo * X - gammathree * Z + omegatheta
 %matlabFunction(su(equation14))
 %creating a version of equation 14 using pieces of equations that we have
 %already written.
@@ -232,28 +227,9 @@ system = matlabFunction([su(equation11);su(equation12);su(equation13);su(equatio
 
 %system(1)
 
-x = [bedrockdepression;muprime;psi;thetaprime];
+x = [bedrockdepression;Y;X;Z];
 %Create the reference variables that our system corresponds to. Note that
 %the ordering is different from the ordering that went into creating the
 %system. I think it uses alphabetical order.
 
 
-options = odeset('RelTol',1e-3)
-%Set tolerance levels, currently for testing.
-
-initialconditions = double(su([526 munotstar Istar thetanotstar]))
-
-[t,xprime] = ode45(@(t,x) system(x(1),x(2),x(3),x(4)) ,[0 : 1e3 : 5e6],initialconditions,options);
-%Numerically solve the ode system over a time period with a set of initial
-%conditions.
-
-figure(1)
-plot(t,xprime(:,1))
-figure(2)
-plot(t,xprime(:,2))
-figure(3)
-plot(t,xprime(:,3))
-figure(4)
-plot(t,xprime(:,4))
-%Creating four seperate figure so graphs don't get dwarfed by things
-%blowing up.

@@ -19,7 +19,7 @@ sv92_params
 tic
 
 %options = odeset('Events',@sm91_co2_events);
-options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-5);
+options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-3);
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
@@ -77,22 +77,22 @@ figure(1)
 clf
 t = 10.*flipud(t);
 subplot(5,1,1)
-plot(t,-xprime(:,1),'-')
+plot(t,xprime(:,1),'-')
 %set(gca,'xdir','reverse')
 title(strcat('SM91',descr,' (u=',num2str(param(3)),', p=',num2str(param(1)),')'));
-ylabel('ice mass')
+ylabel('Ice mass')
 subplot(5,1,2)
 plot(t,xprime(:,2),'-')
 %set(gca,'xdir','reverse')
-ylabel('CO2')
+ylabel('Bedrock depression')
 subplot(5,1,3)
 plot(t,xprime(:,3),'-')
 %set(gca,'xdir','reverse')
-ylabel('ocean temp')
+ylabel('CO2')
 subplot(5,1,4)
 plot(t,xprime(:,4),'-')
 %set(gca,'xdir','reverse')
-ylabel('bedrock depression')
+ylabel('Ocean temp')
 %subplot(5,1,5)
 %plot(t,param(3).*insol,'-')
 %set(gca,'xdir','reverse')
