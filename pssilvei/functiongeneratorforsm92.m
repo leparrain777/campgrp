@@ -1,7 +1,4 @@
 
-
-timescale=100;
-
 sensitivityhighlatsurfacetempone= 18; %18 only
 %setting the sensitivity to high latitude surface temp constant one aka b
 b = sensitivityhighlatsurfacetempone ;
@@ -99,7 +96,7 @@ thetanot = equilibriumdeepoceantemperature;
 
 %look up
 equilibriumicemass = presentvalueglobalicemass;
-psinot = equilibriumicemass; 
+
 %look up
 equilibriumhighlatradiation = 452;
 Rnot = equilibriumhighlatradiation;
@@ -140,6 +137,10 @@ alphafour = rateoficedestruction;
 Istar = presentvalueglobalicemass;
 %make Istar a short name for the present value of global ice mass
 
+gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
+%gammanot = gammatwo * psinot; %= gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
+
+psinot = gammanot/gammatwo; 
 
 psiprime = psi - psinot;
 %make psi equal to the baseline value plus the drifting value
@@ -175,8 +176,7 @@ Dnot = epsilonone / epsilontwo * H; %basically 1/3 H by paper
 
 %Rprime = R - Rnot;
 
-gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
-%??? = gammatwo * phinot = gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
+
 
 C = -alphafour * psi / (H * n); %C = matlabFunction(piecewise(D < Z | D < Dnot, 0, D > Z & D > Dnot, -alphafour * psi / (H * n)));
 %computes the value of C from other items that should be given in the
@@ -208,4 +208,3 @@ equation14 = gammanot - gammatwo * psi - gammathree * thetaprime + omegatheta;
 %matlabFunction(su(equation14))
 %creating a version of equation 14 using pieces of equations that we have
 %already written.
-

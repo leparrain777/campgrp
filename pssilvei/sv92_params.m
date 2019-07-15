@@ -12,11 +12,12 @@ unforcedFlag = 0;
 paperFlag = 0;
 tunedFlag = 1;
 
-timescale = 100;
+
+timescale = 10000;
 
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
-tspan = [0:1e3/timescale:5e6/timescale];
+tspan = [0:.01*1e3/timescale:5e6/timescale];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %x0 = [-1.0 0.1 1.0];
