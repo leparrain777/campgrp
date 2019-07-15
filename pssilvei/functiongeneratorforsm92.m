@@ -71,7 +71,7 @@ zeta= 1; %1 or .5
 icedensity= 917; %917 given in paper
 %set ice density, seen as rho with an i subscript
 
-numberoficesheets= 3; %look up
+numberoficesheets= 2; % 2 in paper
 %set number of ice sheets to consider 
 
 stochasticforcingofatmosphericcarbondioxideconcentration = 0; %0 in the paper
@@ -88,7 +88,8 @@ format long e
 %multiplier
 
 equilibriumatmosphericcarbondioxideconcentration = munotstar;
-munot = equilibriumatmosphericcarbondioxideconcentration;
+%munot = equilibriumatmosphericcarbondioxideconcentration;
+munot = 526.410275; % no clue why but this is about the exact break point for realistic behavior
 
 %look up
 equilibriumdeepoceantemperature = thetanotstar;
