@@ -20,6 +20,7 @@ tic
 
 %options = odeset('Events',@sm91_co2_events);
 options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-3);
+%options=odeset('RelTol',1e-3);
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
