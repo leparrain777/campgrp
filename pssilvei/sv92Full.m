@@ -23,7 +23,7 @@ r = 1.3;
 s = 0.6;
 
 % Insolation:
-Rprime = 30*interp1(insolT,insol,t,'spline');
+Rprime = 25*interp1(insolT,insol,t,'spline');
 
 % Stochastic Terms:
 %Wx = interp1(Rt,Rx,t,'pchip');
@@ -44,11 +44,15 @@ muprime = x(3);
 thetaprime = x(4);
 
 
+maxslope = -.5e15;
+
 functiongeneratorforsm92
 if psi<=0
     psideriv = max(0,equation11);
-else
+elseif psi>maxslope
     psideriv = equation11;
+else
+    psideriv = max(equation11,maxslope);
 end    
 Dderiv = equation12;
 muprimederiv = equation13;
