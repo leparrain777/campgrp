@@ -49,10 +49,8 @@ maxslope = -.5e15;
 functiongeneratorforsm92
 if psi<=0
     psideriv = max(0,equation11);
-elseif psi>maxslope
-    psideriv = equation11;
 else
-    psideriv = max(equation11,maxslope);
+    psideriv = max(equation11,-psi);
 end    
 Dderiv = equation12;
 muprimederiv = equation13;
