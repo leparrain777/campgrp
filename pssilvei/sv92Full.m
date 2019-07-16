@@ -23,7 +23,7 @@ r = 1.3;
 s = 0.6;
 
 % Insolation:
-standarddeviationmultiplier = 0;
+standarddeviationmultiplier = 25;
 Rprime = standarddeviationmultiplier*interp1(insolT,insol,t,'spline');
 
 % Stochastic Terms:
@@ -49,7 +49,7 @@ functiongeneratorforsm92
 
 
 if psi<=0
-    psideriv = max(1e3,equation11);
+    psideriv = max(0,equation11);
 else
     psideriv = max(equation11,-1e5*psi);
 end    
