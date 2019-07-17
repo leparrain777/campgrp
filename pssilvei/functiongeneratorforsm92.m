@@ -89,7 +89,7 @@ format long e
 
 equilibriumatmosphericcarbondioxideconcentration = munotstar;
 %munot = equilibriumatmosphericcarbondioxideconcentration;
-munot = 526.410275; % no clue why but this is about the exact break point for realistic behavior
+munot = 253; % no clue why but this is about the exact break point for realistic behavior 526.410275
 
 %look up
 equilibriumdeepoceantemperature = thetanotstar;
