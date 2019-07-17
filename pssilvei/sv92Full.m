@@ -10,7 +10,7 @@
 
 %need co2events and tectonic
 
-function xprime = sm92(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale);
+function xprime = sm92(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale,massscale,distancescale,co2scale,tempscale);
 
 p = param(1);
 q = param(2);
@@ -51,7 +51,7 @@ functiongeneratorforsm92
 if psi<=0
     psideriv = max(0,equation11);
 else
-    psideriv = max(equation11,-1e5*psi);
+    psideriv = equation11;
 end    
 Dderiv = equation12;
 muprimederiv = equation13;

@@ -24,13 +24,13 @@ options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not us
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale),tspan,x0,options);
+[t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale,massscale,distancescale,co2scale,tempscale),tspan,x0,options);
 
 % Re-dimensionalizing the results
-%xprime(:,1) = xprime(:,1).*2.0;
-%xprime(:,2) = xprime(:,2).*52.5;
-%xprime(:,3) = xprime(:,3).*0.9;
-%xprime(:,4) = xprime(:,4).*1.0;
+xprime(:,1) = xprime(:,1).*massscale;
+xprime(:,2) = xprime(:,2).*distancescale;
+xprime(:,3) = xprime(:,3).*co2scale;
+xprime(:,4) = xprime(:,4).*tempscale;
 
 %ye(:,1) = ye(:,1).*2.0;
 %ye(:,2) = ye(:,2).*52.5;
@@ -76,7 +76,7 @@ cutoff = 5e4;
 
 figure(1)
 clf
-t = 10.*flipud(t);
+t = timescale.*flipud(t);
 subplot(5,1,1)
 plot(t,xprime(:,1),'-')
 %set(gca,'xdir','reverse')

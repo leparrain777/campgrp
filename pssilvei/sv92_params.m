@@ -13,7 +13,15 @@ paperFlag = 0;
 tunedFlag = 1;
 
 
-timescale = 1000;
+massscale = 1e19; %kg
+
+co2scale = 1e0; %ppm
+
+distancescale = 1e0; %meters
+
+tempscale = 1e0; % degrees Celcius
+
+timescale = 1000; %years
 
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.

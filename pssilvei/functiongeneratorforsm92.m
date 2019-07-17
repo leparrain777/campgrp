@@ -1,16 +1,20 @@
 
-sensitivityhighlatsurfacetempone= 18; %18 only
+
+
+
+
+%18 only
 %setting the sensitivity to high latitude surface temp constant one aka b
-b = sensitivityhighlatsurfacetempone ;
+b = 18 / tempscale ;
 %make b a short name for snsitivivityhighlatsurfacetempone
 
-sensitivityhighlatsurfacetemptwo= 4e-3; %4e-3 only
+%4e-3 only
 %setting the sensitivity to high latitude surface temp constant two aka c
-c = sensitivityhighlatsurfacetemptwo ;
+c = 4e-3 * co2scale ;
 %make c a short name for snsitivivityhighlatsurfacetemptwo
 
 
-highlatradiationpresentvalue= 7;
+
 %the current value of high latitude radiation
 
 %externalforcingcarbondioxide=[1 2 3 4];
@@ -21,41 +25,41 @@ highlatradiationpresentvalue= 7;
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
 
-alphaone= timescale*15.4e15; %13.7e15 or 15.4e15
-alphatwo= timescale*9.4e15; %7.0e15 or 9.4e15
+alphaone= timescale*15.4e15 / massscale; %13.7e15 or 15.4e15
+alphatwo= timescale*9.4e15 / massscale; %7.0e15 or 9.4e15
 alphathree= timescale*1.0e-4; %1.0e-4
-rateoficedestruction= timescale*20; %20 or 0 aka alphafour
+alphafour= timescale*20 / distancescale; %20 or 0 aka alphafour
 %setting the rate of ice destruction
 %setting alpha rate constants
 
 bone= timescale*1.3e-4; %1.3e-4 or 0 
-btwo= timescale*1.1e-6; % 1.1e-6 or 0
-bthree= timescale*3.6e-8; % 0 or 3.6e-8
-bfour= timescale*5.6e-3; %0 or 5.6e-3
+btwo= timescale*1.1e-6 * co2scale; % 1.1e-6 or 0
+bthree= timescale*3.6e-8 * co2scale^2; % 0 or 3.6e-8
+bfour= timescale*5.6e-3 / co2scale * tempscale; %0 or 5.6e-3
 %setting b constants
 
-gammaone= timescale*1.9e-3; %1.9e-3 or 0
-gammatwo= timescale*1.2e-23; %0 or 1.2e-23
+gammaone= timescale*1.9e-3 / tempscale; %1.9e-3 or 0
+gammatwo= timescale*1.2e-23 / tempscale * massscale; %0 or 1.2e-23
 gammathree= timescale*2.5e-4; %0 or 2.5e-4
 %setting gamma rate constants
 
-kappaR= 1.1e-2; %.7e-2 or 1.1e-2 or 1.7e-2
-kappatheta= 4.4e-2; %3.3e-2 or 4.4e-2
+kappaR= 1.1e-2 / distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
+kappatheta= 4.4e-2 * tempscale; %3.3e-2 or 4.4e-2
 %setting kappa constants
 
-Kmu= 0;%2e-18; %2e-18 or possibly 0?
-Ktheta= 0;%4.8e-20; %4.8e-20 or possibly 0?
+Kmu= 0 * massscale / co2scale;%2e-18; %2e-18 or possibly 0?
+Ktheta= 0 * massscale / tempscale;%4.8e-20; %4.8e-20 or possibly 0?
 %setting K constants for pollard paper emulation
 
-munotstar= 253; %253 or 250 or 215
-thetanotstar= 5.2; %5.2 or 4.8
+munotstar= 253 / co2scale; %253 or 250 or 215
+thetanotstar= 5.2 / tempscale; %5.2 or 4.8
 %setting current atmosphere averages
 
-presentvalueglobalicemass= 3e19; %3e19 or 3.3e19
+Istar= 3e19 / massscale; %3e19 or 3.3e19
 %setting the present value of global ice mass
 
 
-Z= 4e2; %4e2 or 0 or 6.4e2
+Z= 4e2 / distancescale; %4e2 or 0 or 6.4e2
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
@@ -65,42 +69,41 @@ epsilontwo= timescale*1/(30e3); %1/(3e3) or 1/(30e3)
 epsilonone = epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
 %constant in the paper for epsilon one divided by epsilon two with value one third
 
-zeta= 1; %1 or .5
+zeta= 1 / nthroot(distancescale,2); %1 or .5
 %setting zeta constant
 
-icedensity= 917; %917 given in paper
+icedensity= 917 / massscale; %917 given in paper
 %set ice density, seen as rho with an i subscript
 
-numberoficesheets= 2; % 2 in paper
+n= 2; % 2 in paper
 %set number of ice sheets to consider 
 
-stochasticforcingofatmosphericcarbondioxideconcentration = 0; %0 in the paper
+omegamu = 0; %0 in the paper
 %set the forcing term for mu
 
-stochasticforcingofdeepoceantemperature = 0; %0 in the paper
+omegatheta = 0; %0 in the paper
 %set the forcing term for theta
 
-stochasticforcingofglobalicemass = 0; %0 in paper when not explicityly stated otherwise
+omegaI = 0; %0 in paper when not explicityly stated otherwise
 %set the forcing term for I/phi
 
 format long e
 %set our outputs to have some more decimals and a seperate magnitude
 %multiplier
 
-equilibriumatmosphericcarbondioxideconcentration = munotstar;
-%munot = equilibriumatmosphericcarbondioxideconcentration;
-munot = 253; % no clue why but this is about the exact break point for realistic behavior 526.410275
+
+munot = munotstar; % no clue why but this is about the exact break point for realistic behavior 526.410275
 
 %look up
-equilibriumdeepoceantemperature = thetanotstar;
-thetanot = equilibriumdeepoceantemperature;
+thetanot = thetanotstar;
+
 
 %look up
-equilibriumicemass = presentvalueglobalicemass;
+equilibriumicemass = Istar;
 
 %look up
-equilibriumhighlatradiation = 452;
-Rnot = equilibriumhighlatradiation;
+Rnotstar = 452;
+Rnot = Rnotstar;
 %look up
 %setting some placeholder values for testing to be replaced later
 
@@ -122,7 +125,7 @@ theta= thetanot + thetaprime;
 R = Rnot + Rprime;
 %make R a short name for high latitude radiation as of model time
 
-Rstar = highlatradiationpresentvalue;
+Rstar = 500; % NOTE: this is wrong, it is a parameter
 %make Rstar a short name for high latitude radiation present value
 
 %highlatradiation = insol*90;
@@ -132,11 +135,9 @@ Rstar = highlatradiationpresentvalue;
 %Rprime = highlatradiation - 452;
 %make Rprime equal to the baseline value minus the drifting value
 
-alphafour = rateoficedestruction;
+
 %make alphafour a short nam for the rate of ice destruction
 
-Istar = presentvalueglobalicemass;
-%make Istar a short name for the present value of global ice mass
 
 gammanot = gammaone - gammatwo * Istar - gammathree * thetanot;
 %gammanot = gammatwo * psinot; %= gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
@@ -153,24 +154,14 @@ psiprime = psi - psinot;
 alphanot = alphaone - alphatwo * tanh(c * munot) + kappatheta * thetanot + kappaR * (Rnot - Rstar) - alphathree * Istar;
 %computes the value of alphanot from other items that are given
 
-n = numberoficesheets;
-%makes n a short name for the number of ice sheets under consideration
+
 
 eone= epsilonone * nthroot(zeta^4/(icedensity * n),5);
 %computes the value of eone from other items that are given
 
-icesheetmeanthickness = nthroot(zeta^4 * psi / (n * icedensity),5);
-H = icesheetmeanthickness; 
+ H = nthroot(zeta^4 * psi / (n * icedensity),5);
 %setting the mean thickness of ice sheets, and creating a short name H
 
-omegamu = stochasticforcingofatmosphericcarbondioxideconcentration; %0 in the paper
-%set the forcing term for mu
-
-omegatheta = stochasticforcingofdeepoceantemperature; %0 in the paper
-%set the forcing term for theta
-
-omegaI = stochasticforcingofglobalicemass; %0 in paper when not explicityly stated otherwise
-%set the forcing term for I/phi
 
 Dnot = epsilonone / epsilontwo * H; %basically 1/3 H by paper
 % setting the threshold level of bedrock depression for ice calving
