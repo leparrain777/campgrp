@@ -23,7 +23,7 @@ r = 1.3;
 s = 0.6;
 
 % Insolation:
-standarddeviationmultiplier = 0;
+standarddeviationmultiplier = 25;
 Rprime = standarddeviationmultiplier*interp1(insolT,insol,t,'spline');
 
 % Stochastic Terms:

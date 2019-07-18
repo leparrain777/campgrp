@@ -113,6 +113,6 @@ Rz = -0.025 + 0.05.*rand(5001,1);
 Rw =  -0.025 + 0.05.*rand(5001,1);
 
 % Storing Data info
-fileName = sprintf('SM91_%s_%d_Model.txt',descr,runID);
+%fileName = sprintf('SM91_%s_%d_Model.txt',descr,runID);
 %fileName2 = sprintf('SM91_%s_%d_FullModel.txt',descr,runID);
-filePath = '/nfsbigdata1/campgrp/rjballes/ModelRuns/sm91/';
+%filePath = '/nfsbigdata1/campgrp/rjballes/ModelRuns/sm91/';

@@ -1,0 +1,22 @@
+%plotforsv92
+figure(1)
+clf
+subplot(5,1,1)
+plot(t,xprime(:,1),'-')
+%set(gca,'xdir','reverse')
+set(gca,'ydir','reverse')
+title(strcat('SV92',' Forced',' Rstar = 500'));
+ylabel('Ice mass')
+subplot(5,1,2)
+plot(t,xprime(:,2),'-')
+%set(gca,'xdir','reverse')
+set(gca,'ydir','reverse')
+ylabel('Bedrock depression')
+subplot(5,1,3)
+plot(t,-xprime(:,3),'-')
+%set(gca,'xdir','reverse')
+ylabel('CO2')
+subplot(5,1,4)
+plot(t,xprime(:,4),'-')
+%set(gca,'xdir','reverse')
+ylabel('Ocean temp')

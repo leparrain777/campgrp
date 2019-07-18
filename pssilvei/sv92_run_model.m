@@ -19,12 +19,12 @@ sv92_params
 tic
 
 %options = odeset('Events',@sm91_co2_events);
-options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
-%options=odeset('RelTol',1e-3);%Use this on dirac instead
+%options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
+options = odeset('RelTol',1e-4);%Use this on dirac instead
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale,massscale,distancescale,co2scale,tempscale),tspan,x0,options);
+[t,xprime] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale,massscale,distancescale,co2scale,tempscale),tspan,x0,options);
 
 % Re-dimensionalizing the results
 xprime(:,1) = xprime(:,1).*massscale;
@@ -40,21 +40,21 @@ xprime(:,4) = xprime(:,4).*tempscale;
 
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
 % to get the full solution for every value of t.
-x = [3,Inf];
-xfull = [3,Inf];
-
-for i = 1:size(t)
-   tectsol = sm91Tectonic(t(i));
-   x(1,i) = xprime(i,1);
-   x(2,i) = xprime(i,2);
-   x(3,i) = xprime(i,3);
-   x(4,i) = xprime(i,4);
-   
-   xfull(1,i) = xprime(i,1) + tectsol(1);
-   xfull(2,i) = xprime(i,2) + tectsol(2);
-   xfull(3,i) = xprime(i,3) + tectsol(3);
-   %xfull(4,i) = xprime(i,4) + tectsol(4);
-end
+% x = [3,Inf];
+% xfull = [3,Inf];
+% 
+% for i = 1:size(t)
+%    tectsol = sm91Tectonic(t(i));
+%    x(1,i) = xprime(i,1);
+%    x(2,i) = xprime(i,2);
+%    x(3,i) = xprime(i,3);
+%    x(4,i) = xprime(i,4);
+%    
+%    xfull(1,i) = xprime(i,1) + tectsol(1);
+%    xfull(2,i) = xprime(i,2) + tectsol(2);
+%    xfull(3,i) = xprime(i,3) + tectsol(3);
+%    %xfull(4,i) = xprime(i,4) + tectsol(4);
+% end
 
 % Separate out solutions.
 %t = tphys;
@@ -63,31 +63,29 @@ Mu = squeeze(x(2,:))';
 Theta = squeeze(x(3,:))';
 D = squeeze(x(4,:))';
 
-xfull = xfull';
-Data = [te ye;t I Mu Theta D];
+%xfull = xfull';
+%Data = [te ye;t I Mu Theta D];
 %Datafull = [t xfull];
 
 %storeData(Data,fileName,filePath,4);
 %storeData(Datafull,fileName2,filePath,4);
 
 toc
-
-cutoff = 5e4;
+t = timescale.*flipud(t);
 
 figure(1)
 clf
-t = timescale.*flipud(t);
 subplot(5,1,1)
 plot(t,xprime(:,1),'-')
 %set(gca,'xdir','reverse')
-title(strcat('SM91',descr,' (u=',num2str(param(3)),', p=',num2str(param(1)),')'));
+title(strcat('SV92','Unforced'));
 ylabel('Ice mass')
 subplot(5,1,2)
 plot(t,xprime(:,2),'-')
 %set(gca,'xdir','reverse')
 ylabel('Bedrock depression')
 subplot(5,1,3)
-plot(t,xprime(:,3),'-')
+plot(t,-xprime(:,3),'-')
 %set(gca,'xdir','reverse')
 ylabel('CO2')
 subplot(5,1,4)
