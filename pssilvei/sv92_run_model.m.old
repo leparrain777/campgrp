@@ -24,7 +24,7 @@ options = odeset('RelTol',1e-4);%Use this on dirac instead
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime] = ode45(@(t,x) sv92Full(t,x,params),tspan,x0,options);
+[t,xprime] = ode45(@(t,x) sv92Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,Rw,insolT,insol,timescale,massscale,distancescale,co2scale,tempscale),tspan,x0,options);
 
 % Re-dimensionalizing the results
 xprime(:,1) = xprime(:,1).*massscale;
