@@ -1,16 +1,13 @@
-%plotforsv92
 figure(1)
 clf
 subplot(5,1,1)
 plot(t,xprime(:,1),'-')
 %set(gca,'xdir','reverse')
-set(gca,'ydir','reverse')
-title(strcat('SV92',' Forced',' Rstar = 500'));
+title(strcat('SV92','Unforced'));
 ylabel('Ice mass')
 subplot(5,1,2)
 plot(t,xprime(:,2),'-')
 %set(gca,'xdir','reverse')
-set(gca,'ydir','reverse')
 ylabel('Bedrock depression')
 subplot(5,1,3)
 plot(t,-xprime(:,3),'-')

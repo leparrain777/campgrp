@@ -1,5 +1,5 @@
 % This is the paramters file for running Saltzman and Maasch's 1991 Model
-
+function params = sv92_params(override)
 % General Flags and runID
 runID = 77;
 
@@ -13,26 +13,26 @@ paperFlag = 0;
 tunedFlag = 1;
 
 
-massscale = 1e19; %kg
+params.massscale = 1e19; %kg
 
-co2scale = 1e0; %ppm
+params.co2scale = 1e0; %ppm
 
-distancescale = 1e0; %meters
+params.distancescale = 1e0; %meters
 
-tempscale = 1e0; % degrees Celcius
+params.tempscale = 1e0; % degrees Celcius
 
-timescale = 1000; %years
+params.timescale = 1000; %years
 
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
-tspan = [0:1*1e3/timescale:5e6/timescale];
+params.tspan = [0:1*1e3/params.timescale:5e6/params.timescale];
 
 
 
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
-%x0 = [-1.0 0.1 1.0];
-x0 = [.001 .001 .001 .001];
+%params.x0 = [-1.0 0.1 1.0];
+params.x0 = [.001 .001 .001 .001];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:
@@ -60,7 +60,7 @@ if Laskarflag
    [insolT,~,~,~,insol] = readLaskarAstronomical(0,5000);
 
    %insolT = insolT./10;
-   params.insolT = [0:1000/timescale:5e6/timescale];
+   params.insolT = [0:1000/params.timescale:5e6/params.timescale];
 
    params.insol = (insol - mean(insol))/(std(insol));
    params.insol = params.insol(end:-1:1);
@@ -88,7 +88,7 @@ elseif solsticeFlag
 
 elseif unforcedFlag
    param = [1.4 2.5 0.9 1.0 0 0.2 0.5];
-   x0 = [0.001 0.001 0.001];
+   params.x0 = [0.001 0.001 0.001];
    
    descr = 'unforced';
    % Insolation manipulation (normalization)
@@ -103,12 +103,12 @@ end %if
 
 %18 only
 %setting the sensitivity to high latitude surface temp constant one aka b
-params.b = 18 / tempscale ;
+params.b = 18 / params.tempscale ;
 %make b a short name for snsitivivityhighlatsurfacetempone
 
 %4e-3 only
 %setting the sensitivity to high latitude surface temp constant two aka c
-params.c = 4e-3 * co2scale ;
+params.c = 4e-3 * params.co2scale ;
 %make c a short name for snsitivivityhighlatsurfacetemptwo
 
 
@@ -123,54 +123,54 @@ params.c = 4e-3 * co2scale ;
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
 
-params.alphaone= timescale*15.4e15 / massscale; %13.7e15 or 15.4e15
-params.alphatwo= timescale*9.4e15 / massscale; %7.0e15 or 9.4e15
-params.alphathree= timescale*1.0e-4; %1.0e-4
-params.alphafour= timescale*20 / distancescale; %20 or 0 aka alphafour
+params.alphaone= params.timescale*15.4e15 / params.massscale; %13.7e15 or 15.4e15
+params.alphatwo= params.timescale*9.4e15 / params.massscale; %7.0e15 or 9.4e15
+params.alphathree= params.timescale*1.0e-4; %1.0e-4
+params.alphafour= params.timescale*20 / params.distancescale; %20 or 0 aka alphafour
 %setting the rate of ice destruction
 %setting alpha rate constants
 
-params.bone= timescale*1.3e-4; %1.3e-4 or 0 
-params.btwo= timescale*1.1e-6 * co2scale; % 1.1e-6 or 0
-params.bthree= timescale*3.6e-8 * co2scale^2; % 0 or 3.6e-8
-params.bfour= timescale*5.6e-3 / co2scale * tempscale; %0 or 5.6e-3
+params.bone= params.timescale*1.3e-4; %1.3e-4 or 0 
+params.btwo= params.timescale*1.1e-6 * params.co2scale; % 1.1e-6 or 0
+params.bthree= params.timescale*3.6e-8 * params.co2scale^2; % 0 or 3.6e-8
+params.bfour= params.timescale*5.6e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
 %setting b constants
 
-params.gammaone= timescale*1.9e-3 / tempscale; %1.9e-3 or 0
-params.gammatwo= timescale*1.2e-23 / tempscale * massscale; %0 or 1.2e-23
-params.gammathree= timescale*2.5e-4; %0 or 2.5e-4
+params.gammaone= params.timescale*1.9e-3 / params.tempscale; %1.9e-3 or 0
+params.gammatwo= params.timescale*1.2e-23 / params.tempscale * params.massscale; %0 or 1.2e-23
+params.gammathree= params.timescale*2.5e-4; %0 or 2.5e-4
 %setting gamma rate constants
 
-params.kappaR= 1.1e-2 / distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
-params.kappatheta= 4.4e-2 * tempscale; %3.3e-2 or 4.4e-2
+params.kappaR= 1.1e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
+params.kappatheta= 4.4e-2 * params.tempscale; %3.3e-2 or 4.4e-2
 %setting kappa constants
 
-params.Kmu= 0 * massscale / co2scale;%2e-18; %2e-18 or possibly 0?
-params.Ktheta= 0 * massscale / tempscale;%4.8e-20; %4.8e-20 or possibly 0?
+params.Kmu= 0 * params.massscale / params.co2scale;%2e-18; %2e-18 or possibly 0?
+params.Ktheta= 0 * params.massscale / params.tempscale;%4.8e-20; %4.8e-20 or possibly 0?
 %setting K constants for pollard paper emulation
 
-params.munotstar= 253 / co2scale; %253 or 250 or 215
-params.thetanotstar= 5.2 / tempscale; %5.2 or 4.8
+params.munotstar= 253 / params.co2scale; %253 or 250 or 215
+params.thetanotstar= 5.2 / params.tempscale; %5.2 or 4.8
 %setting current atmosphere averages
 
-params.Istar= 3e19 / massscale; %3e19 or 3.3e19
+params.Istar= 3e19 / params.massscale; %3e19 or 3.3e19
 %setting the present value of global ice mass
 
 
-params.Z= 4e2 / distancescale; %4e2 or 0 or 6.4e2
+params.Z= 4e2 / params.distancescale; %4e2 or 0 or 6.4e2
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
-params.epsilontwo= timescale*1/(30e3); %1/(3e3) or 1/(30e3)
+params.epsilontwo= params.timescale*1/(30e3); %1/(3e3) or 1/(30e3)
 %setting epsilon 2. It is often stated by its inverse in the paper.
 
 params.epsilonone = params.epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
 %constant in the paper for epsilon one divided by epsilon two with value one third
 
-params.zeta= 1 / nthroot(distancescale,2); %1 or .5
+params.zeta= 1 / nthroot(params.distancescale,2); %1 or .5
 %setting zeta constant
 
-params.icedensity= 917 / massscale; %917 given in paper
+params.icedensity= 917 / params.massscale; %917 given in paper
 %set ice density, seen as rho with an i subscript
 
 params.n= 2; % 2 in paper
@@ -194,7 +194,11 @@ params.munot = params.munotstar; %
 %look up
 params.thetanot = params.thetanotstar;
 
-params.Rstar = 500; % NOTE: this is wrong, it is a parameter
+if nargin > 0
+    params.Rstar = override; % NOTE: this is wrong, it is a parameter
+else
+    params.Rstar = 500;
+end
 %make Rstar a short name for high latitude radiation present value
 %look up
 
@@ -218,6 +222,7 @@ params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * para
 % Insolation:
 params.standarddeviationmultiplier = 25;
 params.Rprime = interp1(params.insolT,params.insol,'spline','pp');
+end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up the changing parameters:
 % Note: These changing parameters depend on the fact that the model runs for 5 million years.
