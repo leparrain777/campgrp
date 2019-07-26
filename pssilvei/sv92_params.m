@@ -220,7 +220,7 @@ params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * para
 %computes the value of eone from other items that are given
 
 % Insolation:
-params.standarddeviationmultiplier = 25;
+params.standarddeviationmultiplier = 18;
 params.Rprime = interp1(params.insolT,params.insol,'spline','pp');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
