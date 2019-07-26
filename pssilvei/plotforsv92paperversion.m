@@ -5,7 +5,7 @@ subplot(5,1,1)
 t = ans(:,5);
 plot(t,ans(:,1),'-')
 %set(gca,'xdir','reverse')
-title(strcat('SV92','Unforced'));
+title(strcat('SV92',' '));
 ylabel('Ice mass')
 subplot(5,1,2)
 plot(t,ans(:,2),'-')

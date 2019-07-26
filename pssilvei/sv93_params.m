@@ -170,7 +170,7 @@ params.icedensity= 917 / params.massscale;
 
 params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * 2),5);
 
-params.standarddeviationmultiplier = 25;
+params.standarddeviationmultiplier = 20;
 
 params.Rprime = interp1(params.insolT,params.insol,'spline','pp');
 
