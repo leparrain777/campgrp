@@ -101,8 +101,12 @@ if psi<=0
     psideriv = max(0,equation17);
 else
     psideriv = equation17;
-end    
-Dderiv = equation18;
+end 
+if D<=0
+    Dderiv = max(0,equation18);
+else
+    Dderiv = equation18;
+end
 xideriv = equation19;
 upsilonderiv = equation20;
 
