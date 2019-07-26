@@ -11,8 +11,8 @@ addpath(genpath('/nfsbigdata1/campgrp/Lib/Matlab'));
 addpath(genpath('/nfsbigdata1/campgrp/Data'));
 addpath(genpath('C:\Users\Perrin\Documents\Gitprojects\campgrp\Data'));
 addpath(genpath('C:\Users\perri\Documents\Gitprojects\campgrp\Data'));
-addpath(genpath('C:\Users\Perrin\Documents\Gitprojects\campgrp\pssilvei\rjballes\Library\sm91\IntegratedParamSearch\'));
-addpath(genpath('C:\Users\perri\Documents\Gitprojects\campgrp\pssilvei\rjballes\Library\sm91\IntegratedParamSearch\'));
+% addpath(genpath('C:\Users\Perrin\Documents\Gitprojects\campgrp\pssilvei\rjballes\Library\sm91\IntegratedParamSearch\'));
+% addpath(genpath('C:\Users\perri\Documents\Gitprojects\campgrp\pssilvei\rjballes\Library\sm91\IntegratedParamSearch\'));
 
 
 %addpath(genpath('/nfsbigdata1/campgrp/brknight/Lib/Matlab'));
