@@ -85,7 +85,6 @@ Theta = squeeze(xprime(4,:))';
 t = params.timescale.*flipud(t);
 outputs = [I,D,Mu,Theta,t];
 end
-
 % %figure(1)
 % %clf
 % subplot(5,1,1)

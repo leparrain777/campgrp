@@ -220,8 +220,9 @@ params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * para
 %computes the value of eone from other items that are given
 
 % Insolation:
-params.standarddeviationmultiplier = 18;
-params.Rprime = interp1(params.insolT,params.insol,'spline','pp');
+params.standarddeviationmultiplier = 1;
+load('july60northinsolationraw.mat', 'unnamed')
+params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up the changing parameters:

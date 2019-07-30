@@ -122,7 +122,7 @@ params.alphathree = 1e-4 * params.timescale;
 
 params.alphafour = 20e0 * params.timescale / params.distancescale;
 
-params.Znot = 4.75e2 / params.distancescale;
+params.Znot = 6.4e2 / params.distancescale; %4.75e2 in paper
 
 params.B = 11e0 / params.tempscale;
 
@@ -170,9 +170,9 @@ params.icedensity= 917 / params.massscale;
 
 params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * 2),5);
 
-params.standarddeviationmultiplier = 20;
-
-params.Rprime = interp1(params.insolT,params.insol,'spline','pp');
+params.standarddeviationmultiplier = 1;
+load('july60northinsolationraw.mat', 'unnamed')
+params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
 
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
