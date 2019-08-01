@@ -122,7 +122,7 @@ params.alphathree = 1e-4 * params.timescale;
 
 params.alphafour = 20e0 * params.timescale / params.distancescale;
 
-params.Znot = 6.4e2 / params.distancescale; %4.75e2 in paper
+params.Znot = 4.75e2 / params.distancescale; %4.75e2 in paper
 
 params.B = 11e0 / params.tempscale;
 
