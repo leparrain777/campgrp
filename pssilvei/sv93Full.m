@@ -34,67 +34,35 @@ function xprime = sv93(t,x,params);
 % Wz = 0;
 % Ww = 0;
 
-
-
-% Set up of the model
+if params.mutildestar == 0
 psi = x(1);
 D = x(2);
 xi = x(3);
 upsilon = x(4);
-
 mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;
-
 Z = params.Znot + params.Jpsi * psi; %? + params.Jtheta * (params.theta - params.thetastar);
-
 Rprime = params.standarddeviationmultiplier * ppval(params.Rprime,t);
-
 R = params.Rnot + Rprime;
-
-H = nthroot(params.zeta^4 * psi / (2 * params.icedensity),5);
-
+H = nthroot(params.zeta^4 * psi / 2 /  params.icedensity,5);
 Dnot = 1/3 * H; 
-
-C = -params.alphafour * psi / (H * 2); 
-
+C = -params.alphafour * psi/2 / H; 
 Cflag = double((D > Z) & (D > Dnot)); 
-
-alphanot = params.alphanotstar - params.phitwo * params.B * (mutilde - params.mutildestar)/ params.mutildestar;
-
+alphanot = params.alphanotstar;
 kappamu =@(x) params.B / x;
-
 bone =@(x) 2 * params.betathree * x - 3 * params.betafour * x^2 - params.betatwo;
-
 btwo =@(x) 3 * params.betafour * x - params.betathree;
-
-
 
 
 omegapsi = params.omegapsi;
 omegamu = params.omegamu;
 omegatheta = params.omegatheta;
 
+C*Cflag
 
-
-equation17 = alphanot - params.phitwo * (kappamu(mutilde) * xi + params.kappatheta * upsilon + params.kappaR * Rprime) - params.alphathree * psi + 2 * C*Cflag + omegapsi;
-%matlabFunction(su(equation11))
-%creating a version of equation 11 using pieces of equations that we have
-%already written.
-
+equation17 = alphanot - params.alphathree * psi + 2 * C*Cflag + omegapsi;
 equation18 = params.eone * nthroot(psi,5) - params.epsilontwo * D;
-%matlabFunction(su(equation12))
-%creating a version of equation 12 using pieces of equations that we have
-%already written.
-
-equation19 = (bone(mutilde) - btwo(mutilde) * xi - params.betafour * xi^2) * xi - params.betafive * upsilon + omegamu;
-%matlabFunction(su(equation13))
-%creating a version of equation 13 using pieces of equations that we have
-%already written.
-
-equation20 = params.gammanot - params.gammatwo * psi - params.gammathree * upsilon + omegatheta;
-%matlabFunction(su(equation14))
-%creating a version of equation 14 using pieces of equations that we have
-%already written.
-
+equation19 = 0;
+equation20 = 0;
 
 
 if psi<=0
@@ -119,5 +87,62 @@ xprime = [
    xideriv ;
    upsilonderiv
 ];
+%disp(xprime)
+else
+   
 
+% Set up of the model
+psi = x(1);
+D = x(2);
+xi = x(3);
+upsilon = x(4);
+mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;
+Z = params.Znot + params.Jpsi * psi; %? + params.Jtheta * (params.theta - params.thetastar);
+Rprime = params.standarddeviationmultiplier * ppval(params.Rprime,t);
+R = params.Rnot + Rprime;
+H = nthroot(params.zeta^4 * psi / (2 * params.icedensity),5);
+Dnot = 1/3 * H; 
+C = -params.alphafour * psi / (H * 2); 
+Cflag = double((D > Z) & (D > Dnot)); 
+alphanot = params.alphanotstar - params.phitwo * params.B * (mutilde - params.mutildestar)/ params.mutildestar;
+kappamu =@(x) params.B / x;
+bone =@(x) 2 * params.betathree * x - 3 * params.betafour * x^2 - params.betatwo;
+btwo =@(x) 3 * params.betafour * x - params.betathree;
+
+
+omegapsi = params.omegapsi;
+omegamu = params.omegamu;
+omegatheta = params.omegatheta;
+
+
+equation17 = alphanot - params.phitwo * (kappamu(mutilde) * xi + params.kappatheta * upsilon + params.kappaR * Rprime) - params.alphathree * psi + 2 * C*Cflag + omegapsi;
+equation18 = params.eone * nthroot(psi,5) - params.epsilontwo * D;
+equation19 = (bone(mutilde) - btwo(mutilde) * xi - params.betafour * xi^2) * xi - params.betafive * upsilon + omegamu;
+equation20 = params.gammanot - params.gammatwo * psi - params.gammathree * upsilon + omegatheta;
+
+
+if psi<=0
+    psideriv = max(0,equation17);
+else
+    psideriv = equation17;
+end 
+if D<=0
+    Dderiv = max(0,equation18);
+else
+    Dderiv = equation18;
+end
+xideriv = equation19;
+upsilonderiv = equation20;
+
+
+
+
+xprime = [
+   psideriv ;
+   Dderiv ;
+   xideriv ;
+   upsilonderiv
+];
+%disp(xprime)
+end
 end

@@ -1,2 +1,2 @@
-sv93_run_model
+sv93_run_model(1);
 plotforsv93paperversion
