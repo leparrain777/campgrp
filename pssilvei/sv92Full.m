@@ -78,7 +78,6 @@ psiprime = psi - params.psinot;
 %syms Z; Z = Znotstar + JI * psi+ Znotstar * Jtheta * (theta - thetastar);
 
 
-
  H = nthroot(params.zeta^4 * psi / (params.n * params.icedensity),5);
 %setting the mean thickness of ice sheets, and creating a short name H
 
@@ -87,8 +86,6 @@ Dnot = 1/3 * H; % epsilonone / epsilontwo basically 1/3 H by paper
 % setting the threshold level of bedrock depression for ice calving
 
 %Rprime = R - Rnot;
-
-
 
 C = -params.alphafour * psi / (H * params.n); %C = matlabFunction(piecewise(D < Z | D < Dnot, 0, D > Z & D > Dnot, -alphafour * psi / (H * n)));
 %computes the value of C from other items that should be given in the
@@ -100,7 +97,6 @@ Cflag = double((D > params.Z) & (D > Dnot)); %this is our alternative to a piece
 omegaI = params.omegaI;
 omegamu = params.omegamu;
 omegatheta = params.omegatheta;
-
 
 
 equation11 = params.alphanot - params.alphatwo * (params.c * muprime + params.kappatheta * thetaprime + params.kappaR * Rprime) - params.alphathree * psi + params.n * C*Cflag + omegaI;
@@ -143,5 +139,6 @@ xprime = [
    muprimederiv ;
    thetaprimederiv
 ];
+%disp(xprime)
 
 end

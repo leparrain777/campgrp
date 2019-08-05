@@ -1,8 +1,11 @@
 % This is the paramters file for running Saltzman and Maasch's 1991 Model
-function params = sv92_params(override)
+function params = sv92_params(varargin)
 % General Flags and runID
+disp(varargin{1})
 runID = 77;
-
+if nargin < 1
+    varargin{1} = 0;
+end
 % Flags to control which insolation forcing to use
 Laskarflag = 1;
 integInsolflag = 0;
@@ -122,52 +125,141 @@ params.c = 4e-3 * params.co2scale ;
 %externalforcingoceantemp=[1 2 3 4];
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
+if varargin{1} == 1
+    params.alphaone= params.timescale*13.7e15 / params.massscale; %13.7e15 or 15.4e15
+elseif varargin{1} == 90
+    params.alphaone= params.timescale*17e15 / params.massscale; %13.7e15 or 15.4e15
+elseif varargin{1} == 91
+    params.alphaone= params.timescale*14e15 / params.massscale; %13.7e15 or 15.4e15
+else 
+    params.alphaone= params.timescale*15.4e15 / params.massscale; %13.7e15 or 15.4e15
+end
 
-params.alphaone= params.timescale*15.4e15 / params.massscale; %13.7e15 or 15.4e15
-params.alphatwo= params.timescale*9.4e15 / params.massscale; %7.0e15 or 9.4e15
+if varargin{1} == 1
+    params.alphatwo= params.timescale*7e15 / params.massscale; %7.0e15 or 9.4e15
+elseif varargin{1} == 90
+    params.alphatwo= params.timescale*13e15 / params.massscale; %7.0e15 or 9.4e15
+else
+    params.alphatwo= params.timescale*9.4e15 / params.massscale; %7.0e15 or 9.4e15
+end
+
+
 params.alphathree= params.timescale*1.0e-4; %1.0e-4
-params.alphafour= params.timescale*20 / params.distancescale; %20 or 0 aka alphafour
+if varargin{1} == 90||91||21||22||23
+    params.alphafour= params.timescale*0 / params.distancescale; %20 or 0 aka alphafour
+else
+    params.alphafour= params.timescale*20 / params.distancescale; %20 or 0 aka alphafour
+end
 %setting the rate of ice destruction
 %setting alpha rate constants
+if varargin{1} == 90||1
+    params.bone= params.timescale*0e-4; %1.3e-4 or 0 
+else
+    params.bone= params.timescale*1.3e-4; %1.3e-4 or 0 
+end
 
-params.bone= params.timescale*1.3e-4; %1.3e-4 or 0 
-params.btwo= params.timescale*1.1e-6 * params.co2scale; % 1.1e-6 or 0
-params.bthree= params.timescale*3.6e-8 * params.co2scale^2; % 0 or 3.6e-8
-params.bfour= params.timescale*5.6e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
+if varargin{1} == 90||1
+    params.btwo= params.timescale*0e-6 * params.co2scale; % 1.1e-6 or 0
+else
+    params.btwo= params.timescale*1.1e-6 * params.co2scale; % 1.1e-6 or 0
+end
+if varargin{1} == 90||1
+    params.bthree= params.timescale*0e-8 * params.co2scale^2; % 0 or 3.6e-8
+else
+    params.bthree= params.timescale*3.6e-8 * params.co2scale^2; % 0 or 3.6e-8
+end
+if varargin{1} == 90||1
+    params.bfour= params.timescale*0e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
+else
+    params.bfour= params.timescale*5.6e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
+end
 %setting b constants
+if varargin{1} == 1
+    params.gammaone= params.timescale*0e-3 / params.tempscale; %1.9e-3 or 0
+    params.gammatwo= params.timescale*0e-23 / params.tempscale * params.massscale; %0 or 1.2e-23
+    params.gammathree= params.timescale*0e-4; %0 or 2.5e-4
+else
+    params.gammaone= params.timescale*1.9e-3 / params.tempscale; %1.9e-3 or 0
+    params.gammatwo= params.timescale*1.2e-23 / params.tempscale * params.massscale; %0 or 1.2e-23
+    params.gammathree= params.timescale*2.5e-4; %0 or 2.5e-4
+end
 
-params.gammaone= params.timescale*1.9e-3 / params.tempscale; %1.9e-3 or 0
-params.gammatwo= params.timescale*1.2e-23 / params.tempscale * params.massscale; %0 or 1.2e-23
-params.gammathree= params.timescale*2.5e-4; %0 or 2.5e-4
 %setting gamma rate constants
 
-params.kappaR= 1.1e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
-params.kappatheta= 4.4e-2 * params.tempscale; %3.3e-2 or 4.4e-2
+if varargin{1} == 91
+    params.kappaR= 1.7e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
+elseif varargin{1} == 1
+    params.kappaR= .7e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
+else
+    params.kappaR= 1.1e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
+end
+
+if varargin{1} == 90
+    params.kappatheta= 3.3e-2 * params.tempscale; %3.3e-2 or 4.4e-2
+else
+    params.kappatheta= 4.4e-2 * params.tempscale; %3.3e-2 or 4.4e-2
+end
 %setting kappa constants
 
-params.Kmu= 0 * params.massscale / params.co2scale;%2e-18; %2e-18 or possibly 0?
-params.Ktheta= 0 * params.massscale / params.tempscale;%4.8e-20; %4.8e-20 or possibly 0?
+if varargin{1} == 1
+    params.Kmu= 2e-18 * params.massscale / params.co2scale;
+    params.Ktheta= 4.8e-20 * params.massscale / params.tempscale;
+else
+    params.Kmu= 0 * params.massscale / params.co2scale;
+    params.Ktheta= 0 * params.massscale / params.tempscale;
+end
 %setting K constants for pollard paper emulation
+if varargin{1} == 1
+    params.munotstar= 250 / params.co2scale; %253 or 250 or 215
+elseif varargin{1} == 90
+    params.munotstar= 215 / params.co2scale; %253 or 250 or 215
+else
+    params.munotstar= 253 / params.co2scale; %253 or 250 or 215
+end
 
-params.munotstar= 253 / params.co2scale; %253 or 250 or 215
-params.thetanotstar= 5.2 / params.tempscale; %5.2 or 4.8
+if varargin{1} == 90
+    params.thetanotstar= 4.8 / params.tempscale; %5.2 or 4.8
+else
+    params.thetanotstar= 5.2 / params.tempscale; %5.2 or 4.8
+end
 %setting current atmosphere averages
-
-params.Istar= 3e19 / params.massscale; %3e19 or 3.3e19
+if varargin{1} == 90||91
+    params.Istar= 3.3e19 / params.massscale; %3e19 or 3.3e19
+else
+    params.Istar= 3e19 / params.massscale; %3e19 or 3.3e19
+end
 %setting the present value of global ice mass
 
-
-params.Z= 4e2 / params.distancescale; %4e2 or 0 or 6.4e2
+if varargin{1} == 90||91||21||22||23
+    params.Z= 0e2 / params.distancescale; %4e2 or 0 or 6.4e2
+elseif varargin{1} == 1||31
+    params.Z= 4e2 / params.distancescale; %4e2 or 0 or 6.4e2
+else 
+    params.Z= 6.4e2 / params.distancescale; %4e2 or 0 or 6.4e2
+end
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
-params.epsilontwo= params.timescale*1/(30e3); %1/(3e3) or 1/(30e3)
+if varargin{1} == 90||91
+    params.epsilontwo= 0; %1/(3e3) or 1/(30e3)
+elseif varargin{1} == 1||21||31
+    params.epsilontwo= params.timescale*1/(30e3); %1/(3e3) or 1/(30e3)
+else
+    params.epsilontwo= params.timescale*1/(3e3); %1/(3e3) or 1/(30e3)
+end
 %setting epsilon 2. It is often stated by its inverse in the paper.
 
 params.epsilonone = params.epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
 %constant in the paper for epsilon one divided by epsilon two with value one third
+if varargin{1} == 90||91
+    params.zeta= 0 ; %1 or .5
+elseif varargin{1} == 23
+    params.zeta= .5 / nthroot(params.distancescale,2); %1 or .5
+else
+    params.zeta= 1 / nthroot(params.distancescale,2); %1 or .5
+end
+disp(params.zeta)
 
-params.zeta= 1 / nthroot(params.distancescale,2); %1 or .5
 %setting zeta constant
 
 params.icedensity= 917 / params.massscale; %917 given in paper
@@ -194,11 +286,8 @@ params.munot = params.munotstar; %
 %look up
 params.thetanot = params.thetanotstar;
 
-if nargin > 0
-    params.Rstar = override; % NOTE: this is wrong, it is a parameter
-else
-    params.Rstar = 500;
-end
+params.Rstar = 452;
+
 %make Rstar a short name for high latitude radiation present value
 %look up
 

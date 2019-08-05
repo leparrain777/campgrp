@@ -1,7 +1,7 @@
 % This is the paramters file for running Saltzman and Maasch's 1991 Model
-function params = sv93_params(casenumeral)
+function params = sv93_params(varargin)
 if nargin < 1
-    casenumeral = 0;
+    varargin{1} = 0;
 end
 % General Flags and runID
 runID = 77;
@@ -117,13 +117,13 @@ params.Jpsi = 2.77e-18 / params.distancescale * params.massscale;
 
 params.Jtheta = -1e0 / params.distancescale * params.tempscale;
 
-if casenumeral == 1
+if varargin{1} == 1
     params.alphanotstar = 2.0e15*params.timescale / params.massscale;
 else
     params.alphanotstar = 2.275e15*params.timescale / params.massscale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.phitwo = 8e14 / params.massscale * params.tempscale * params.timescale;
 else
     params.phitwo = 8e14 / params.massscale * params.tempscale * params.timescale;
@@ -133,18 +133,18 @@ params.alphathree = 1e-4 * params.timescale;
 
 params.alphafour = 20e0 * params.timescale / params.distancescale;
 
-if casenumeral == 1
+if varargin{1} == 1
     params.Znot = 3.0e2 / params.distancescale;
 else
     params.Znot = 4.75e2 / params.distancescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.B = 0e0 / params.tempscale;
 else
     params.B = 11e0 / params.tempscale;
 end
-if casenumeral == 1
+if varargin{1} == 1
     params.mutildestar = 0e2 / params.co2scale;
 else
     params.mutildestar = 2.53e2 / params.co2scale;
@@ -152,13 +152,13 @@ end
 
 params.kappamu = 0e-2 / params.tempscale * params.co2scale;
 
-if casenumeral == 1
+if varargin{1} == 1
     params.kappaR = 0.1e0 / params.tempscale / params.distancescale^2;
 else
     params.kappaR = 0.1e0 / params.tempscale / params.distancescale^2;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.kappatheta = 0e0; %unitless
 else
     params.kappatheta = .5e0; %unitless
@@ -170,49 +170,49 @@ params.epsilontwo = 1/(3.0e3) * params.timescale;
 
 params.zeta = 1.0e0 / nthroot(params.distancescale,2);
 
-if casenumeral == 1
+if varargin{1} == 1
     params.betatwo = 0e-3 * params.timescale;
 else
     params.betatwo = 6.12e-3 * params.timescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.betathree = 0e-5 * params.co2scale * params.timescale;
 else
     params.betathree = 2.6e-5 * params.co2scale * params.timescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.betafour = 0e-8 * params.co2scale^2 * params.timescale;
 else
     params.betafour = 3.6e-8 * params.co2scale^2 * params.timescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.betafive = 0e-3 / params.co2scale * params.tempscale * params.timescale;
 else
     params.betafive = 5.6e-3 / params.co2scale * params.tempscale * params.timescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.gammanot = 0e-4 / params.tempscale * params.timescale;
 else
     params.gammanot = 2.4e-4 / params.tempscale * params.timescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.gammatwo = 1.2e-23 / params.tempscale * params.massscale * params.timescale;
 else
     params.gammatwo = 1.2e-23 / params.tempscale * params.massscale * params.timescale;
 end
 
-if casenumeral ==  1
+if varargin{1} ==  1
     params.gammathree = 0e-4 * params.timescale;
 else
      params.gammathree = 2.5e-4 * params.timescale;
 end
 
-if casenumeral == 1
+if varargin{1} == 1
     params.mutildedot = (0 / 1e6) / params.co2scale * params.timescale;
 else
     params.mutildedot = (20.0 / 1e6) / params.co2scale * params.timescale;

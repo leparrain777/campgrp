@@ -4,7 +4,7 @@ clf
 subplot(5,1,1)
 t = ans(:,5);
 for i = 1:length(t)
-    cycleave(i) = mean(ans(max(1,i-500):i,6));
+    cycleave(i) = mean(ans(max(1,i-750):i,6));
 end
 plot(t,ans(:,1),'-')
 ylim([0 6.5e19])
