@@ -6,6 +6,7 @@ end
 % General Flags and runID
 runID = 77;
 
+format long e
 % Flags to control which insolation forcing to use
 Laskarflag = 1;
 integInsolflag = 0;

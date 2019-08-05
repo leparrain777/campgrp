@@ -49,8 +49,17 @@ xprime(:,4) = xprime(:,4).*params.tempscale;
 % x = [3,Inf];
 % xfull = [3,Inf];
 % 
+ cyclemark = [1:1:size(t)];
  for i = 1:size(t)
+
 %    tectsol = sm91Tectonic(t(i));
+    if i >= size(t)-1
+        cyclemark(i) = 0;
+    elseif xprime(i,1) - xprime(i+1,1) > 1*params.massscale
+     cyclemark(i) = 1;
+    else
+        cyclemark(i) = 0;
+    end
     x(1,i) = xprime(i,1);
     x(2,i) = xprime(i,2);
     x(3,i) = xprime(i,3);
@@ -78,7 +87,8 @@ Theta = squeeze(x(4,:))';
 
 %toc
 t = params.timescale.*flipud(t);
-outputs = [I,D,Mu,Theta,t];
+cyclemark = transpose(cyclemark);
+outputs = [I,D,Mu,Theta,t,cyclemark];
 end
 
 % %figure(1)

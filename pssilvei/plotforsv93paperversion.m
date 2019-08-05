@@ -3,6 +3,7 @@ figure(1)
 clf
 subplot(5,1,1)
 t = ans(:,5);
+cycleave = [1:1:length(t)];
 for i = 1:length(t)
     cycleave(i) = mean(ans(max(1,i-750):i,6));
 end
@@ -31,4 +32,4 @@ plot(t,cycleave,'-')
 %ylim([-1.25 1.25])
 %set(gca,'xdir','reverse')
 ylabel('Cycle marks')
-disp(1/cycleave(length(t)))
+disp(1/max(cycleave(500:end)))

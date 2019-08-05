@@ -145,30 +145,31 @@ end
 
 
 params.alphathree= params.timescale*1.0e-4; %1.0e-4
-if varargin{1} == 90||91||21||22||23
+
+if varargin{1} == 90|| varargin{1} ==91|| varargin{1} ==21|| varargin{1} ==22|| varargin{1} ==23
     params.alphafour= params.timescale*0 / params.distancescale; %20 or 0 aka alphafour
 else
     params.alphafour= params.timescale*20 / params.distancescale; %20 or 0 aka alphafour
 end
 %setting the rate of ice destruction
 %setting alpha rate constants
-if varargin{1} == 90||1
+if varargin{1} == 90|| varargin{1} ==1
     params.bone= params.timescale*0e-4; %1.3e-4 or 0 
 else
     params.bone= params.timescale*1.3e-4; %1.3e-4 or 0 
 end
 
-if varargin{1} == 90||1
+if varargin{1} == 90|| varargin{1} ==1
     params.btwo= params.timescale*0e-6 * params.co2scale; % 1.1e-6 or 0
 else
     params.btwo= params.timescale*1.1e-6 * params.co2scale; % 1.1e-6 or 0
 end
-if varargin{1} == 90||1
+if varargin{1} == 90|| varargin{1} ==1
     params.bthree= params.timescale*0e-8 * params.co2scale^2; % 0 or 3.6e-8
 else
     params.bthree= params.timescale*3.6e-8 * params.co2scale^2; % 0 or 3.6e-8
 end
-if varargin{1} == 90||1
+if varargin{1} == 90|| varargin{1} ==1
     params.bfour= params.timescale*0e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
 else
     params.bfour= params.timescale*5.6e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
@@ -223,16 +224,16 @@ else
     params.thetanotstar= 5.2 / params.tempscale; %5.2 or 4.8
 end
 %setting current atmosphere averages
-if varargin{1} == 90||91
+if varargin{1} == 90|| varargin{1} ==91
     params.Istar= 3.3e19 / params.massscale; %3e19 or 3.3e19
 else
     params.Istar= 3e19 / params.massscale; %3e19 or 3.3e19
 end
 %setting the present value of global ice mass
 
-if varargin{1} == 90||91||21||22||23
+if varargin{1} == 90|| varargin{1} ==91|| varargin{1} ==21|| varargin{1} ==22|| varargin{1} ==23
     params.Z= 0e2 / params.distancescale; %4e2 or 0 or 6.4e2
-elseif varargin{1} == 1||31
+elseif varargin{1} == 1|| varargin{1} ==31
     params.Z= 4e2 / params.distancescale; %4e2 or 0 or 6.4e2
 else 
     params.Z= 6.4e2 / params.distancescale; %4e2 or 0 or 6.4e2
@@ -240,9 +241,9 @@ end
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
-if varargin{1} == 90||91
+if varargin{1} == 90|| varargin{1} ==91
     params.epsilontwo= 0; %1/(3e3) or 1/(30e3)
-elseif varargin{1} == 1||21||31
+elseif varargin{1} == 1|| varargin{1} ==21|| varargin{1} ==31
     params.epsilontwo= params.timescale*1/(30e3); %1/(3e3) or 1/(30e3)
 else
     params.epsilontwo= params.timescale*1/(3e3); %1/(3e3) or 1/(30e3)
@@ -251,14 +252,15 @@ end
 
 params.epsilonone = params.epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
 %constant in the paper for epsilon one divided by epsilon two with value one third
-if varargin{1} == 90||91
+
+if varargin{1} == 90|| varargin{1} ==91
     params.zeta= 0 ; %1 or .5
 elseif varargin{1} == 23
     params.zeta= .5 / nthroot(params.distancescale,2); %1 or .5
 else
     params.zeta= 1 / nthroot(params.distancescale,2); %1 or .5
 end
-disp(params.zeta)
+
 
 %setting zeta constant
 
@@ -292,7 +294,7 @@ params.Rstar = 452;
 %look up
 
 params.Rnotstar = 452;
-params.Rnot = params.Rnotstar;
+params.Rnot = 4.771136307502507e+02;
 %look up
 %setting some placeholder values for testing to be replaced later
 params.gammanot = params.gammaone - params.gammatwo * params.Istar - params.gammathree * params.thetanot;

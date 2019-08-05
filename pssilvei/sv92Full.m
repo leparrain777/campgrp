@@ -78,7 +78,7 @@ psiprime = psi - params.psinot;
 %syms Z; Z = Znotstar + JI * psi+ Znotstar * Jtheta * (theta - thetastar);
 
 
- H = nthroot(params.zeta^4 * psi / (params.n * params.icedensity),5);
+H = nthroot(params.zeta^4 * psi / (params.n * params.icedensity),5);
 %setting the mean thickness of ice sheets, and creating a short name H
 
 
