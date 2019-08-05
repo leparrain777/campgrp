@@ -297,15 +297,16 @@ params.Rnotstar = 452;
 params.Rnot = 4.771136307502507e+02;
 %look up
 %setting some placeholder values for testing to be replaced later
-params.gammanot = params.gammaone - params.gammatwo * params.Istar - params.gammathree * params.thetanot;
+
 %gammanot = gammatwo * psinot; %= gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
 
-params.psinot = params.gammanot/params.gammatwo; 
+
 
 params.alphanot = params.alphaone - params.alphatwo * tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * (params.Rnot - params.Rstar) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
-
-
+params.psinot = params.alphanot/params.alphathree; 
+%params.gammanot = params.gammaone - params.gammatwo * params.Istar - params.gammathree * params.thetanot;
+params.gammanot = params.gammatwo * params.psinot;
 
 params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * params.n),5);
 %computes the value of eone from other items that are given

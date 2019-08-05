@@ -126,7 +126,11 @@ if psi<=0
 else
     psideriv = equation11;
 end    
-Dderiv = equation12;
+if D <= 0
+    Dderiv = max(0,equation12);
+else
+    Dderiv = equation12;
+end
 muprimederiv = equation13;
 thetaprimederiv = equation14;
 
