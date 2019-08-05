@@ -28,7 +28,7 @@ end
 
 %options = odeset('Events',@sm91_co2_events);
 %options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
-options = odeset('RelTol',1e-5);%Use this on dirac instead
+options = odeset('RelTol',1e-4);%Use this on dirac instead
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
@@ -51,13 +51,21 @@ xprime(:,4) = xprime(:,4).*params.tempscale;
 % x = [3,Inf];
 % xfull = [3,Inf];
 % 
+cyclemark = [1:1:size(t)];
  for i = 1:size(t)
+    if i >= size(t)-1
+        cyclemark(i) = 0;
+    elseif xprime(i,1) - xprime(i+1,1) > 1*params.massscale
+     cyclemark(i) = 1;
+    else
+        cyclemark(i) = 0;
+    end
     tectsol = sm91Tectonic(t(i));
     xprime(1,i) = xprime(i,1) ;%+ tectsol(1);
     xprime(2,i) = xprime(i,2);
     xprime(3,i) = xprime(i,3);% + tectsol(2);
     xprime(4,i) = xprime(i,4) ;%+ tectsol(3);
-
+    
     
 
  end
@@ -83,7 +91,8 @@ Theta = squeeze(xprime(4,:))';
 
 %toc
 t = params.timescale.*flipud(t);
-outputs = [I,D,Mu,Theta,t];
+cyclemark = transpose(cyclemark);
+outputs = [I,D,Mu,Theta,t,cyclemark];
 end
 % %figure(1)
 % %clf

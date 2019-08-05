@@ -124,7 +124,7 @@ else
 end
 
 if casenumeral == 1
-    params.phitwo = 0e14 / params.massscale * params.tempscale * params.timescale;
+    params.phitwo = 8e14 / params.massscale * params.tempscale * params.timescale;
 else
     params.phitwo = 8e14 / params.massscale * params.tempscale * params.timescale;
 end
@@ -153,7 +153,7 @@ end
 params.kappamu = 0e-2 / params.tempscale * params.co2scale;
 
 if casenumeral == 1
-    params.kappaR = 0e0 / params.tempscale / params.distancescale^2;
+    params.kappaR = 0.1e0 / params.tempscale / params.distancescale^2;
 else
     params.kappaR = 0.1e0 / params.tempscale / params.distancescale^2;
 end

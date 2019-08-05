@@ -57,9 +57,8 @@ omegapsi = params.omegapsi;
 omegamu = params.omegamu;
 omegatheta = params.omegatheta;
 
-C*Cflag
 
-equation17 = alphanot - params.alphathree * psi + 2 * C*Cflag + omegapsi;
+equation17 = alphanot - params.alphathree * psi + 2 * C*Cflag + omegapsi - params.phitwo * params.kappaR * Rprime;
 equation18 = params.eone * nthroot(psi,5) - params.epsilontwo * D;
 equation19 = 0;
 equation20 = 0;
