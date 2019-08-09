@@ -37,8 +37,8 @@ function xprime = sv92(t,x,params);
 
 
 % Set up of the model
-psi = x(1);
-D = x(2);
+psi = max(0,x(1));
+D = max(0,x(2));
 muprime = x(3);
 thetaprime = x(4);
 

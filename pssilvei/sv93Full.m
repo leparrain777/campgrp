@@ -35,8 +35,8 @@ function xprime = sv93(t,x,params);
 % Ww = 0;
 
 if params.mutildestar == 0
-psi = x(1);
-D = x(2);
+psi = max(0,x(1));
+D = max(0,x(2));
 xi = x(3);
 upsilon = x(4);
 mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;

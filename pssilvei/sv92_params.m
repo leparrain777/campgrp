@@ -35,7 +35,7 @@ params.tspan = [0:1*1e3/params.timescale:5e6/params.timescale];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %params.x0 = [-1.0 0.1 1.0];
-params.x0 = [.001 .001 .001 .001];
+params.x0 = [2 600 0.1 0.1];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:
@@ -300,7 +300,7 @@ params.Rnot = mean(unnamed);
 
 %gammanot = gammatwo * psinot; %= gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
 
-
+params.alphatwo = .8;
 
 params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * (params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
