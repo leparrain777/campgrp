@@ -264,7 +264,7 @@ end
 
 %setting zeta constant
 
-params.icedensity= 917 / params.massscale; %917 given in paper
+params.icedensity= params.distancescale^3*917 / params.massscale; %917 given in paper
 %set ice density, seen as rho with an i subscript
 
 params.n= 2; % 2 in paper
@@ -282,7 +282,7 @@ params.omegaI = 0; %0 in paper when not explicityly stated otherwise
 format long e
 %set our outputs to have some more decimals and a seperate magnitude
 %multiplier
-
+load('july60northinsolationraw.mat', 'unnamed')
 
 params.munot = params.munotstar; %
 %look up
@@ -294,7 +294,7 @@ params.Rstar = 452;
 %look up
 
 params.Rnotstar = 452;
-params.Rnot = 4.771136307502507e+02;
+params.Rnot = mean(unnamed);
 %look up
 %setting some placeholder values for testing to be replaced later
 
@@ -302,18 +302,20 @@ params.Rnot = 4.771136307502507e+02;
 
 
 
-params.alphanot = params.alphaone - params.alphatwo * tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * (params.Rnot - params.Rstar) - params.alphathree * params.Istar;
+params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * (params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
-params.psinot = params.alphanot/params.alphathree; 
+params.psinot = params.alphanot/params.alphathree;
+%params.psinot = 5.33;
+disp(params.psinot);
 %params.gammanot = params.gammaone - params.gammatwo * params.Istar - params.gammathree * params.thetanot;
-params.gammanot = params.gammatwo * params.psinot;
+params.gammanot = params.gammatwo * params.alphanot / params.alphathree;
 
 params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * params.n),5);
 %computes the value of eone from other items that are given
 
 % Insolation:
 params.standarddeviationmultiplier = 1;
-load('july60northinsolationraw.mat', 'unnamed')
+
 params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
