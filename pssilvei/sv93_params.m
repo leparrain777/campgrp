@@ -36,7 +36,7 @@ params.tspan = [0:1*1e3/params.timescale:5e6/params.timescale];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %params.x0 = [-1.0 0.1 1.0];
-params.x0 = [.001 .001 .001 .001];
+params.x0 = [.001 .001 360 1];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:
@@ -233,7 +233,7 @@ params.icedensity= 917 / params.massscale;
 
 params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * 2),5);
 
-params.standarddeviationmultiplier = 1;
+params.standarddeviationmultiplier = 0;
 load('july60northinsolationraw.mat', 'unnamed')
 params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
 

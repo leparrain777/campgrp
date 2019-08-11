@@ -35,8 +35,8 @@ function xprime = sv93(t,x,params);
 % Ww = 0;
 
 if params.mutildestar == 0
-psi = max(0,x(1));
-D = max(0,x(2));
+psi = max(1e-10,x(1));
+D = max(1e-10,x(2));
 xi = x(3);
 upsilon = x(4);
 mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;
@@ -47,7 +47,7 @@ H = nthroot(params.zeta^4 * psi / 2 /  params.icedensity,5);
 Dnot = 1/3 * H; 
 C = -params.alphafour * psi/2 / H; 
 Cflag = double((D > Z) & (D > Dnot)); 
-alphanot = params.alphanotstar;
+alphanot = params.alphanotstar-params.phitwo*params.B*(mutilde-params.mutildestar)/params.mutildestar;
 kappamu =@(x) params.B / x;
 bone =@(x) 2 * params.betathree * x - 3 * params.betafour * x^2 - params.betatwo;
 btwo =@(x) 3 * params.betafour * x - params.betathree;
