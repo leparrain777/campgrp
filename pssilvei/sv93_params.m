@@ -138,6 +138,7 @@ if varargin{1} == 1
     params.Znot = 3.0e2 / params.distancescale;
 else
     params.Znot = 4.75e2 / params.distancescale;
+    params.Znot = 5.5e2 / params.distancescale;
 end
 
 if varargin{1} == 1
@@ -233,7 +234,7 @@ params.icedensity= 917 / params.massscale;
 
 params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * 2),5);
 
-params.standarddeviationmultiplier = 0;
+params.standarddeviationmultiplier = 1;
 load('july60northinsolationraw.mat', 'unnamed')
 params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
 
