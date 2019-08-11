@@ -35,7 +35,7 @@ params.tspan = [0:1*1e3/params.timescale:5e6/params.timescale];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %params.x0 = [-1.0 0.1 1.0];
-params.x0 = [2 600 0.1 0.1];
+params.x0 = [.001 .001 0 0];
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:
@@ -293,17 +293,20 @@ params.Rstar = 452;
 %make Rstar a short name for high latitude radiation present value
 %look up
 
-params.Rnotstar = 452;
+
 params.Rnot = mean(unnamed);
+
+params.Rnotstar = params.Rnot-params.Rstar;
 %look up
 %setting some placeholder values for testing to be replaced later
 
 %gammanot = gammatwo * psinot; %= gammatwo * alphanot / alphathree as phinot = alphnot / alphathree if muprime = thetaprime = 0;
 
-%params.alphatwo = .8;
+%params.alphatwo = .75;
 
-params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * (params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
+params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * 0.2*(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
+disp(params.alphanot);
 params.psinot = params.alphanot/params.alphathree;
 %params.psinot = 5.33;
 disp(params.psinot);
