@@ -304,7 +304,7 @@ params.Rnotstar = params.Rnot-params.Rstar;
 
 %params.alphatwo = .75;
 
-params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * 0.2*(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
+params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * 0.0*(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
 disp(params.alphanot);
 params.psinot = params.alphanot/params.alphathree;
@@ -317,7 +317,7 @@ params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * para
 %computes the value of eone from other items that are given
 
 % Insolation:
-params.standarddeviationmultiplier = 1;
+params.standarddeviationmultiplier = 0;
 
 params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
 end
