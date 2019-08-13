@@ -4,9 +4,9 @@ clf
 subplot(5,1,1)
 t = ans(:,5);
 cycleave = [1:1:length(t)];
-for i = 1:length(t)
-    cycleave(i) = mean(ans(max(1,i-200):i,6));
-end
+% for i = 1:length(t)
+%     cycleave(i) = mean(ans(max(1,i-200):i,6));
+% end
 cycleave = smoothdata(ans(:,6),'gaussian',200);
 plot(t,ans(:,1),'-')
 ylim([0 8e19])

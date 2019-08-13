@@ -4,9 +4,10 @@ clf
 subplot(5,1,1)
 t = ans(:,5);
 cycleave = [1:1:length(t)];
-for i = 1:length(t)
-    cycleave(i) = mean(ans(max(1,i-1500):i,6));
-end
+% for i = 1:length(t)
+%     cycleave(i) = mean(ans(max(1,i-1500):i,6));
+% end
+cycleave = smoothdata(ans(:,6),'gaussian',200);
 plot(t,ans(:,1),'-')
 ylim([0 6.5e19])
 xlim([0e6 5e6])
@@ -37,4 +38,6 @@ xlim([0e6 5e6])
 %ylim([-1.25 1.25])
 set(gca,'xdir','reverse')
 ylabel('Cycle marks')
-disp(1/mode(cycleave(500:end)))
+disp(1/min(cycleave(500:end)))
+disp(1/max(cycleave(500:end)))
+disp(1/mean(cycleave(500:end)))
