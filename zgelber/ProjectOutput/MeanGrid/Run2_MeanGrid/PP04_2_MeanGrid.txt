@@ -1,0 +1,40 @@
+PP04_2_MeanGrid
+
+Force Amplitude: 0 to 2 by 1
+Tau: 0.3 to 1.5 by 0.5
+Vbegin: 0
+Vend: 1.5
+Abegin: 0
+Aend: 1.5
+Cbegin: -0.4
+Cend: 1.2
+
+Time of Model Run: 0 to 5000
+Time of Cycles Analyzed: 0 to 4000
+
+Model Run Insolation:
+insolPeriodic
+
+Constants:
+tV = 15
+tA = 12
+tC = 5
+x  = 1.3
+y  = 0.5
+z  = 0.8
+al = 0.15
+be = 0.5
+ga = 0.5
+de = 0.4
+a  = 0.3
+b  = 0.7
+c  = 0
+d  = 0.27
+k  = 0
+g  = 0
+Scaled by tau
+
+Notes:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

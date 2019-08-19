@@ -1,0 +1,29 @@
+PP04_insolHuybersIntegrated_22_Cycles.txt
+
+
+Cycle stats for last 4500 kyr:
+
+
+Full Cycle Statistics:
+	Mean Cycle Length = 123.371
+	Max Cycle Length = 135
+	Min Cycle Length = 118
+
+
+Cooling Statistics:
+	Mean Cooling Time = 103.857
+	Max Cooling Time = 116
+	Min Cooling Time = 99
+
+
+Warming Statistics:
+	Mean Warming Time = 19.5143
+	Max Warming Time = 21
+	Min Warming Time = 16
+
+
+Asymmetry Statistics:
+	Asymmetry of the Averages = 5.32211
+	Average of the Asymmetries = 5.30243
+
+______________________________________

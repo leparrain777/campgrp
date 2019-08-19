@@ -23,7 +23,6 @@ end
 
 
 %tic
-
 %options = odeset('Events',@sm91_co2_events);
 %options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
 options = odeset('RelTol',1e-4);%Use this on dirac instead

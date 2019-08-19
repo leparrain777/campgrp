@@ -1,0 +1,15 @@
+PP04_Run3_EEMD_Params
+
+Model Run Insolation:
+lr04Data
+ModelRun: 3
+
+White Noise: 0.3
+Iterations: 900
+Number of IMFs:
+11
+Number of data points:
+2001
+
+
+Notes:

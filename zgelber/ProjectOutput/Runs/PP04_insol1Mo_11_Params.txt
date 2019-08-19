@@ -1,0 +1,25 @@
+PP04_insol1Mo_11_Params
+
+Model Run Insolation:
+insol1Mo
+
+Constants:
+tV = 15
+tA = 12
+tC = 5
+x  = 1.3
+y  = 0.325
+z  = 0.8
+al = 0.0975
+be = 0.5
+ga = 0.5
+de = 0.4
+a  = 0.3
+b  = 0.7
+c  = 0
+d  = 0.27
+k  = 8.5e-05
+g  = 0
+
+
+Notes:

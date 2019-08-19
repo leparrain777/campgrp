@@ -1,0 +1,28 @@
+Predictability Measures as Calculated by predictability_measure.m
+
+Measures for sm90, run number 126, with high standard deviation = 2, low standard deviation = 5.000000e-01
+
+Total number of cycles: 35
+
+Total number of partial melts: 16
+
+Average cycle length: 1.117353e+02
+
+Average partial melt time: 18
+
+average ratio of build time to melt time = 3.248592e+00max to next min correlation: corr = 1, pval = -5.110010e-01
+
+max to next min correlation: corr = -5.110010e-01, pval = 1
+
+max to next min correlation: corr = 1, pval = 1.707388e-03
+
+max to next min correlation: corr = 1.707388e-03, pval = 1
+
+min to next max correlation: corr = 1, pval = 2.258279e-01
+
+min to next max correlation: corr = 2.258279e-01, pval = 1
+
+min to next max correlation: corr = 1, pval = 1.990709e-01
+
+min to next max correlation: corr = 1.990709e-01, pval = 1
+

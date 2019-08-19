@@ -1,0 +1,15 @@
+PP04_Run6_EEMD_Params
+
+Model Run Insolation:
+insolHuybersIntegrated
+ModelRun: 6
+
+White Noise: 0.3
+Iterations: 900
+Number of IMFs:
+11
+Number of data points:
+2001
+
+
+Notes:
