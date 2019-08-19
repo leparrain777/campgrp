@@ -11,7 +11,7 @@ addpath(genpath('/nfsbigdata1/campgrp/Lib/Matlab'));
 addpath(genpath('/nfsbigdata1/campgrp/Data'));
 addpath(genpath('C:\Users\Perrin\Documents\Gitprojects\campgrp\Data'));
 addpath(genpath('C:\Users\perri\Documents\Gitprojects\campgrp\Data'));
-
+format long e
 
 %addpath(genpath('/nfsbigdata1/campgrp/brknight/Lib/Matlab'));
 if nargin > 0
@@ -24,23 +24,24 @@ end
 
 %tic
 %options = odeset('Events',@sm91_co2_events);
+%options = odeset('Events',@(T,Y) sm91_ice_events(T,Y,param));
 %options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
-options = odeset('RelTol',1e-4);%Use this on dirac instead
+options = odeset('RelTol',1e-4,'Events',@(t,x) sv92modelswitch(t,x,params));%Use this on dirac instead
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime] = ode45(@(t,x) sv92Full(t,x,params),params.tspan,params.x0,options);
+[t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),params.tspan,params.x0,options);
 
 % Re-dimensionalizing the results
 xprime(:,1) = xprime(:,1).*params.massscale;
 xprime(:,2) = xprime(:,2).*params.distancescale;
 xprime(:,3) = xprime(:,3).*params.co2scale;
 xprime(:,4) = xprime(:,4).*params.tempscale;
-
-%ye(:,1) = ye(:,1).*2.0;
-%ye(:,2) = ye(:,2).*52.5;
-%ye(:,3) = ye(:,3).*0.9;
-%ye(:,4) = ye(:,4).*1.0;
+te = te.*params.timescale;
+ye(:,1) = ye(:,1).*params.massscale;
+ye(:,2) = ye(:,2).*params.distancescale;
+ye(:,3) = ye(:,3).*params.co2scale;
+ye(:,4) = ye(:,4).*params.tempscale;
 
 
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
@@ -87,7 +88,7 @@ Theta = squeeze(x(4,:))';
 %toc
 t = params.timescale.*flipud(t);
 cyclemark = transpose(cyclemark);
-outputs = [I,D,Mu,Theta,t,cyclemark];
+outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te,ye(:,1),ye(:,2),ye(:,3),ye(:,4)],2);
 end
 
 % %figure(1)
