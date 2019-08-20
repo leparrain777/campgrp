@@ -36,7 +36,7 @@ while t(end)< params.tspan(end-1)
     holder = [t,xprime];holder2 = [te,ye,ie];
     %disp([holder2(end,1) params.tspan(length(t)+1:end)])
     %disp(holder2(end,2:5))
-    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),[holder2(end,1)+1e-5 params.tspan(length(t)+1:end)],holder2(end,2:5),options);
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),[holder2(end,1) params.tspan(length(t)+1:end)],holder2(end,2:5),options);
     newstuff1 = [t,xprime];newstuff2=[te,ye,ie];
     %disp(newstuff1)
     %disp(newstuff2)
