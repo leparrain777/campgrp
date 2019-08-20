@@ -12,8 +12,8 @@ Dnot = 1/3 * H; % epsilonone / epsilontwo basically 1/3 H by paper
 
 Cflag = double((D > params.Z) & (D > Dnot)); %this is our alternative to a piecewise function
 %and is a result of the function being zero if certain conditions are or are not met.
-value = Cflag;
-isterminal = 0;  % Does not terminate when finds event
-direction = 0;  % Want both max and min
+value = Cflag-.5;
+isterminal = 1;  % Does terminate when model switches
+direction = 0;  % Want both parts of model switch
 
 end
