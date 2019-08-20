@@ -56,12 +56,18 @@ xprime(:,2) = xprime(:,2).*params.distancescale;
 xprime(:,3) = xprime(:,3).*params.co2scale;
 xprime(:,4) = xprime(:,4).*params.tempscale;
 te = te.*params.timescale;
+if ismatrix(ye)
 ye(:,1) = ye(:,1).*params.massscale;
 ye(:,2) = ye(:,2).*params.distancescale;
 ye(:,3) = ye(:,3).*params.co2scale;
 ye(:,4) = ye(:,4).*params.tempscale;
-
-
+end
+if isvector(ye)
+ye(:,1) = ye(1).*params.massscale;
+ye(:,2) = ye(2).*params.distancescale;
+ye(:,3) = ye(3).*params.co2scale;
+ye(:,4) = ye(4).*params.tempscale;
+end
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
 % to get the full solution for every value of t.
 % x = [3,Inf];

@@ -35,6 +35,8 @@ function xprime = sv93(t,x,params);
 % Ww = 0;
 
 if params.mutildestar == 0
+nn1 = x(1);
+nn2 = x(2);
 psi = max(1e-10,x(1));
 D = max(1e-10,x(2));
 xi = x(3);
@@ -64,12 +66,12 @@ equation19 = 0;
 equation20 = 0;
 
 
-if psi<=0
+if nn1<=0
     psideriv = max(0,equation17);
 else
     psideriv = equation17;
 end 
-if D<=0
+if nn2<=0
     Dderiv = max(0,equation18);
 else
     Dderiv = equation18;
@@ -91,8 +93,10 @@ else
    
 
 % Set up of the model
-psi = max(1e-10,x(1));
-D = max(1e-10,x(2));
+nn1 = x(1);
+nn2 = x(2)
+psi = max(0,x(1));
+D = max(0,x(2));
 xi = x(3);
 upsilon = x(4);
 mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;
@@ -120,12 +124,12 @@ equation19 = (bone(mutilde) - btwo(mutilde) * xi - params.betafour * xi^2) * xi 
 equation20 = params.gammanot - params.gammatwo * psi - params.gammathree * upsilon + omegatheta;
 
 
-if psi<=1e-10
+if nn1<=0
     psideriv = max(0,equation17);
 else
     psideriv = equation17;
 end 
-if D<=1e-10
+if nn2<=0
     Dderiv = max(0,equation18);
 else
     Dderiv = equation18;

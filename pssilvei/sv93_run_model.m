@@ -28,16 +28,36 @@ end
 
 %options = odeset('Events',@sm91_co2_events);
 %options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
-options = odeset('RelTol',1e-4);%Use this on dirac instead
+%options = odeset('RelTol',1e-4);%Use this on dirac instead
+options = odeset('RelTol',1e-4,'Events',@(t,x) sv93modelswitch(t,x,params));%Use this on dirac instead
+
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime] = ode45(@(t,x) sv93Full(t,x,params),params.tspan,params.x0,options);
+
+[t,xprime,te,ye,ie] = ode45(@(t,x) sv93Full(t,x,params),params.tspan,params.x0,options);
+t = t(1:end-1); xprime = xprime(1:end-1,:);
+while t(end)< params.tspan(end-1)
+    holder = [t,xprime];holder2 = [te,ye,ie];
+    %disp([holder2(end,1) params.tspan(length(t)+1:end)])
+    %disp(holder2(end,2:5))
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv93Full(t,x,params),[holder2(end,1) params.tspan(length(t)+1:end)],holder2(end,2:5),options);
+    newstuff1 = [t,xprime];newstuff2=[te,ye,ie];
+    %disp(newstuff1)
+    %disp(newstuff2)
+    full = [holder;newstuff1(2:end-1,:)];
+    full2 = [holder2;newstuff2];
+    t = full(:,1);
+    xprime = full(:,2:5);
+    te = full2(:,1);
+    ye = full2(:,2:5);
+    ie = full2(:,6);
+end
 
 % Re-dimensionalizing the results
 xprime(:,1) = xprime(:,1).*params.massscale;
 xprime(:,2) = xprime(:,2).*params.distancescale;
-xprime(:,3) = xprime(:,3).*params.co2scale + params.mutildestar + transpose([5e3:-1e0:0]*params.mutildedot);
+xprime(:,3) = xprime(:,3).*params.co2scale + params.mutildestar + transpose([4.999e3:-1e0:0]*params.mutildedot);
 xprime(:,4) = xprime(:,4).*params.tempscale;
 
 %ye(:,1) = ye(:,1).*2.0;

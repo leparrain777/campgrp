@@ -37,6 +37,8 @@ function xprime = sv92(t,x,params);
 
 
 % Set up of the model
+nn1 = x(1);
+nn2 = x(2);
 psi = max(1e-10,x(1));
 D = max(1e-10,x(2));
 muprime = x(3);
@@ -121,12 +123,12 @@ equation14 = params.gammanot - params.gammatwo * psi - params.gammathree * theta
 
 
 
-if psi<=0
+if nn1<=0
     psideriv = max(0,equation11);
 else
     psideriv = equation11;
 end    
-if D <= 0
+if nn2 <= 0
     Dderiv = max(0,equation12);
 else
     Dderiv = equation12;
