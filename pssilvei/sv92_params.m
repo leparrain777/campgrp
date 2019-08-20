@@ -304,7 +304,7 @@ params.Rnotstar = params.Rnot-params.Rstar;
 
 %params.alphatwo = .75;
 
-params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * 0.0*(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
+params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * .8 *(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
 disp(params.alphanot);
 params.psinot = params.alphanot/params.alphathree;
