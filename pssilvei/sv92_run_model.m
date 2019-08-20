@@ -32,15 +32,16 @@ options = odeset('RelTol',1e-4,'Events',@(t,x) sv92modelswitch(t,x,params));%Use
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
 [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),params.tspan,params.x0,options);
 t = t(1:end-1); xprime = xprime(1:end-1,:);
-while t(end)< max(params.tspan)
+while t(end)< params.tspan(end-1)
     holder = [t,xprime];holder2 = [te,ye,ie];
-    disp(holder)
-    disp(holder2)
-    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),[holder2(end,1),params.tspan((holder(end,1)+1):end)],holder2(end,2:5),options);
+    %disp([holder2(end,1) params.tspan(length(t)+1:end)])
+    %disp(holder2(end,2:5))
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),[holder2(end,1)+1e-5 params.tspan(length(t)+1:end)],holder2(end,2:5),options);
     newstuff1 = [t,xprime];newstuff2=[te,ye,ie];
-    %disp(newstuff)
+    %disp(newstuff1)
+    %disp(newstuff2)
     full = [holder;newstuff1(2:end-1,:)];
-    full2 = [holder2;newstuff2(2:end-1,:)];
+    full2 = [holder2;newstuff2];
     t = full(:,1);
     xprime = full(:,2:5);
     te = full2(:,1);
