@@ -3,7 +3,7 @@
  clf
 subplot(5,1,1)
 endof = 0;
-start = 5;
+start = .8;
 t = ans(:,5);
 cycleave = [1:1:length(t)];
 % for i = 1:length(t)
@@ -18,13 +18,13 @@ title(strcat('SV92',' '));
 ylabel('Ice mass')
 subplot(5,1,2)
 plot(t,ans(:,2),'-')
-ylim([0 800])
+%ylim([0 800])
 xlim([endof*1e6 start*1e6])
 set(gca,'xdir','reverse')
 ylabel('Bedrock depression')
 subplot(5,1,3)
 plot(t,ans(:,3),'-')
-ylim([-80 0])
+%ylim([-80 0])
 xlim([endof*1e6 start*1e6])
 set(gca,'xdir','reverse')
 ylabel('CO2')
