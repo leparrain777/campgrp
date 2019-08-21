@@ -6,7 +6,7 @@
 % Date: 7 August 2018
 % Author: Raymart Ballesteros
 
-function outputs = sv92_run_model(override);
+function outputs = sv92_run_model(varargin);
 addpath(genpath('/nfsbigdata1/campgrp/Lib/Matlab'));
 addpath(genpath('/nfsbigdata1/campgrp/Data'));
 addpath(genpath('C:\Users\Perrin\Documents\Gitprojects\campgrp\Data'));
@@ -14,11 +14,7 @@ addpath(genpath('C:\Users\perri\Documents\Gitprojects\campgrp\Data'));
 format long e
 
 %addpath(genpath('/nfsbigdata1/campgrp/brknight/Lib/Matlab'));
-if nargin > 0
-    params = sv92_params(override);
-else
-    params = sv92_params();
-end
+    params = sv92_params(varargin{:});
     
 
 
@@ -26,17 +22,44 @@ end
 %options = odeset('Events',@sm91_co2_events);
 %options = odeset('Events',@(T,Y) sm91_ice_events(T,Y,param));
 %options=odeset('OutputFcn',@odeprog,'Events',@odeabort,'RelTol',1e-4);%Do not use this on dirac, only locally. Progress bar for ode.
-options = odeset('RelTol',1e-4,'Events',@(t,x) sv92modelswitch(t,x,params));%Use this on dirac instead
+options = odeset('NonNegative',[1 2],'RelTol',1e-4,'Events',@(t,x) sv92modelswitch(t,x,params));%Use this on dirac instead
 
 % Simulation of Pleistocene departure model:
 %[t,xprime] = ode45(@(t,x) sm91Full(t,x,param,parT,R,S,Rt,Rx,Ry,Rz,insolT,insol),tspan,x0);
-[t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),params.tspan,params.x0,options);
+
+
+psi = max(eps,params.x0(1));
+D = max(eps,params.x0(2));
+muprime = params.x0(3);
+thetaprime = params.x0(4);
+
+H = nthroot(params.zeta^4 * psi / (params.n * params.icedensity),5);
+%setting the mean thickness of ice sheets, and creating a short name H
+
+Dnot = 1/3 * H; % epsilonone / epsilontwo basically 1/3 H by paper
+
+Cflag = double((D > params.Z) & (D > Dnot)); %this is our alternative to a piecewise function
+%and is a result of the function being zero if certain conditions are or are not met.
+modeltracker = (Cflag-1/2)*-2;
+if modeltracker == 1
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92build(t,x,params),params.tspan,params.x0,options);
+end
+if modeltracker == -1
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92melt(t,x,params),params.tspan,params.x0,options);
+end
+modeltracker = -modeltracker;
 t = t(1:end-1); xprime = xprime(1:end-1,:);
 while t(end)< params.tspan(end-1)
     holder = [t,xprime];holder2 = [te,ye,ie];
     %disp([holder2(end,1) params.tspan(length(t)+1:end)])
     %disp(holder2(end,2:5))
-    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92Full(t,x,params),[holder2(end,1) params.tspan(length(t)+1:end)],holder2(end,2:5),options);
+    if modeltracker == 1
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92build(t,x,params),[holder2(end,1) params.tspan(length(t)+1:end)],holder2(end,2:5),options);
+    end
+    if modeltracker == -1
+    [t,xprime,te,ye,ie] = ode45(@(t,x) sv92melt(t,x,params),[holder2(end,1) params.tspan(length(t)+1:end)],holder2(end,2:5),options);
+    end
+    modeltracker = -modeltracker;
     newstuff1 = [t,xprime];newstuff2=[te,ye,ie];
     %disp(newstuff1)
     %disp(newstuff2)
@@ -56,17 +79,26 @@ xprime(:,2) = xprime(:,2).*params.distancescale;
 xprime(:,3) = xprime(:,3).*params.co2scale;
 xprime(:,4) = xprime(:,4).*params.tempscale;
 te = te.*params.timescale;
-if ismatrix(ye)
-ye(:,1) = ye(:,1).*params.massscale;
-ye(:,2) = ye(:,2).*params.distancescale;
-ye(:,3) = ye(:,3).*params.co2scale;
-ye(:,4) = ye(:,4).*params.tempscale;
+if ismatrix(ye)&& ~isempty(ye) && ~isvector(ye)
+    ye(:,1) = ye(:,1).*params.massscale;
+    ye(:,2) = ye(:,2).*params.distancescale;
+    ye(:,3) = ye(:,3).*params.co2scale;
+    ye(:,4) = ye(:,4).*params.tempscale;
+    
 end
 if isvector(ye)
-ye(:,1) = ye(1).*params.massscale;
-ye(:,2) = ye(2).*params.distancescale;
-ye(:,3) = ye(3).*params.co2scale;
-ye(:,4) = ye(4).*params.tempscale;
+    ye(:,1) = ye(1).*params.massscale;
+    ye(:,2) = ye(2).*params.distancescale;
+    ye(:,3) = ye(3).*params.co2scale;
+    ye(:,4) = ye(4).*params.tempscale;
+    ie(:,1) = ie(1);
+end
+if isempty(ye)
+    ye(:,1) = 0;
+    ye(:,2) = 0;
+    ye(:,3) = 0;
+    ye(:,4) = 0;
+    ie(:,1) = 0;
 end
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
 % to get the full solution for every value of t.
@@ -112,7 +144,7 @@ Theta = squeeze(x(4,:))';
 %toc
 t = params.timescale.*flipud(t);
 cyclemark = transpose(cyclemark);
-outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te,ye(:,1),ye(:,2),ye(:,3),ye(:,4)],2);
+outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te,ye(:,1),ye(:,2),ye(:,3),ye(:,4),ie],2);
 end
 
 % %figure(1)

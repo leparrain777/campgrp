@@ -10,7 +10,7 @@
 
 %need co2events and tectonic
 
-function xprime = sv92(t,x,params);
+function xprime = sv92melt(t,x,params);
 
 % p = param(1);
 % q = param(2);
@@ -95,15 +95,12 @@ C = -params.alphafour * psi / (H * params.n); %C = matlabFunction(piecewise(D < 
 %computes the value of C from other items that should be given in the
 %differential equation
 
-Cflag = double((D > params.Z) & (D > Dnot)); %this is our alternative to a piecewise function
-%and is a result of the function being zero if certain conditions are or are not met.
-
 omegaI = params.omegaI;
 omegamu = params.omegamu;
 omegatheta = params.omegatheta;
 
 
-equation11 = params.alphanot - params.alphatwo * (params.c * muprime + params.kappatheta * thetaprime + params.kappaR * Rprime) - params.alphathree * psi + params.n * C*Cflag + omegaI;
+equation11 = params.alphanot - params.alphatwo * (params.c * muprime + params.kappatheta * thetaprime + params.kappaR * Rprime) - params.alphathree * psi + params.n * C + omegaI;
 %matlabFunction(su(equation11))
 %creating a version of equation 11 using pieces of equations that we have
 %already written.

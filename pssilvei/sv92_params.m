@@ -1,10 +1,15 @@
 % This is the paramters file for running Saltzman and Maasch's 1991 Model
 function params = sv92_params(varargin)
 % General Flags and runID
+disp(varargin)
 disp(varargin{1})
+disp(varargin{2})
 runID = 77;
 if nargin < 1
     varargin{1} = 0;
+end
+if nargin < 2
+    varargin{2} = 1;
 end
 % Flags to control which insolation forcing to use
 Laskarflag = 1;
@@ -25,6 +30,8 @@ params.distancescale = 1e0; %meters
 params.tempscale = 1e0; % degrees Celcius
 
 params.timescale = 1000; %years
+
+params.tweakforRnotlessstar = .435;
 
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
@@ -125,19 +132,19 @@ params.c = 4e-3 * params.co2scale ;
 %externalforcingoceantemp=[1 2 3 4];
 %the forcing signal on ocean temperature for each timestep of the run, should
 %be calculated by something else, this is a placeholder
-if varargin{1} == 1
+if isequal(varargin{1}, 1)
     params.alphaone= params.timescale*13.7e15 / params.massscale; %13.7e15 or 15.4e15
-elseif varargin{1} == 90
+elseif isequal(varargin{1}, 90)
     params.alphaone= params.timescale*17e15 / params.massscale; %13.7e15 or 15.4e15
-elseif varargin{1} == 91
+elseif isequal(varargin{1}, 91)
     params.alphaone= params.timescale*14e15 / params.massscale; %13.7e15 or 15.4e15
 else 
     params.alphaone= params.timescale*15.4e15 / params.massscale; %13.7e15 or 15.4e15
 end
 
-if varargin{1} == 1
+if isequal(varargin{1}, 1)
     params.alphatwo= params.timescale*7e15 / params.massscale; %7.0e15 or 9.4e15
-elseif varargin{1} == 90
+elseif isequal(varargin{1}, 90)
     params.alphatwo= params.timescale*13e15 / params.massscale; %7.0e15 or 9.4e15
 else
     params.alphatwo= params.timescale*9.4e15 / params.massscale; %7.0e15 or 9.4e15
@@ -146,36 +153,36 @@ end
 
 params.alphathree= params.timescale*1.0e-4; %1.0e-4
 
-if varargin{1} == 90|| varargin{1} ==91|| varargin{1} ==21|| varargin{1} ==22|| varargin{1} ==23
+if isequal(varargin{1}, 90)|| isequal(varargin{1},91)|| isequal(varargin{1},21)|| isequal(varargin{1},22)|| isequal(varargin{1},23)
     params.alphafour= params.timescale*0 / params.distancescale; %20 or 0 aka alphafour
 else
     params.alphafour= params.timescale*20 / params.distancescale; %20 or 0 aka alphafour
 end
 %setting the rate of ice destruction
 %setting alpha rate constants
-if varargin{1} == 90|| varargin{1} ==1
+if isequal(varargin{1}, 90)|| isequal(varargin{1},1)
     params.bone= params.timescale*0e-4; %1.3e-4 or 0 
 else
     params.bone= params.timescale*1.3e-4; %1.3e-4 or 0 
 end
 
-if varargin{1} == 90|| varargin{1} ==1
+if isequal(varargin{1}, 90)|| isequal(varargin{1},1)
     params.btwo= params.timescale*0e-6 * params.co2scale; % 1.1e-6 or 0
 else
     params.btwo= params.timescale*1.1e-6 * params.co2scale; % 1.1e-6 or 0
 end
-if varargin{1} == 90|| varargin{1} ==1
+if isequal(varargin{1}, 90)|| isequal(varargin{1},1)
     params.bthree= params.timescale*0e-8 * params.co2scale^2; % 0 or 3.6e-8
 else
     params.bthree= params.timescale*3.6e-8 * params.co2scale^2; % 0 or 3.6e-8
 end
-if varargin{1} == 90|| varargin{1} ==1
+if isequal(varargin{1}, 90)|| isequal(varargin{1},1)
     params.bfour= params.timescale*0e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
 else
     params.bfour= params.timescale*5.6e-3 / params.co2scale * params.tempscale; %0 or 5.6e-3
 end
 %setting b constants
-if varargin{1} == 1
+if isequal(varargin{1}, 1)
     params.gammaone= params.timescale*0e-3 / params.tempscale; %1.9e-3 or 0
     params.gammatwo= params.timescale*0e-23 / params.tempscale * params.massscale; %0 or 1.2e-23
     params.gammathree= params.timescale*0e-4; %0 or 2.5e-4
@@ -187,22 +194,22 @@ end
 
 %setting gamma rate constants
 
-if varargin{1} == 91
+if isequal(varargin{1}, 91)
     params.kappaR= 1.7e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
-elseif varargin{1} == 1
+elseif isequal(varargin{1}, 1)
     params.kappaR= .7e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
 else
     params.kappaR= 1.1e-2 / params.distancescale^2; %.7e-2 or 1.1e-2 or 1.7e-2
 end
 
-if varargin{1} == 90
+if isequal(varargin{1}, 90)
     params.kappatheta= 3.3e-2 * params.tempscale; %3.3e-2 or 4.4e-2
 else
     params.kappatheta= 4.4e-2 * params.tempscale; %3.3e-2 or 4.4e-2
 end
 %setting kappa constants
 
-if varargin{1} == 1
+if isequal(varargin{1}, 1)
     params.Kmu= 2e-18 * params.massscale / params.co2scale;
     params.Ktheta= 4.8e-20 * params.massscale / params.tempscale;
 else
@@ -210,30 +217,30 @@ else
     params.Ktheta= 0 * params.massscale / params.tempscale;
 end
 %setting K constants for pollard paper emulation
-if varargin{1} == 1
+if isequal(varargin{1}, 1)
     params.munotstar= 250 / params.co2scale; %253 or 250 or 215
-elseif varargin{1} == 90
+elseif isequal(varargin{1}, 90)
     params.munotstar= 215 / params.co2scale; %253 or 250 or 215
 else
     params.munotstar= 253 / params.co2scale; %253 or 250 or 215
 end
 
-if varargin{1} == 90
+if isequal(varargin{1}, 90)
     params.thetanotstar= 4.8 / params.tempscale; %5.2 or 4.8
 else
     params.thetanotstar= 5.2 / params.tempscale; %5.2 or 4.8
 end
 %setting current atmosphere averages
-if varargin{1} == 90|| varargin{1} ==91
+if isequal(varargin{1}, 90)|| isequal(varargin{1},91)
     params.Istar= 3.3e19 / params.massscale; %3e19 or 3.3e19
 else
     params.Istar= 3e19 / params.massscale; %3e19 or 3.3e19
 end
 %setting the present value of global ice mass
 
-if varargin{1} == 90|| varargin{1} ==91|| varargin{1} ==21|| varargin{1} ==22|| varargin{1} ==23
+if isequal(varargin{1}, 90)|| isequal(varargin{1},91)|| isequal(varargin{1},21)|| isequal(varargin{1},22)|| isequal(varargin{1},23)
     params.Z= 0e2 / params.distancescale; %4e2 or 0 or 6.4e2
-elseif varargin{1} == 1|| varargin{1} ==31
+elseif isequal(varargin{1}, 1)|| isequal(varargin{1},31)
     params.Z= 4e2 / params.distancescale; %4e2 or 0 or 6.4e2
 else 
     params.Z= 6.4e2 / params.distancescale; %4e2 or 0 or 6.4e2
@@ -241,9 +248,9 @@ end
 %Znot=Znotstar;
 %setting the baseline value of tectonic crust equilibrium to be the modern tectonic crust equilibrium?
 
-if varargin{1} == 90|| varargin{1} ==91
+if isequal(varargin{1}, 90)|| isequal(varargin{1},91)
     params.epsilontwo= 0; %1/(3e3) or 1/(30e3)
-elseif varargin{1} == 1|| varargin{1} ==21|| varargin{1} ==31
+elseif isequal(varargin{1}, 1)|| isequal(varargin{1},21)|| isequal(varargin{1},31)
     params.epsilontwo= params.timescale*1/(30e3); %1/(3e3) or 1/(30e3)
 else
     params.epsilontwo= params.timescale*1/(3e3); %1/(3e3) or 1/(30e3)
@@ -253,9 +260,9 @@ end
 params.epsilonone = params.epsilontwo * 1/3; %this should be epsilonone *1/3 as they use a 
 %constant in the paper for epsilon one divided by epsilon two with value one third
 
-if varargin{1} == 90|| varargin{1} ==91
+if isequal(varargin{1}, 90)|| isequal(varargin{1},91)
     params.zeta= 0 ; %1 or .5
-elseif varargin{1} == 23
+elseif isequal(varargin{1}, 23)
     params.zeta= .5 / nthroot(params.distancescale,2); %1 or .5
 else
     params.zeta= 1 / nthroot(params.distancescale,2); %1 or .5
@@ -304,7 +311,7 @@ params.Rnotstar = params.Rnot-params.Rstar;
 
 %params.alphatwo = .75;
 
-params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * .8 *(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
+params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * params.tweakforRnotlessstar *(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
 disp(params.alphanot);
 params.psinot = params.alphanot/params.alphathree;
@@ -317,9 +324,9 @@ params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * para
 %computes the value of eone from other items that are given
 
 % Insolation:
-params.standarddeviationmultiplier = 1;
+params.standarddeviationmultiplier = varargin{2};
 
-params.Rprime = interp1(params.insolT,unnamed-mean(unnamed),'spline','pp');
+params.Rprime = interp1(params.insolT,(unnamed-mean(unnamed)),'spline','pp');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up the changing parameters:

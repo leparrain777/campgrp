@@ -1,6 +1,7 @@
 
- figure(randi([5 255]))
- clf
+%  figure(randi([5 255]))
+%  clf
+figure
 subplot(5,1,1)
 endof = 0;
 start = .8;

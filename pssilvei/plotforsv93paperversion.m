@@ -2,7 +2,7 @@
 figure(randi([5 255]))
 clf
 subplot(5,1,1)
-endof = 4;
+endof = 0;
 start = 5;
 t = ans(:,5);
 cycleave = [1:1:length(t)];

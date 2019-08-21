@@ -37,8 +37,8 @@ function xprime = sv93(t,x,params);
 if params.mutildestar == 0
 nn1 = x(1);
 nn2 = x(2);
-psi = max(1e-10,x(1));
-D = max(1e-10,x(2));
+psi = max(eps,x(1));
+D = max(eps,x(2));
 xi = x(3);
 upsilon = x(4);
 mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;
@@ -94,9 +94,9 @@ else
 
 % Set up of the model
 nn1 = x(1);
-nn2 = x(2)
-psi = max(0,x(1));
-D = max(0,x(2));
+nn2 = x(2);
+psi = max(eps,x(1));
+D = max(eps,x(2));
 xi = x(3);
 upsilon = x(4);
 mutilde = params.mutildestar + (5e6/params.timescale-t) * params.mutildedot;
