@@ -1,9 +1,9 @@
 % This is the paramters file for running Saltzman and Maasch's 1991 Model
 function params = sv92_params(varargin)
 % General Flags and runID
-disp(varargin)
-disp(varargin{1})
-disp(varargin{2})
+% %disp(varargin)
+% %disp(varargin{1})
+% %disp(varargin{2})
 runID = 77;
 if nargin < 1
     varargin{1} = 0;
@@ -313,10 +313,10 @@ params.Rnotstar = params.Rnot-params.Rstar;
 
 params.alphanot = params.alphaone - params.alphatwo * (tanh(params.c * params.munot) + params.kappatheta * params.thetanot + params.kappaR * params.tweakforRnotlessstar *(params.Rnot - params.Rstar)) - params.alphathree * params.Istar;
 %computes the value of alphanot from other items that are given
-disp(params.alphanot);
+%disp(params.alphanot);
 params.psinot = params.alphanot/params.alphathree;
 %params.psinot = 5.33;
-disp(params.psinot);
+%disp(params.psinot);
 %params.gammanot = params.gammaone - params.gammatwo * params.Istar - params.gammathree * params.thetanot;
 params.gammanot = params.gammatwo * params.alphanot / params.alphathree;
 

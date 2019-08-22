@@ -144,7 +144,7 @@ Theta = squeeze(x(4,:))';
 %toc
 t = params.timescale.*flipud(t);
 cyclemark = transpose(cyclemark);
-outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te,ye(:,1),ye(:,2),ye(:,3),ye(:,4),ie],2);
+outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te,ye(:,1),ye(:,2),ye(:,3),ye(:,4),ie(:,1)],2);
 end
 
 % %figure(1)
