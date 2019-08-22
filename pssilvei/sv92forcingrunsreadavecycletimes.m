@@ -1,5 +1,5 @@
 step = .01;
-lost = [.4:step:2];
+lost = [0:step:2];
 for n = lost
     name = strcat('sv92forcingrunsu=',num2str(n*1000));
     load(strcat('sv92forcingruns\',name),'-mat');
