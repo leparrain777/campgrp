@@ -11,6 +11,12 @@ end
 if nargin < 2
     varargin{2} = 1;
 end
+if nargin < 3
+    varargin{3} = 1;
+end
+if nargin < 4
+    varargin{4} = [.001 .001 0 0];
+end
 % Flags to control which insolation forcing to use
 Laskarflag = 1;
 integInsolflag = 0;
@@ -33,6 +39,8 @@ params.timescale = 1000; %years
 
 params.tweakforRnotlessstar = .435;
 
+params.tau = varargin{3};
+
 % Note that the every step of t represents 10ka.
 % Here, the simulation runs for 5 million years ago to present.
 params.tspan = [0:1*1e3/params.timescale:5e6/params.timescale];
@@ -42,7 +50,7 @@ params.tspan = [0:1*1e3/params.timescale:5e6/params.timescale];
 
 % Initial conditions are chosen arbitrarily based loosely on the Saltzman 1990 paper.
 %params.x0 = [-1.0 0.1 1.0];
-params.x0 = [.001 .001 0 0];
+params.x0 = varargin{4};
 
 % Parameters dictated by the Saltzman 1990 paper.
 % In this simulation:

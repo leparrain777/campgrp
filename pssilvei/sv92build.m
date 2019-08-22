@@ -142,5 +142,5 @@ xprime = [
    thetaprimederiv
 ];
 %disp(xprime)
-
+xprime = xprime/params.tau;
 end

@@ -144,6 +144,7 @@ xprime = [
    muprimederiv ;
    thetaprimederiv
 ];
+xprime = xprime/params.tau;
 %disp(xprime)
 
 end
