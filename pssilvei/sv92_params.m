@@ -17,6 +17,9 @@ end
 if nargin < 4
     varargin{4} = [.001 .001 0 0];
 end
+if isequal(varargin{4},1)
+    varargin{4} = [.001 .001 0 0];
+end
 % Flags to control which insolation forcing to use
 Laskarflag = 1;
 integInsolflag = 0;

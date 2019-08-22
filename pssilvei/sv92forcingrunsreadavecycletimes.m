@@ -8,4 +8,5 @@ for n = lost
     cycleaves(index) = helper;
     %plotforsv92paperversion
 end
+figure
 plot(5000000./cycleaves)

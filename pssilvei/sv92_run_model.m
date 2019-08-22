@@ -99,6 +99,7 @@ if isempty(ye)
     ye(:,3) = 0;
     ye(:,4) = 0;
     ie(:,1) = 0;
+    te(1) = 0;
 end
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
 % to get the full solution for every value of t.
