@@ -84,7 +84,6 @@ if ismatrix(ye)&& ~isempty(ye) && ~isvector(ye)
     ye(:,2) = ye(:,2).*params.distancescale;
     ye(:,3) = ye(:,3).*params.co2scale;
     ye(:,4) = ye(:,4).*params.tempscale;
-    
 end
 if isvector(ye)
     ye(:,1) = ye(1).*params.massscale;
@@ -92,6 +91,7 @@ if isvector(ye)
     ye(:,3) = ye(3).*params.co2scale;
     ye(:,4) = ye(4).*params.tempscale;
     ie(:,1) = ie(1);
+    te(:,1) = te(1);
 end
 if isempty(ye)
     ye(:,1) = 0;
@@ -99,7 +99,7 @@ if isempty(ye)
     ye(:,3) = 0;
     ye(:,4) = 0;
     ie(:,1) = 0;
-    te(1) = 0;
+    te(:,1) = 0;
 end
 % Add the tectonic-average equilibrium solution to the Pleistocene departure model 
 % to get the full solution for every value of t.
@@ -145,7 +145,7 @@ Theta = squeeze(x(4,:))';
 %toc
 t = params.timescale.*flipud(t);
 cyclemark = transpose(cyclemark);
-outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te,ye(:,1),ye(:,2),ye(:,3),ye(:,4),ie(:,1)],2);
+outputs = padconcatenation([I,D,Mu,Theta,t,cyclemark],[5000*params.timescale-te(:,1),ye(:,1),ye(:,2),ye(:,3),ye(:,4),ie(:,1)],2);
 end
 
 % %figure(1)
