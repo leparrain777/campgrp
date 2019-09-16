@@ -17,8 +17,18 @@ end
 
 figure
 imagesc(5000000./cycleaves);
-figure
-surf(5000000./cycleaves);
+xlim([31 150])
+ylim([0 200])
+set(gca, 'ydir','normal')
+colors = colorbar;
+colors.Label.String = 'Dominant Periodicity (Years)'
+title('SV92 - Largest FFT Coefficient Periodicity')
+ylabel('Force Amplitude Percentage')
+xlabel('? Percentage')
+pbaspect([1 1 1])
+
+% figure
+% surf(5000000./cycleaves);
 
 
 
