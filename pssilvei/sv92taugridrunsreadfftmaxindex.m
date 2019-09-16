@@ -24,7 +24,7 @@ colors = colorbar;
 colors.Label.String = 'Dominant Periodicity (Years)'
 title('SV92 - Largest FFT Coefficient Periodicity')
 ylabel('Force Amplitude Percentage')
-xlabel('? Percentage')
+xlabel('Tau Percentage')
 pbaspect([1 1 1])
 
 % figure
