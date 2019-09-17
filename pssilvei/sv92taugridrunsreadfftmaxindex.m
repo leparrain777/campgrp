@@ -16,15 +16,14 @@ for n = u
 end
 
 figure
-imagesc(5000000./cycleaves);
-xlim([31 150])
-ylim([0 200])
+imagesc([.3:.01:1.5],[0:.01:2],5000./cycleaves(:,30:150));
 set(gca, 'ydir','normal')
+xlim([0.31 1.5])
 colors = colorbar;
-colors.Label.String = 'Dominant Periodicity (Years)'
+colors.Label.String = 'Dominant Periodicity (kyr)'
 title('SV92 - Largest FFT Coefficient Periodicity')
-ylabel('Force Amplitude Percentage')
-xlabel('Tau Percentage')
+ylabel('Force Amplitude')
+xlabel('Tau')
 pbaspect([1 1 1])
 
 % figure
