@@ -21,10 +21,12 @@ set(gca, 'ydir','normal')
 xlim([0.31 1.5])
 colors = colorbar;
 colors.Label.String = 'Dominant Periodicity (kyr)'
-title('SV92 - Largest FFT Coefficient Periodicity')
+%title('SV92 - Largest FFT Coefficient Periodicity')
+title('')
 ylabel('Force Amplitude')
-xlabel('Tau')
-pbaspect([1 1 1])
+xlabel('\tau')
+set(gcf,'color','w');
+pbaspect('auto')
 
 % figure
 % surf(5000000./cycleaves);
