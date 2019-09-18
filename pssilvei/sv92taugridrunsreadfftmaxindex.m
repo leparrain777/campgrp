@@ -1,11 +1,13 @@
 step = .01;
 u = [0.0:step:2];
 tau = [.3:step:1.5];
+%direct = 'sv92taugridthing\';
+direct = 'sv92taugridthingperiodic\';
 for n = u
     for m = tau
         %ics = [];
         name = strcat('sv92taugridu=',num2str(n*1000),'tau=',num2str(m*1000));
-        load(strcat('sv92taugridthing\',name),'-mat');
+        load(strcat(direct,name),'-mat');
         hello = abs(fft(ans(:,2)-mean(ans(:,2))));
         [maximum,fftindex] = maxk(hello(1:2500),10);
         index1 = round(n/step) + 1;
