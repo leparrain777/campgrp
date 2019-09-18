@@ -338,6 +338,7 @@ params.eone= params.epsilonone * nthroot(params.zeta^4/(params.icedensity * para
 params.standarddeviationmultiplier = varargin{2};
 
 params.Rprime = interp1(params.insolT,(unnamed-mean(unnamed)),'spline','pp');
+params.Rprime = interp1(params.insolT,60*sin(2*pi/(41000/params.timescale)*params.insolT),'spline','pp');
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Set up the changing parameters:
